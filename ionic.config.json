@@ -1,0 +1,7 @@
+{
+  "name": "MoSIoT-Expert",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
