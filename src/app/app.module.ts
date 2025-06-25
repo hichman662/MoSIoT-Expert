@@ -1,5 +1,5 @@
 import { ProgressBarRoutingModule } from './progress-bar/progress-bar-routing.module';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
@@ -19,27 +19,22 @@ export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http,'assets/i18n/', '.json');
 }
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule,
-    RouterModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    IonicStorageModule.forRoot(),
-    NgIdleKeepaliveModule.forRoot(),
-    ProgressBarRoutingModule,
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: LanguageLoader,
-          deps: [HttpClient]
-      },
-      defaultLanguage:'es'
-  }),],
-  providers: [Platform,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },TranslateConfigService],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        RouterModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        IonicStorageModule.forRoot(),
+        NgIdleKeepaliveModule.forRoot(),
+        ProgressBarRoutingModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: LanguageLoader,
+                deps: [HttpClient]
+            },
+            defaultLanguage: 'es'
+        })], providers: [Platform, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, TranslateConfigService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
