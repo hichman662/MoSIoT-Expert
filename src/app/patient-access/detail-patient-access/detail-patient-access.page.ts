@@ -8,9 +8,10 @@ import { Storage } from '@ionic/storage';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
 @Component({
-  selector: 'app-detail-patient-access',
-  templateUrl: './detail-patient-access.page.html',
-  styleUrls: ['./detail-patient-access.page.scss'],
+    selector: 'app-detail-patient-access',
+    templateUrl: './detail-patient-access.page.html',
+    styleUrls: ['./detail-patient-access.page.scss'],
+    standalone: false
 })
 export class DetailPatientAccessPage implements OnInit {
 

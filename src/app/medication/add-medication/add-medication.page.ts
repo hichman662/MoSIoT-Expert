@@ -12,9 +12,10 @@ import { CareActivity } from 'src/app/models/careActivity.model';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-add-medication',
-  templateUrl: './add-medication.page.html',
-  styleUrls: ['./add-medication.page.scss'],
+    selector: 'app-add-medication',
+    templateUrl: './add-medication.page.html',
+    styleUrls: ['./add-medication.page.scss'],
+    standalone: false
 })
 export class AddMedicationPage implements OnInit {
 

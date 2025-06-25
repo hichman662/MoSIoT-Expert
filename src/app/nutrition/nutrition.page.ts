@@ -5,9 +5,10 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 import { Nutrition } from '../models/nutrition.model';
 
 @Component({
-  selector: 'app-nutrition',
-  templateUrl: './nutrition.page.html',
-  styleUrls: ['./nutrition.page.scss'],
+    selector: 'app-nutrition',
+    templateUrl: './nutrition.page.html',
+    styleUrls: ['./nutrition.page.scss'],
+    standalone: false
 })
 export class NutritionPage implements OnInit {
 

@@ -6,9 +6,10 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'app-medication',
-  templateUrl: './medication.page.html',
-  styleUrls: ['./medication.page.scss'],
+    selector: 'app-medication',
+    templateUrl: './medication.page.html',
+    styleUrls: ['./medication.page.scss'],
+    standalone: false
 })
 export class MedicationPage implements OnInit {
 

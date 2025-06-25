@@ -14,9 +14,10 @@ import { CarePlan } from 'src/app/models/carePlan.model';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-add-care-plan',
-  templateUrl: './add-care-plan.page.html',
-  styleUrls: ['./add-care-plan.page.scss'],
+    selector: 'app-add-care-plan',
+    templateUrl: './add-care-plan.page.html',
+    styleUrls: ['./add-care-plan.page.scss'],
+    standalone: false
 })
 export class AddCarePlanPage implements OnInit {
 

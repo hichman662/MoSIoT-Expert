@@ -8,9 +8,10 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 @Component({
-  selector: 'app-heart-rate',
-  templateUrl: './heart-rate.page.html',
-  styleUrls: ['./heart-rate.page.scss'],
+    selector: 'app-heart-rate',
+    templateUrl: './heart-rate.page.html',
+    styleUrls: ['./heart-rate.page.scss'],
+    standalone: false
 })
 export class HeartRatePage implements OnInit {
 

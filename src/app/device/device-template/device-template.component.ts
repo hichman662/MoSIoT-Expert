@@ -16,9 +16,10 @@ import { Property } from 'src/app/models/property.model';
 import { Device } from 'src/app/models/device.model';
 
 @Component({
-  selector: 'app-device-template',
-  templateUrl: './device-template.component.html',
-  styleUrls: ['./device-template.component.scss'],
+    selector: 'app-device-template',
+    templateUrl: './device-template.component.html',
+    styleUrls: ['./device-template.component.scss'],
+    standalone: false
 })
 export class DeviceTemplateComponent implements OnInit {
 

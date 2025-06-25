@@ -12,9 +12,10 @@ import { Storage } from '@ionic/storage';
 import { CareActivity } from 'src/app/models/careActivity.model';
 
 @Component({
-  selector: 'app-add-appointment',
-  templateUrl: './add-appointment.page.html',
-  styleUrls: ['./add-appointment.page.scss'],
+    selector: 'app-add-appointment',
+    templateUrl: './add-appointment.page.html',
+    styleUrls: ['./add-appointment.page.scss'],
+    standalone: false
 })
 export class AddAppointmentPage implements OnInit {
 

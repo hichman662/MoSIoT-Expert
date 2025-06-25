@@ -15,9 +15,10 @@ import { Storage } from '@ionic/storage';
 import { CarePlan } from 'src/app/models/carePlan.model';
 
 @Component({
-  selector: 'app-add-device',
-  templateUrl: './add-device.page.html',
-  styleUrls: ['./add-device.page.scss'],
+    selector: 'app-add-device',
+    templateUrl: './add-device.page.html',
+    styleUrls: ['./add-device.page.scss'],
+    standalone: false
 })
 export class AddDevicePage implements OnInit {
 

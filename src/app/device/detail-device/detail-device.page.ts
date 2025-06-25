@@ -14,9 +14,10 @@ import { IonItemSliding, AlertController, ToastController} from '@ionic/angular'
 import { Device } from 'src/app/models/device.model';
 
 @Component({
-  selector: 'app-detail-device',
-  templateUrl: './detail-device.page.html',
-  styleUrls: ['./detail-device.page.scss'],
+    selector: 'app-detail-device',
+    templateUrl: './detail-device.page.html',
+    styleUrls: ['./detail-device.page.scss'],
+    standalone: false
 })
 export class DetailDevicePage implements OnInit {
   public deviceName: string;

@@ -10,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-detail-appointment',
-  templateUrl: './detail-appointment.page.html',
-  styleUrls: ['./detail-appointment.page.scss'],
+    selector: 'app-detail-appointment',
+    templateUrl: './detail-appointment.page.html',
+    styleUrls: ['./detail-appointment.page.scss'],
+    standalone: false
 })
 export class DetailAppointmentPage implements OnInit {
   public attriubute: Attribute[] = [];

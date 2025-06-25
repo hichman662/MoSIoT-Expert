@@ -23,9 +23,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertController, NavController ,IonItemSliding,ToastController} from '@ionic/angular';
 import { Disease } from 'src/app/models/disease.model';
 @Component({
-  selector: 'app-detail-profile',
-  templateUrl: './detail-profile.component.html',
-  styleUrls: ['./detail-profile.component.scss'],
+    selector: 'app-detail-profile',
+    templateUrl: './detail-profile.component.html',
+    styleUrls: ['./detail-profile.component.scss'],
+    standalone: false
 })
 export class DetailProfileComponent implements OnInit {
   name = '';

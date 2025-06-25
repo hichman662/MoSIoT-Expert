@@ -6,9 +6,10 @@ import { Storage } from '@ionic/storage';
 
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 @Component({
-  selector: 'app-patient-access',
-  templateUrl: './patient-access.page.html',
-  styleUrls: ['./patient-access.page.scss'],
+    selector: 'app-patient-access',
+    templateUrl: './patient-access.page.html',
+    styleUrls: ['./patient-access.page.scss'],
+    standalone: false
 })
 export class PatientAccessPage implements OnInit {
   public idScenario: number;

@@ -11,9 +11,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IonItemSliding, AlertController, ToastController} from '@ionic/angular';
 
 @Component({
-  selector: 'app-detail-vital-sign',
-  templateUrl: './detail-vital-sign.page.html',
-  styleUrls: ['./detail-vital-sign.page.scss'],
+    selector: 'app-detail-vital-sign',
+    templateUrl: './detail-vital-sign.page.html',
+    styleUrls: ['./detail-vital-sign.page.scss'],
+    standalone: false
 })
 export class DetailVitalSignPage implements OnInit {
 

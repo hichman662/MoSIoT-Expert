@@ -7,9 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 import { AdaptationDetailRequired } from 'src/app/models/adaptationDetailRequired.model';
 
 @Component({
-  selector: 'app-detail-access-mode',
-  templateUrl: './detail-access-mode.component.html',
-  styleUrls: ['./detail-access-mode.component.scss'],
+    selector: 'app-detail-access-mode',
+    templateUrl: './detail-access-mode.component.html',
+    styleUrls: ['./detail-access-mode.component.scss'],
+    standalone: false
 })
 export class DetailAccessModeComponent implements OnInit {
 

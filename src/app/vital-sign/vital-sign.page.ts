@@ -7,9 +7,10 @@ import { Storage } from '@ionic/storage';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-vital-sign',
-  templateUrl: './vital-sign.page.html',
-  styleUrls: ['./vital-sign.page.scss'],
+    selector: 'app-vital-sign',
+    templateUrl: './vital-sign.page.html',
+    styleUrls: ['./vital-sign.page.scss'],
+    standalone: false
 })
 export class VitalSignPage implements OnInit {
 

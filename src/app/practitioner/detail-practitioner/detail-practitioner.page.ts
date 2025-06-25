@@ -8,9 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-detail-practitioner',
-  templateUrl: './detail-practitioner.page.html',
-  styleUrls: ['./detail-practitioner.page.scss'],
+    selector: 'app-detail-practitioner',
+    templateUrl: './detail-practitioner.page.html',
+    styleUrls: ['./detail-practitioner.page.scss'],
+    standalone: false
 })
 export class DetailPractitionerPage implements OnInit {
 

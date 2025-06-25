@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 @Component({
-  selector: 'app-practitioner',
-  templateUrl: './practitioner.page.html',
-  styleUrls: ['./practitioner.page.scss'],
+    selector: 'app-practitioner',
+    templateUrl: './practitioner.page.html',
+    styleUrls: ['./practitioner.page.scss'],
+    standalone: false
 })
 export class PractitionerPage implements OnInit {
 

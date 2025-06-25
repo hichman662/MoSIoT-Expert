@@ -9,9 +9,10 @@ import {MessageDto } from '../models/messageDto.model';
 import { ChatAppService } from './../services/chatApp.service';
 import { Storage } from '@ionic/storage';
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.page.html',
-  styleUrls: ['./chat.page.scss'],
+    selector: 'app-chat',
+    templateUrl: './chat.page.html',
+    styleUrls: ['./chat.page.scss'],
+    standalone: false
 })
 export class ChatPage implements OnInit {
 

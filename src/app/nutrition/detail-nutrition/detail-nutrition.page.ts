@@ -10,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-detail-nutrition',
-  templateUrl: './detail-nutrition.page.html',
-  styleUrls: ['./detail-nutrition.page.scss'],
+    selector: 'app-detail-nutrition',
+    templateUrl: './detail-nutrition.page.html',
+    styleUrls: ['./detail-nutrition.page.scss'],
+    standalone: false
 })
 export class DetailNutritionPage implements OnInit {
 

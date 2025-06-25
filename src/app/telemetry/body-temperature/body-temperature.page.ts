@@ -8,9 +8,10 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 @Component({
-  selector: 'app-body-temperature',
-  templateUrl: './body-temperature.page.html',
-  styleUrls: ['./body-temperature.page.scss'],
+    selector: 'app-body-temperature',
+    templateUrl: './body-temperature.page.html',
+    styleUrls: ['./body-temperature.page.scss'],
+    standalone: false
 })
 export class BodyTemperaturePage implements OnInit {
 

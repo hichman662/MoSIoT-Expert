@@ -10,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-detail-communication',
-  templateUrl: './detail-communication.page.html',
-  styleUrls: ['./detail-communication.page.scss'],
+    selector: 'app-detail-communication',
+    templateUrl: './detail-communication.page.html',
+    styleUrls: ['./detail-communication.page.scss'],
+    standalone: false
 })
 export class DetailCommunicationPage implements OnInit {
 

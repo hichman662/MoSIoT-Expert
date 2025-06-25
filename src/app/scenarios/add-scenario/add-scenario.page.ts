@@ -10,9 +10,10 @@ import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-add-scenario',
-  templateUrl: './add-scenario.page.html',
-  styleUrls: ['./add-scenario.page.scss'],
+    selector: 'app-add-scenario',
+    templateUrl: './add-scenario.page.html',
+    styleUrls: ['./add-scenario.page.scss'],
+    standalone: false
 })
 export class AddScenarioPage implements OnInit {
 
