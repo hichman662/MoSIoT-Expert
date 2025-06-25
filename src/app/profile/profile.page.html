@@ -1,0 +1,113 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+
+            <ion-back-button text="Back" defaultHref="/scenarios" icon="chevron-back-outline">Back</ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/profile.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header *ngIf="load">
+                <ion-label class="text-top">{{practitionerData.Name}}'s Profile </ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+
+
+</ion-header>
+<ion-content>
+    <ion-spinner class="spin" *ngIf="!load" name="bubbles"></ion-spinner>
+
+    <ion-list *ngIf="load" class="animate__animated animate__slideInUp animate__slow">
+        <ion-list-header>
+            <ion-icon class="segmentIcon" name="person-outline"></ion-icon>Name</ion-list-header>
+        <ion-item>
+
+            <ion-label text-wrap> {{practitionerData.Name}}</ion-label>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon class="segmentIcon" name="person-outline"></ion-icon>Surname</ion-list-header>
+        <ion-item>
+
+            <ion-label text-wrap> {{practitionerData.Surnames}}</ion-label>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon class="segmentIcon" name="at-outline"></ion-icon>Email</ion-list-header>
+        <ion-item>
+
+            <ion-label> {{practitionerEmail}}</ion-label>
+
+        </ion-item>
+        <ion-list-header>
+
+            <ion-icon class="segmentIcon" name="power-outline"></ion-icon>Active Status</ion-list-header>
+        <ion-item>
+            <ion-item [hidden]="practitionerData.IsActive === true">
+                <ion-label>Disactive</ion-label>
+            </ion-item>
+            <ion-item [hidden]="practitionerData.IsActive === false">
+                <ion-label>Active</ion-label>
+            </ion-item>
+
+            <!-- <ion-label> {{$any(practitionerData)?.IsActive}}</ion-label> -->
+
+        </ion-item>
+        <ion-list-header>
+            <ion-icon class="segmentIcon" name="heart-half-outline"></ion-icon>Is Diseased</ion-list-header>
+        <ion-item>
+
+            <ion-item [hidden]="practitionerData.IsDiseased === false">
+                <ion-label>Yes</ion-label>
+            </ion-item>
+            <ion-item [hidden]="practitionerData.IsDiseased === true">
+                <ion-label>No</ion-label>
+            </ion-item>
+
+        </ion-item>
+
+
+        <ion-list-header>
+            <ion-icon class="segmentIcon" name="male-female-outline"></ion-icon>Gender</ion-list-header>
+        <ion-item>
+            <ion-label *ngIf="practitionerData.Type === 1"> Male</ion-label>
+            <ion-label *ngIf="practitionerData.Type === 2"> Female</ion-label>
+            <ion-label *ngIf="practitionerData.Type === 3"> Other</ion-label>
+            <ion-label *ngIf="practitionerData.Type === 4"> Unknown</ion-label>
+        </ion-item>
+
+
+    </ion-list>
+
+</ion-content>

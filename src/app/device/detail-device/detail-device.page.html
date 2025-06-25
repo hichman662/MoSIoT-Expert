@@ -1,0 +1,139 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'DEVICE.return' | translate }}" defaultHref="tabs/tab3/device" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/devicesW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <!--  <ion-label class="text-top">{{ vitalSignName}}</ion-label> -->
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+
+                <ion-label class="text-top">
+                    <ion-label id="title" *ngIf="deviceData !== undefined"><strong>{{deviceName}}</strong></ion-label>
+                </ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+        <ion-segment-button value="details">
+            <ion-icon name="receipt-outline"></ion-icon>
+            <ion-label>{{ 'DEVICE.device' | translate }}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="template">
+            <ion-icon name="flash-outline"></ion-icon>
+            <ion-label>{{ 'DEVICE.deviceTemplate' | translate }}</ion-label>
+        </ion-segment-button>
+
+    </ion-segment>
+</ion-header>
+<ion-content>
+
+    <div class="segment" *ngIf="segmentModel === 'details'">
+        <ion-list *ngIf="!load">
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="logo-apple"></ion-icon>{{ 'DEVICE.trademark' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label text-wrap> {{deviceData.Trademark}}</ion-label>
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="hardware-chip-outline"></ion-icon>{{ 'DEVICE.firmVersion' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{$any(deviceData)?.FirmVersion}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="barcode-outline"></ion-icon>{{ 'DEVICE.serialNumber' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{$any(deviceData)?.SerialNumber}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="pricetag-outline"></ion-icon>{{ 'DEVICE.tag' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{$any(deviceData)?.Tag}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+
+                <ion-icon class="segmentIcon" name="power-outline"></ion-icon>{{ 'DEVICE.deviceSwitch' | translate }}</ion-list-header>
+            <ion-item>
+                <ion-item [hidden]="$any(deviceData)?.DeviceSwitch === true">
+                    <ion-label>{{ 'DEVICE.off' | translate }}</ion-label>
+                </ion-item>
+                <ion-item [hidden]="$any(deviceData)?.DeviceSwitch === false">
+                    <ion-label>{{ 'DEVICE.on' | translate }}</ion-label>
+                </ion-item>
+
+                <!-- <ion-label> {{$any(patientData)?.IsActive}}</ion-label> -->
+
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="invert-mode-outline"></ion-icon>{{ 'DEVICE.isSimulated' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-item [hidden]="$any(deviceData)?.IsSimulated === false">
+                    <ion-label>{{ 'DEVICE.yes' | translate }}</ion-label>
+                </ion-item>
+                <ion-item [hidden]="$any(deviceData)?.IsSimulated === true">
+                    <ion-label>{{ 'DEVICE.no' | translate }}</ion-label>
+                </ion-item>
+
+            </ion-item>
+        </ion-list>
+    </div>
+    <div class="segment" *ngIf="segmentModel === 'template'">
+        <app-device-template></app-device-template>
+
+    </div>
+</ion-content>

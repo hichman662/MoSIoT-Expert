@@ -1,0 +1,55 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{'MESSANGER.return' | translate}}" defaultHref="/tabs/tab2" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/messageBW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{'MESSANGER.title' | translate}}</ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+</ion-header>
+<ion-content>
+    <div class="msg-box">
+        <ul>
+            <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.name === msgDto.name ? 'in-msg' : 'ex-msg'">{{mObj.name}} :<br /><span class="msg-italic-style">{{mObj.msgText}}</span></li>
+        </ul>
+    </div>
+    <ion-row class="rowMessenger">
+        <input type="text" placeholder="{{'MESSANGER.typeMessageHere' | translate}}" class="msg-input" [(ngModel)]="msgDto.msgText" />
+        <ion-button class="send-btn" (click)="send()">
+            <ion-icon id="sendIcon" slot="start" name="send">{{'MESSANGER.send' | translate}}</ion-icon>
+        </ion-button>
+    </ion-row>
+    <!--     <input type="text" placeholder="Your name" class="name-box" [(ngModel)]="msgDto.name" /> -->
+</ion-content>

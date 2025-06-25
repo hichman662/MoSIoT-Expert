@@ -1,0 +1,120 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'ADDCAREPLAN.return' | translate }}" defaultHref="/tabs/tab2/careplan" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+
+
+        <ion-button slot="end" fill="clear" (click)="goToInicio()">
+            {{ 'ADDCAREPLAN.skip' | translate }}
+        </ion-button>
+
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/carePlansW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{ 'ADDCAREPLAN.title' | translate }}</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+
+        <ion-col size="12">
+            <app-progress-bar></app-progress-bar>
+            <!--  <ul class="progressbar">
+                <li class="active">Scenario</li>
+                <li class="active">Patient</li>
+                <li class="active">Access mode</li>
+                <li class="active">Device</li>
+                <li class="actual">Care plan</li>
+                <li>Activities</li>
+
+            </ul> -->
+
+        </ion-col>
+
+
+    </ion-row>
+
+
+</ion-header>
+<ion-content>
+
+    <form [formGroup]="carePlanForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDCAREPLAN.name' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="carePlanForm.controls.Name.errors && carePlanForm.controls.Name.touched">
+                {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDCAREPLAN.description' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="carePlanForm.controls.Description.errors && carePlanForm.controls.Description.touched">
+                {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!carePlanForm.valid || carePlanAddDone">{{ 'ADDCAREPLAN.done' | translate }}</ion-button>
+    </form>
+    <br>
+    <br>
+    <form [formGroup]="carePlantemplateForm" (ngSubmit)="assignCarePlanTemplate()" [hidden]="!carePlanAddDone" class="animate__animated animate__slideInDown animate__fast">
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'ADDCAREPLAN.carePlanTemplates' | translate }}</ion-label>
+
+            <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idCarePlanTemplate">
+
+                <div class="error" *ngIf="carePlantemplateForm.controls.idCarePlanTemplate.errors && carePlantemplateForm.controls.idCarePlanTemplate.touched">
+                    {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
+                </div>
+
+                <div>
+                    <ion-select-option *ngFor="let carePlan of carePlanTemplateList" [value]="carePlan['Id']">{{carePlan['Name']}}</ion-select-option>
+
+                </div>
+
+            </ion-select>
+
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!carePlantemplateForm.valid || assignCarePlanTemplateDone">{{ 'ADDCAREPLAN.done' | translate }}</ion-button>
+    </form>
+    <br>
+    <br>
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="success" [disabled]="!assignCarePlanTemplateDone" [routerLink]="['careActivity','all']">5/6 {{ 'ADDCAREPLAN.activitiesButton' | translate }}</ion-button>
+</ion-content>

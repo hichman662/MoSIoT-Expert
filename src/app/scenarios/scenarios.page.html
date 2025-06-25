@@ -1,0 +1,94 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-menu-button slot="start" autoHide="false"></ion-menu-button>
+        <ion-icon size="large" class="ionadd" name="add-outline" slot="end" [routerLink]="['add-scenario']"></ion-icon>
+        <!--  <ion-buttons slot="start">
+            <ion-menu-button menu="main-menu"></ion-menu-button>
+        </ion-buttons> -->
+
+        <ion-row>
+            <ion-col size="3" class="ion-align-self-start">
+
+            </ion-col>
+            <ion-col size="6" class="ion-align-self-end">
+                <ion-card color="transparent" class="deviceTemplate-card">
+                    <ion-img src='assets/icon/scenario.svg'></ion-img>
+
+                </ion-card>
+            </ion-col>
+            <ion-col size="3" class="ion-align-self-center">
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="ion-align-self-start">
+
+            </ion-col>
+            <ion-col size="10" class="ion-align-self-center">
+
+                <ion-list-header>
+                    <ion-label class="text-top"> {{ 'SCENARIO.title' | translate }}
+                    </ion-label>
+                </ion-list-header>
+
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-end">
+
+            </ion-col>
+
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card-header [hidden]="listScenario" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+        <ion-icon size="large" name="warning-outline"></ion-icon> No scenario has been added to this application. To add a new scenario, press the Add button.
+    </ion-card-header>
+    <!-- <ion-spinner class="spin" *ngIf="!load" name="bubbles"></ion-spinner> -->
+    <ion-card>
+        <ion-list *ngIf="load">
+
+            <div class="patientProfile" *ngFor="let scenario of listScenario">
+
+                <ion-item-sliding #slidingItem>
+
+                    <!-- [routerLink]="['tab0',scenario['Id']]" -->
+                    <ion-item class="item" detail (click)="start(scenario['Id'])">
+                        <ion-avatar slot="start">
+                            <img src="assets/icon/scenario.svg">
+
+                        </ion-avatar>
+                        <ion-card>
+                            <!-- <ion-label text-wrap> -->
+
+                            <ion-card-title>{{scenario['Name']}}</ion-card-title>
+                            <!-- <h3> {{scenario['Name']}}</h3>
+                        <h4>{{scenario['Description']}}</h4> -->
+                            <!--    <ion-card-content>{{scenario['Description']}}
+                        </ion-card-content> -->
+                        </ion-card>
+                        <!-- </ion-label> -->
+                    </ion-item>
+                    <ion-item-options side="end" (ionSwipe)="deleteScenario(slidingItem,scenario['Id'], scenario['Name'])">
+                        <ion-item-option color="danger" expandable (click)="deleteScenario(slidingItem,scenario['Id'], scenario['Name'])">
+
+                            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+
+                        </ion-item-option>
+
+                    </ion-item-options>
+
+                    <ion-item-options side="start">
+
+                        <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-device-template',scenario['Id']]">
+
+                            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                        </ion-item-option>
+                    </ion-item-options>
+
+                </ion-item-sliding>
+            </div>
+        </ion-list>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,103 @@
+<!-- <ion-content>
+
+    <ion-title>Twins4Disabilities</ion-title>
+
+
+    <form id="loginform" (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="input-group">
+
+            <ion-item>
+
+                <ion-input type="email" formControlName="Email" placeholder="Email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input type="password" formControlName="Pass" placeholder="Password" required></ion-input>
+            </ion-item>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-danger" *ngIf="!campoValido('Email')">The user field is required</p>
+                <p class="text-danger" *ngIf="!campoValido('Pass')">The password field is required</p>
+            </div>
+        </div>
+        <ion-button class="btn btn-success" type="submit" [disabled]="waiting">
+            <ion-spinner name="" color="danger" *ngIf="waiting"></ion-spinner>Login</ion-button>
+
+    </form>
+</ion-content> -->
+<ion-content>
+
+    <!-- <ion-title class="mb-4">Twins4Disabilities</ion-title>
+  <form id="loginform" [formGroup]="loginForm">
+      <div class="input-group">
+          <ion-input type="email" formControlName="Email" placeholder="Email" required></ion-input>
+          <br />
+          <ion-input type="password" formControlName="Pass" placeholder="Password" required></ion-input>
+      </div>
+      <div class="row">
+          <div class="col">
+              <p class="text-danger" *ngIf="!campoValido('Email')">The user field is required</p>
+              <p class="text-danger" *ngIf="!campoValido('Pass')">The password field is required</p>
+          </div>
+      </div>
+      <ion-button class="btn btn-success" (click)="start();" type="submit" [disabled]="waiting">
+          <ion-spinner name="" color="danger" *ngIf="waiting"></ion-spinner>Login</ion-button>
+  </form> -->
+
+
+    <ion-slide>
+        <form id="loginform" [formGroup]="loginForm">
+            <div class="contaier-login">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <h3>MoSIoT</h3>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-list>
+
+                                <ion-item>
+                                    <ion-icon name="person" class="icon-login"></ion-icon>
+                                    <ion-input formControlName="Email" name="user" type="email" required placeholder="Email"></ion-input>
+                                </ion-item>
+                                <br />
+                                <ion-item>
+                                    <ion-icon name="lock-closed" class="icon-login"></ion-icon>
+                                    <ion-input formControlName="Pass" name="password" type="password" required placeholder="Password"></ion-input>
+                                </ion-item>
+
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-button (click)="login();" type="submit" [hidden]="waiting">
+                                <ion-spinner name="" *ngIf="waiting"></ion-spinner>Login
+                            </ion-button>
+                            <ion-button [hidden]="!waiting" [disabled]="waiting">
+                                <ion-spinner name="" color="danger" *ngIf="waiting"></ion-spinner>Loading
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="text-justify">
+
+                        <!--   <ion-col>
+                          <ion-label>
+                              <h3>Forgot password</h3>
+                          </ion-label>
+                      </ion-col> -->
+                        <ion-col>
+                            <p class="text-danger" *ngIf="!campoValido('Email')">The user field is required</p>
+                            <p class="text-danger" *ngIf="!campoValido('Pass')">The password field is required</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </form>
+    </ion-slide>
+
+</ion-content>

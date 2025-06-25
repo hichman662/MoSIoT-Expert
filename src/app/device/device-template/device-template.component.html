@@ -1,0 +1,142 @@
+<ion-segment [hidden]="deviceTemplateNull" value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+    <ion-segment-button value="detail">
+        <ion-icon name="receipt-outline"></ion-icon>
+        <ion-label>{{ 'DEVICETEMPLATE.details' | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="commands">
+        <ion-icon name="heart-half-outline"></ion-icon>
+        <ion-label>{{ 'DEVICETEMPLATE.commands' | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="propetries">
+        <ion-icon name="body-outline"></ion-icon>
+        <ion-label>{{ 'DEVICETEMPLATE.properties' | translate }}</ion-label>
+    </ion-segment-button>
+</ion-segment>
+
+
+
+<div class="segment" *ngIf="segmentModel === 'detail'">
+    <div *ngFor="let attr of attriubute">
+
+        <ion-list>
+
+            <ion-list-header>
+                <ion-icon *ngIf="attr.Name === 'name'" class="segmentIcon" name="person-outline"></ion-icon>
+                <ion-icon *ngIf="attr.Name === 'type'" class="segmentIcon" name="logo-apple"></ion-icon>
+                <ion-icon *ngIf="attr.Name === 'IsEdge'" class="segmentIcon" name="triangle-outline"></ion-icon>
+                <ion-icon *ngIf="attr.Name === 'Property1'" class="segmentIcon" name="prism-outline"></ion-icon>
+                {{attr.Name}}</ion-list-header>
+            <ion-item-sliding #slidingItem>
+                <ion-item>
+
+                    <ion-label> {{attr.ValueAttr}}</ion-label>
+                </ion-item>
+                <ion-item-options side="start">
+
+                    <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable (click)="editAttr(slidingItem, attr.Name, attr.Id, attr.ValueAttr)">
+
+                        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+
+
+
+    </div>
+</div>
+<div class="segment" *ngIf="segmentModel === 'commands'">
+    <div class="container" *ngFor="let command of allCommands">
+        <mat-expansion-panel details>
+            <mat-expansion-panel-header slot="start">
+                <mat-panel-title>
+                    <ion-item>
+                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                        <ion-label>{{command.Name}}</ion-label>
+                    </ion-item>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option color="danger" (click)="null" expandable>
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+
+            <ion-card>
+                <ion-item>
+
+                    <ion-label text-wrap>{{ 'DEVICETEMPLATE.description' | translate }}</ion-label>
+                    <ion-badge text-wrap> {{command.Description}}</ion-badge>
+                </ion-item>
+                <ion-list-header>
+                    <ion-icon class="segmentIcon" name="shuffle-outline"></ion-icon>{{ 'DEVICETEMPLATE.type' | translate }}</ion-list-header>
+                <ion-item>
+                    <ion-label *ngIf="command.Type === 1">{{ 'DEVICETEMPLATE.create' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 2">{{ 'DEVICETEMPLATE.execute' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 3">{{ 'DEVICETEMPLATE.delete' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 4">{{ 'DEVICETEMPLATE.update' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 5">{{ 'DEVICETEMPLATE.getById' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 6">{{ 'DEVICETEMPLATE.getProperty' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 7">{{ 'DEVICETEMPLATE.setPeoperty' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 8">{{ 'DEVICETEMPLATE.list' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 9">{{ 'DEVICETEMPLATE.reboot' | translate }}</ion-label>
+                    <ion-label *ngIf="command.Type === 10">{{ 'DEVICETEMPLATE.login' | translate }}</ion-label>
+                </ion-item>
+                <ion-item>
+
+                    <ion-label text-wrap>{{ 'DEVICETEMPLATE.isSynchronous' | translate }} </ion-label>
+                    <ion-badge text-wrap> {{command.IsSynchronous}}</ion-badge>
+                </ion-item>
+
+            </ion-card>
+
+        </mat-expansion-panel>
+
+    </div>
+</div>
+<div class="segment" *ngIf="segmentModel === 'propetries'">
+    <div class="container" *ngFor="let property of allProperties">
+        <mat-expansion-panel details>
+            <mat-expansion-panel-header slot="start">
+                <mat-panel-title>
+                    <ion-item>
+                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                        <ion-label>{{property.Name}}</ion-label>
+                    </ion-item>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option color="danger" (click)="null" expandable>
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+
+            <ion-card>
+                <ion-item>
+
+                    <ion-label text-wrap>{{ 'DEVICETEMPLATE.isWritable' | translate }}</ion-label>
+                    <ion-badge text-wrap> {{property.IsWritable}}</ion-badge>
+                </ion-item>
+                <ion-item>
+
+                    <ion-label text-wrap>{{ 'DEVICETEMPLATE.isCloudable' | translate }}</ion-label>
+                    <ion-badge text-wrap> {{property.IsCloudable}}</ion-badge>
+                </ion-item>
+
+
+            </ion-card>
+
+        </mat-expansion-panel>
+
+    </div>
+
+</div>

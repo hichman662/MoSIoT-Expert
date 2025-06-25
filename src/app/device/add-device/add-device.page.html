@@ -1,0 +1,169 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'ADDDEVICE.return' | translate }}" defaultHref="/tabs/tab3/device" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-button (click)="goToInicio()" slot="end" fill="clear">
+            {{ 'ADDDEVICE.skip' | translate }}
+        </ion-button>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/devicesW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{ 'ADDDEVICE.title' | translate }}</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+            <app-progress-bar></app-progress-bar>
+            <!--  <ul class="progressbar">
+                <li class="active">Scenario</li>
+                <li class="active">User</li>
+                <li class="active">Access mode</li>
+                <li class="actual">Device</li>
+                <li>Care plan</li>
+                <li>Activities</li>
+
+            </ul> -->
+
+        </ion-col>
+    </ion-row>
+
+</ion-header>
+<ion-content>
+
+    <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDDEVICE.name' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceForm.controls.Name.errors && deviceForm.controls.Name.touched">
+                {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDDEVICE.description' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceForm.controls.Description.errors && deviceForm.controls.Description.touched">
+                {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDDEVICE.firmVersion' | translate }}</ion-label>
+            <ion-input type="text" formControlName="FirmVersion" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceForm.controls.FirmVersion.errors && deviceForm.controls.FirmVersion.touched">
+                {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDDEVICE.tag' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Tag" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceForm.controls.Tag.errors && deviceForm.controls.Tag.touched">
+                {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDDEVICE.serialNumber' | translate }}</ion-label>
+            <ion-input type="text" formControlName="SerialNumber" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceForm.controls.SerialNumber.errors && deviceForm.controls.SerialNumber.touched">
+                {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDDEVICE.trademark' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Trademark" class="form-control"></ion-input>
+            <div class="error" *ngIf="deviceForm.controls.Trademark.errors && deviceForm.controls.Trademark.touched">
+                {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'ADDDEVICE.isSimulated' | translate }}</ion-label>
+            <ion-toggle name="IsSimulated" formControlName="IsSimulated" checked="true"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'ADDDEVICE.deviceSwitch' | translate }}</ion-label>
+            <ion-toggle name="DeviceSwitch" formControlName="DeviceSwitch" checked="true"></ion-toggle>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!deviceForm.valid || deviceAddDone">{{ 'ADDDEVICE.done' | translate }}</ion-button>
+    </form>
+    <br>
+    <br>
+    <div [hidden]="weHaveAccessModeId">
+        <form [formGroup]="accessModeForm" (ngSubmit)="callAccessMode()" [hidden]="!deviceAddDone" class="animate__animated animate__slideInDown animate__fast">
+
+            <ion-item lines="full">
+                <ion-label position="stacked">{{ 'ADDDEVICE.accessModes' | translate }}</ion-label>
+
+                <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idAccessMode">
+
+                    <div class="error" *ngIf="accessModeForm.controls.idAccessMode.errors && accessModeForm.controls.idAccessMode.touched">
+                        {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+                    </div>
+                    <div>
+                        <ion-select-option *ngFor="let profileAccessMode of allProfileAccessMods" [value]="profileAccessMode['Id']">{{profileAccessMode['Name']}}</ion-select-option>
+                    </div>
+
+                </ion-select>
+
+            </ion-item>
+            <br>
+            <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!accessModeForm.valid || assignAccessModeDone">{{ 'ADDDEVICE.done' | translate }}</ion-button>
+        </form>
+    </div>
+    <br>
+    <form [formGroup]="deviceTemplateForm" (ngSubmit)="assignDeviceTemplate()" [hidden]="!deviceAddDone" class="animate__animated animate__slideInDown animate__fast">
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'ADDDEVICE.deviceTemplates' | translate }}</ion-label>
+
+            <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="p_devicetemplate_oid">
+
+                <div class="error" *ngIf="deviceTemplateForm.controls.p_devicetemplate_oid.errors && deviceTemplateForm.controls.p_devicetemplate_oid.touched">
+                    {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
+                </div>
+
+                <div>
+                    <ion-select-option *ngFor="let deviceTemplate of allDeviceTemplates" [value]="deviceTemplate['Id']">{{deviceTemplate['Name']}} </ion-select-option>
+
+                </div>
+
+            </ion-select>
+
+        </ion-item>
+        <br>
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!accessModeForm.valid || assignDeviceTemplateDone">{{ 'ADDDEVICE.done' | translate }}</ion-button>
+    </form>
+    <br>
+
+    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="success" [disabled]="!allOkey" [routerLink]="['add-carePlan']">4/6 {{ 'ADDDEVICE.carePlanButton' | translate }}</ion-button>
+</ion-content>

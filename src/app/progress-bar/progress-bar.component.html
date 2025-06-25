@@ -1,0 +1,15 @@
+<ul class="progressbar">
+    <li [hidden]="scenarioNull" class="active">{{ 'WIZARD.scenario' | translate }}</li>
+    <li [hidden]="!scenarioNull" class="lack">{{ 'WIZARD.scenario' | translate }}</li>
+    <li [hidden]="!patientNull" class="lack" [routerLink]="scenarioNull === false ?['add-patient'] : []">{{ 'WIZARD.patient' | translate }}</li>
+    <li [hidden]="patientNull" class="active">{{ 'WIZARD.patient' | translate }}</li>
+    <li [hidden]="!patientAccessNull" class="lack" [routerLink]="patientNull === false ? ['add-patient-access']: [] ">{{ 'WIZARD.accessMode' | translate }}</li>
+    <li [hidden]="patientAccessNull" class="active">{{ 'WIZARD.accessMode' | translate }}</li>
+    <li [hidden]="!devicesNull" class="lack" [routerLink]="patientAccessNull === false ? ['add-device']: [] ">{{ 'WIZARD.device' | translate }}</li>
+    <li [hidden]="devicesNull" class="active">{{ 'WIZARD.device' | translate }}</li>
+    <li [hidden]="!carePlanNull" class="lack" [routerLink]="patientNull === false ? ['add-careplan']: [] ">{{ 'WIZARD.carePlan' | translate }}</li>
+    <li [hidden]="carePlanNull" class="active">{{ 'WIZARD.carePlan' | translate }}</li>
+    <li [hidden]="(!medicationNull || !communicationNull) || (!appointmentNull || !nutritionNull)" class="lack" [routerLink]="carePlanNull === false ? ['careActivity','all']: [] ">{{ 'WIZARD.activities' | translate }}</li>
+    <li [hidden]="(medicationNull && communicationNull) && (appointmentNull && nutritionNull)" class="active">{{ 'WIZARD.activities' | translate }}</li>
+
+</ul>

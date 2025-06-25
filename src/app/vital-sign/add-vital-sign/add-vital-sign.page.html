@@ -1,0 +1,72 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="care Plans" defaultHref="/tabs/tab2/vitalSign" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/vitalSignsW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">Add Vital Sign</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+
+
+</ion-header>
+<ion-content>
+
+    <form [formGroup]="vitalSignForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="vitalSignForm.controls.Name.errors && vitalSignForm.controls.Name.touched">
+                Please fill out this field
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="vitalSignForm.controls.Description.errors && vitalSignForm.controls.Description.touched">
+                Please fill out this field
+            </div>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!vitalSignForm.valid">Done</ion-button>
+    </form>
+</ion-content>

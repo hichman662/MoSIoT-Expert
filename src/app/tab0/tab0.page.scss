@@ -1,0 +1,181 @@
+/* DOES NOT WORK - not specific enough */
+
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+
+.my-custom-class {
+    color: green;
+}
+
+ion-card {
+    filter: brightness(90%);
+    filter: contrast(90%);
+    filter: drop-shadow(3px 3px 3px gray);
+    //box-shadow: none !important;
+}
+
+ion-content {
+    --background: url('/assets/icon/backW.jpg') 0 0/100% 100% no-repeat;
+    //--background: url('/') 0 0/100% 100% no-repeat;
+    border-radius: 20px;
+}
+
+ion-toolbar {
+    /*  --background: rgb(196, 109, 207); */
+    --background: url('/assets/icon/backW.jpg') 0 0/100% 100% no-repeat;
+}
+
+.text-top {
+    color: white;
+}
+
+.ionadd {
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.my-custom-menu {
+    --width: 500px;
+}
+
+ion-header {
+    //background-color: rgb(196, 109, 207);
+    --background: url('/assets/icon/backW.jpg') 0 0/100% 100% no-repeat;
+}
+
+.text-top {
+    text-align: center;
+    margin-top: -18px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ion-align-self-end {
+    margin-top: -18px;
+}
+
+:root {
+    ion-tab-button:nth-child(1) {
+        ion-icon {
+            color: var(--ion-color-secondary) !important;
+            /* --ion-color-base: var(--ion-color-secondary) !important; */
+        }
+    }
+    ion-tab-button.tab-selected:nth-child(1) {
+        ion-icon {
+            color: var(--ion-color-secondary) !important;
+            /* --ion-color-base: var(--ion-color-secondary) !important; */
+        }
+    }
+}
+
+ion-loading {
+    color: green;
+}
+
+.iconText>ion-col>ion-icon {
+    margin-left: 25px;
+}
+
+.iconText>ion-col>ion-label {
+    position: flex;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+app-component-telemetry {
+    width: 100%;
+}
+
+.my-custom-menu {
+    --width: 500px;
+}
+
+ion-list-header {
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: 10px;
+    margin-top: -24px;
+}
+
+.warning {
+    background-color: yellow;
+}
+
+ion-back-button {
+    color: white;
+}
+
+
+/*
+.progressbar {
+    counter-reset: step;
+    margin-left: -35px;
+    margin-right: -68px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.progressbar li {
+    list-style-type: none;
+    width: 14%;
+    float: left;
+    font-size: 11px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d;
+}
+
+.progressbar li:before {
+    width: 30px;
+    height: 30px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 30px;
+    border: 2px solid #7d7d7d;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.progressbar li:after {
+    width: 100%;
+    height: 3px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active {
+    //color: white;
+    color: rgb(0, 0, 0);
+}
+
+.progressbar li.active:before {
+    border-color: #55b776;
+    background-color: #55b776;
+}
+
+.progressbar li.active+li:after {
+    background-color: #55b776;
+}
+
+.progressbar li.actual:before {
+    border-color: #f3ea71;
+    background-color: #f3ea71;
+}
+
+.progressbar li.lack:before {
+    border-color: #fffc3b;
+    background-color: #fffc3b;
+} */

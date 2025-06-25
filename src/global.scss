@@ -24,3 +24,18 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import "~animate.css/animate.min.css";
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+    white-space: normal;
+}
+
+.alert-tappable.alert-radio {
+    height: auto;
+    contain: content;
+}
+
+ion-input {
+    border: none; // for black border
+    outline: none; // for focus outline remove
+}
