@@ -1,0 +1,135 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="Patient Dashboard" defaultHref="/tabs/tab1" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/patiW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{ patientName}}</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+
+                <ion-label class="text-top">
+                    <h4>{{ patientDescrip}}</h4>
+                </ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+        <ion-segment-button value="details">
+            <ion-icon name="receipt-outline"></ion-icon>
+            <ion-label>User Data</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="profile">
+            <ion-icon name="receipt-outline"></ion-icon>
+            <ion-label>Patient Profile</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+<ion-content>
+
+    <div class="segment" *ngIf="segmentModel === 'details'">
+        <ion-list>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="person-outline"></ion-icon>Surname</ion-list-header>
+            <ion-item>
+
+                <ion-label text-wrap> {{$any(patientData)?.Surnames}}</ion-label>
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="at-outline"></ion-icon>Email</ion-list-header>
+            <ion-item>
+
+                <ion-label> {{$any(patientData)?.Email}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+
+                <ion-icon class="segmentIcon" name="power-outline"></ion-icon>Active Status</ion-list-header>
+            <ion-item>
+                <ion-item [hidden]="$any(patientData)?.IsActive === true">
+                    <ion-label>Disactive</ion-label>
+                </ion-item>
+                <ion-item [hidden]="$any(patientData)?.IsActive === false">
+                    <ion-label>Active</ion-label>
+                </ion-item>
+
+                <!-- <ion-label> {{$any(patientData)?.IsActive}}</ion-label> -->
+
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="heart-half-outline"></ion-icon>Is Diseased</ion-list-header>
+            <ion-item>
+
+                <ion-item [hidden]="$any(patientData)?.IsDiseased === false">
+                    <ion-label>Yes</ion-label>
+                </ion-item>
+                <ion-item [hidden]="$any(patientData)?.IsDiseased === true">
+                    <ion-label>No</ion-label>
+                </ion-item>
+
+            </ion-item>
+
+
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="male-female-outline"></ion-icon>Gender</ion-list-header>
+            <ion-item>
+                <ion-label *ngIf="$any(patientData)?.Type === 1"> Male</ion-label>
+                <ion-label *ngIf="$any(patientData)?.Type === 2"> Female</ion-label>
+                <ion-label *ngIf="$any(patientData)?.Type === 3"> Other</ion-label>
+                <ion-label *ngIf="$any(patientData)?.Type === 4"> Unknown</ion-label>
+            </ion-item>
+
+
+        </ion-list>
+    </div>
+    <div class="segment" *ngIf="segmentModel === 'profile'">
+        <!--  <app-detail-profile></app-detail-profile> -->
+    </div>
+</ion-content>

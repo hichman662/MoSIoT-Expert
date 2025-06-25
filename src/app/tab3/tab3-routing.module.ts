@@ -6,7 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: Tab3Page,
-  }
+  },
+  {
+    path: 'device',
+    loadChildren: () => import('../device/device.module').then( m => m.DevicePageModule)
+  },
+  {
+    path: 'telemetry',
+    loadChildren: () => import('../telemetry/telemetry.module').then( m => m.TelemetryPageModule)
+  },
 ];
 
 @NgModule({

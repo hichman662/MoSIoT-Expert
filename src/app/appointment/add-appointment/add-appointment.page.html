@@ -1,0 +1,79 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'ADDAPPOINTMENT.return' | translate }}" defaultHref="/tabs/tab2/careActivity" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/appointmentW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{ 'ADDAPPOINTMENT.title' | translate }}</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+
+
+</ion-header>
+<ion-content>
+
+    <form [formGroup]="addAppointmentForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDAPPOINTMENT.name' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
+            <div class="error" *ngIf="addAppointmentForm.controls.Name.errors && addAppointmentForm.controls.Name.touched">
+                {{ 'ADDAPPOINTMENT.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">{{ 'ADDAPPOINTMENT.description' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="addAppointmentForm.controls.Description.errors && addAppointmentForm.controls.Description.touched">
+                {{ 'ADDAPPOINTMENT.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'ADDAPPOINTMENT.activityTime' | translate }}</ion-label>
+            <ion-datetime locale="es-ES" value="2022-04-21T00:00:00" min="2022-09-01T00:00:00" max="2050-05-31T23:59:59" formControlName="TimeAct">
+                <span slot="title">{{ 'ADDAPPOINTMENT.selectActivityTime' | translate }}</span>
+            </ion-datetime>
+        </ion-item>
+
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!addAppointmentForm.valid">{{ 'ADDAPPOINTMENT.done' | translate }}</ion-button>
+    </form>
+</ion-content>

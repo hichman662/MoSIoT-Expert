@@ -1,0 +1,126 @@
+/* .input-group {
+    background: rgba(46, 83, 133, 0.884);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-align: left;
+}
+
+ion-content {
+    --background: url('/assets/icon/back.jpg') 0 0/100% 100% no-repeat;
+    text-align: center;
+    font-size: larger;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    --padding-top: 85%;
+    --padding-start: 10%;
+    --padding-end: 10%;
+}
+
+ion-input {
+    --background: white;
+    --padding-bottom: 15px;
+    font-size: 14px;
+}
+
+ion-title {
+    color: rgb(29, 126, 236);
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(255, 255, 255, 0.89);
+    border-radius: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.text-danger {
+    font-size: 18px;
+    color: black;
+    background-color: rgba(224, 224, 61, 0.767);
+    border-radius: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+} */
+
+.input-group {
+    background: rgba(46, 83, 133, 0.884);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-align: left;
+}
+
+ion-content {
+    --background: url('/assets/icon/backW.jpg') 0 0/100% 100% no-repeat;
+    text-align: center;
+    font-size: larger;
+    --padding-top: 1%;
+    --padding-start: 15%;
+    --padding-end: 10%;
+}
+
+ion-input {
+    --background: white;
+    --padding-bottom: 15px;
+    font-size: 14px;
+}
+
+ion-title {
+    color: rgb(29, 126, 236);
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(255, 255, 255, 0.767);
+    border-radius: 00px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.text-danger {
+    font-size: 14px;
+    color: red;
+    border-radius: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.grid1 {
+    height: 100%;
+    padding: 0px;
+}
+
+.contaier-login {
+    width: 90%;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+}
+
+.row1 {
+    height: 50%;
+    background: -moz-linear-gradient(45deg, rgba(61, 66, 150, 1) 0%, rgba(84, 74, 171, 0.8) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(61, 66, 150, 1) 0%, rgba(84, 74, 171, 0.8) 100%);
+    background: linear-gradient(45deg, rgba(61, 66, 150, 1) 0%, rgba(84, 74, 171, 0.8) 100%);
+}
+
+.row2 {
+    height: 50%;
+}
+
+ion-icon {
+    margin-right: 15px;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    // align-items: center; this only if you want to vertical align it to the center too
+}
+
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}

@@ -1,0 +1,90 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{'VITALSIGNLIST.return'| translate}}" defaultHref="/tabs/tab2" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-icon size="large" class="ionadd" name="add-outline" slot="end" [routerLink]="['add-vital-sign']"></ion-icon>
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/vitalSigns.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{'VITALSIGNLIST.title'| translate}}</ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+</ion-header>
+<ion-content>
+    <ion-card-header [hidden]="!vitalSignNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">No Vital Sign has been added to this scenario. To add Vital Sign, press the Add button.</ion-card-header>
+    <ion-list>
+        <div class="carePlan" *ngFor="let vitalSign of vitalSigns">
+
+            <ion-item-sliding #slidingItem>
+
+                <ion-item class="item" detail [routerLink]="['detail-vital-signs',vitalSign['Id']]">
+                    <ion-avatar slot="start">
+                        <img src="assets/icon/vitalSigns.png">
+
+                    </ion-avatar>
+
+                    <ion-label text-wrap>
+                        <h3>{{vitalSign['Name']}}</h3>
+                        <h4>{{vitalSign['Description']}}</h4>
+                    </ion-label>
+
+
+
+                </ion-item>
+
+
+                <ion-item-options side="end" (ionSwipe)="deleteVitalSign(slidingItem,vitalSign['Id'], vitalSign['Name'])">
+                    <ion-item-option color="danger" expandable (click)="deleteVitalSign(slidingItem,vitalSign['Id'], vitalSign['Name'])">
+
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+
+                    </ion-item-option>
+
+                </ion-item-options>
+
+                <ion-item-options side="start">
+
+                    <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-vital-sign',vitalSign['Id']]">
+                        {{'VITALSIGNLIST.title'| translate}}
+                        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </div>
+    </ion-list>
+
+</ion-content>

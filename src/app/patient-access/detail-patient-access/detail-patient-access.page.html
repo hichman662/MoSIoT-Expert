@@ -1,0 +1,146 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'PATIENTACCESS.return' | translate }}" defaultHref="/tabs/tab1/patientAccess" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/accessW.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{ patientAccessName}}</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+
+                <ion-label class="text-top">
+                    <h4>{{ patientAccessDescrip}}</h4>
+                </ion-label>
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+    <ion-segment [hidden]="patientAccessDetailNull" value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+        <ion-segment-button value="details">
+            <ion-icon name="analytics"></ion-icon>
+            <ion-label> {{ 'PATIENTACCESS.accessMode' | translate }}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="accessModeDetail">
+            <ion-icon name="accessibility-outline"></ion-icon>
+            <ion-label>{{ 'PATIENTACCESS.detailAccessMode' | translate }}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+<ion-content>
+    <ion-card-header [hidden]="!patientAccessDetailNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+        <ion-icon size="large" name="warning-outline"></ion-icon>{{ 'PATIENTACCESS.alertNoProfileAccess' | translate }}
+    </ion-card-header>
+    <div class="segment" *ngIf="segmentModel === 'details'" [hidden]="patientAccessDetailNull">
+        <ion-list>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="accessibility-outline"></ion-icon>{{ 'PATIENTACCESS.accessModeName' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label text-wrap> {{$any(accessMode)?.Name}}</ion-label>
+            </ion-item>
+            <ion-list-header>
+                <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>{{ 'PATIENTACCESS.description' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label text-wrap> {{$any(accessMode)?.Description}}</ion-label>
+
+            </ion-item>
+            <ion-list-header>
+
+                <ion-icon class="segmentIcon" name="qr-code-outline"></ion-icon>{{ 'PATIENTACCESS.accessModeType' | translate }}</ion-list-header>
+            <ion-item>
+
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 1"> {{ 'PATIENTACCESS.auditory' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 2"> {{ 'PATIENTACCESS.colour' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 3"> {{ 'PATIENTACCESS.itemSize' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 4"> {{ 'PATIENTACCESS.olfactory' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 5"> {{ 'PATIENTACCESS.orientation' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 6"> {{ 'PATIENTACCESS.position' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 7"> {{ 'PATIENTACCESS.tactile' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 8"> {{ 'PATIENTACCESS.textOnImage' | translate }}</ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 9"> {{ 'PATIENTACCESS.textual' | translate }} </ion-label>
+                <ion-label *ngIf="$any(accessMode)?.TypeAccessMode === 10"> {{ 'PATIENTACCESS.visual' | translate }}</ion-label>
+
+
+
+                <!-- <ion-label> {{$any(patientData)?.IsActive}}</ion-label> -->
+
+            </ion-item>
+
+
+        </ion-list>
+    </div>
+    <div class="segment" *ngIf="segmentModel === 'accessModeDetail'">
+        <app-detail-access-mode></app-detail-access-mode>
+    </div>
+    <form [formGroup]="patientAccessForm" (ngSubmit)="onSubmit()" [hidden]="!patientAccessDetailNull">
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'PATIENTACCESS.profileAccess' | translate }}</ion-label>
+
+            <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idPatientProfile">
+
+                <div class="error" *ngIf="patientAccessForm.controls.idPatientProfile.errors && patientAccessForm.controls.idPatientProfile.touched">
+                    {{ 'PATIENTACCESS.pleaseFillOutThisField' | translate }}
+                </div>
+
+                <div>
+                    <ion-select-option *ngFor="let accessMode of allAccessMode" [value]="accessMode['Id']">{{accessMode['Name']}}</ion-select-option>
+
+                </div>
+
+            </ion-select>
+
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="light" [disabled]="!patientAccessForm.valid">{{ 'PATIENTACCESS.done' | translate }}</ion-button>
+    </form>
+</ion-content>

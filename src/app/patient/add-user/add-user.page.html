@@ -1,0 +1,98 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'ADDUSER.return' | translate }}" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+
+            <ion-button>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row>
+        <ion-col size="4" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+            <ion-card color="transparent" class="deviceTemplate-card">
+                <ion-img src='assets/icon/add-user.png'></ion-img>
+
+            </ion-card>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-end">
+        </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-col size="1" class="ion-align-self-start">
+
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-center">
+
+            <ion-list-header>
+                <ion-label class="text-top">{{ 'ADDUSER.title' | translate }}</ion-label>
+
+            </ion-list-header>
+
+        </ion-col>
+        <ion-col size="1" class="ion-align-self-end">
+
+        </ion-col>
+
+    </ion-row>
+
+
+</ion-header>
+<ion-content>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+            <ion-label position="stacked"> {{ 'ADDUSER.name' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Name" class="form-control" required></ion-input>
+            <div class="error" *ngIf="userForm.controls.Name.errors && userForm.controls.Name.touched">
+                {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked"> {{ 'ADDUSER.surnames' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Surnames" class="form-control" required></ion-input>
+            <div class="error" *ngIf="userForm.controls.Surnames.errors && userForm.controls.Surnames.touched">
+                {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked"> {{ 'ADDUSER.description' | translate }}</ion-label>
+            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
+            <div class="error" *ngIf="userForm.controls.Description.errors && userForm.controls.Description.touched">
+                {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
+            </div>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label>{{ 'ADDUSER.gender' | translate }}</ion-label>
+            <ion-select value="number" okText="Okay" cancelText="Dismiss" formControlName="Type">
+                <div class="error" *ngIf="userForm.controls.Type.errors && userForm.controls.Type.touched">
+                    {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
+                </div>
+                <ion-select-option value="1">{{ 'ADDUSER.male' | translate }}</ion-select-option>
+                <ion-select-option value="2">{{ 'ADDUSER.female' | translate }}</ion-select-option>
+                <ion-select-option value="3">{{ 'ADDUSER.other' | translate }}</ion-select-option>
+                <ion-select-option value="4">{{ 'ADDUSER.unknown' | translate }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'ADDUSER.isDiseased' | translate }}</ion-label>
+            <ion-toggle name="IsDiseased" formControlName="IsDiseased" checked="true"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'ADDUSER.isActive' | translate }}</ion-label>
+            <ion-toggle name="IsActive" formControlName="IsActive" checked="true"></ion-toggle>
+        </ion-item>
+        <br>
+        <br>
+
+        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!userForm.valid">{{ 'ADDUSER.done' | translate }}</ion-button>
+    </form>
+</ion-content>

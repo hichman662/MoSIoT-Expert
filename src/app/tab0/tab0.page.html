@@ -1,0 +1,237 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="{{ 'HOME.return' | translate }}" defaultHref="scenarios" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <!--  <ion-buttons slot="start">
+          <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons> -->
+
+        <ion-row>
+            <ion-col size="3" class="ion-align-self-start">
+
+            </ion-col>
+            <ion-col size="6" class="ion-align-self-end">
+
+                <ion-img src='assets/icon/scenario.svg'></ion-img>
+
+            </ion-col>
+            <ion-col size="3" class="ion-align-self-center">
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="ion-align-self-start">
+
+            </ion-col>
+            <ion-col size="10" class="ion-align-self-center">
+
+                <ion-list-header>
+                    <ion-label class="text-top">{{ 'HOME.title' | translate }}</ion-label>
+                </ion-list-header>
+
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-end">
+
+            </ion-col>
+
+        </ion-row>
+
+    </ion-toolbar>
+
+</ion-header>
+<ion-content>
+    <ion-spinner class="spin" *ngIf="!load" name="bubbles"></ion-spinner>
+    <ion-card *ngIf="load" class="animate__animated animate__fadeInUp animate__slow">
+        <ion-card-header>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-card-subtitle>{{ 'HOME.scenario' | translate }}</ion-card-subtitle>
+            <ion-card-title>{{scenario.Name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            {{scenario.Description}}
+        </ion-card-content>
+        <ion-row>
+            <ion-col size="12">
+                <app-progress-bar></app-progress-bar>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <ion-card class="animate__animated animate__slideInUp animate__slower">
+        <ion-card [hidden]="!patientNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+            <ion-item class="warning">
+                <ion-icon size="large" name="warning-outline"></ion-icon>
+                <ion-button fill="outline" slot="end" [routerLink]="['add-patient']">{{ 'HOME.addPatient' | translate }}</ion-button>
+            </ion-item>
+            <ion-card-header>
+
+                <ion-card-subtitle>{{ 'HOME.errorPatient' | translate }}</ion-card-subtitle>
+                <!-- <ion-card-title>Care Plans</ion-card-title> -->
+            </ion-card-header>
+        </ion-card>
+        <div [hidden]="patientNull">
+            <ion-card-header>
+
+                <ion-card-subtitle>{{ 'HOME.patient' | translate }} </ion-card-subtitle>
+                <ion-card-title>{{patientName}} {{patientSurnames}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-item>
+                <ion-icon name="reader-outline" slot="start"></ion-icon>
+                <ion-label>{{patientDescription}}</ion-label>
+                <ion-button fill="outline" slot="end" [routerLink]="['patient']">{{ 'HOME.view' | translate }}</ion-button>
+            </ion-item>
+            <ion-card-content>
+                <ion-segment [hidden]="patientProfileNull" value="all" color="tertiary" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+
+                    <ion-segment-button value="diseases">
+                        <ion-icon name="heart-half-outline"></ion-icon>
+                        <ion-label>{{ 'HOME.diseases' | translate }}</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="disabilities">
+                        <ion-icon name="body-outline"></ion-icon>
+                        <ion-label>{{ 'HOME.disabilities' | translate }}</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+                <div *ngIf="segmentModel === 'diseases'" [hidden]="patientProfileNull">
+
+                    <div class="container" *ngFor="let disease of diseases">
+                        <mat-expansion-panel details>
+                            <mat-expansion-panel-header slot="start">
+                                <mat-panel-title>
+                                    <ion-item>
+                                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                                        <ion-label>{{disease.Name}}</ion-label>
+                                    </ion-item>
+                                </mat-panel-title>
+
+                            </mat-expansion-panel-header>
+
+                            <ion-item-sliding>
+                                <ion-item-options side="start">
+                                    <ion-item-option color="danger" (click)="null" expandable>
+                                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+                            </ion-item-sliding>
+
+                            <ion-card>
+                                <ion-item>
+
+                                    <ion-label>{{ 'PATIENTPROFILE.diseases' | translate }}</ion-label>
+
+                                    <ion-badge *ngIf="disease.Disease === 1"> {{ 'PATIENTPROFILE.alzheimer' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 2"> {{ 'PATIENTPROFILE.parkinson' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 3"> {{ 'PATIENTPROFILE.cancer' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 4"> {{ 'PATIENTPROFILE.heartDisease' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 5"> {{ 'PATIENTPROFILE.obesity' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 6"> {{ 'PATIENTPROFILE.diabetes' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 7"> {{ 'PATIENTPROFILE.epilepsy' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 8"> {{ 'PATIENTPROFILE.apneaSleep' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 9"> {{ 'PATIENTPROFILE.narcolepsy' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 10">{{ 'PATIENTPROFILE.eatingDisorders' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 11"> {{ 'PATIENTPROFILE.osteoporosis' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 12"> {{ 'PATIENTPROFILE.asthma' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 13"> {{ 'PATIENTPROFILE.fibrosis' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disease.Disease === 14"> {{ 'PATIENTPROFILE.oralHealth' | translate }}</ion-badge>
+                                </ion-item>
+
+                            </ion-card>
+
+                        </mat-expansion-panel>
+
+
+
+                    </div>
+
+                </div>
+                <div *ngIf="segmentModel === 'disabilities'" [hidden]="patientProfileNull">
+
+                    <div class="container" *ngFor="let disability of disabilities">
+                        <mat-expansion-panel details>
+                            <mat-expansion-panel-header slot="start">
+                                <mat-panel-title>
+                                    <ion-item>
+                                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                                        <ion-label>{{disability.Name}}</ion-label>
+                                    </ion-item>
+                                </mat-panel-title>
+
+                            </mat-expansion-panel-header>
+
+                            <ion-item-sliding>
+                                <ion-item-options side="start">
+                                    <ion-item-option color="danger" (click)="null" expandable>
+                                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+                            </ion-item-sliding>
+
+                            <ion-card>
+                                <ion-item>
+
+                                    <ion-label> {{ 'PATIENTPROFILE.disabilityType' | translate }}</ion-label>
+
+                                    <ion-badge *ngIf="disability.Type === 1"> {{ 'PATIENTPROFILE.auditory' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disability.Type === 2"> {{ 'PATIENTPROFILE.cognitive' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disability.Type === 3"> {{ 'PATIENTPROFILE.physical' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disability.Type === 4"> {{ 'PATIENTPROFILE.speech' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disability.Type === 5"> {{ 'PATIENTPROFILE.visual' | translate }}</ion-badge>
+
+                                </ion-item>
+                                <ion-item>
+
+                                    <ion-label> {{ 'PATIENTPROFILE.severity' | translate }}</ion-label>
+
+                                    <ion-badge *ngIf="disability.Severity === 1"> {{ 'PATIENTPROFILE.severe' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disability.Severity === 2"> {{ 'PATIENTPROFILE.moderate' | translate }}</ion-badge>
+                                    <ion-badge *ngIf="disability.Severity === 3"> {{ 'PATIENTPROFILE.mild' | translate }}</ion-badge>
+
+
+                                </ion-item>
+
+                            </ion-card>
+
+                        </mat-expansion-panel>
+                    </div>
+
+                </div>
+            </ion-card-content>
+        </div>
+    </ion-card>
+
+
+    <ion-card class="animate__animated animate__fadeInUp animate__slower">
+        <ion-card-header>
+
+            <ion-card-subtitle>{{ 'HOME.carePlans' | translate }} </ion-card-subtitle>
+            <!-- <ion-card-title>Care Plans</ion-card-title> -->
+        </ion-card-header>
+        <ion-card [hidden]="!carePlanNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+            <ion-item class="warning">
+                <ion-icon size="large" name="warning-outline"></ion-icon>
+                <ion-button fill="outline" slot="end" [routerLink]="['add-careplan']">{{ 'HOME.addCarePlan' | translate }}</ion-button>
+            </ion-item>
+            <ion-card-header>
+
+                <ion-card-subtitle>{{'CAREPLANLIST.alertNoCarePlan' | translate}}</ion-card-subtitle>
+                <!-- <ion-card-title>Care Plans</ion-card-title> -->
+            </ion-card-header>
+        </ion-card>
+        <ion-list [hidden]="carePlanNull">
+            <div class="carePlan" *ngFor="let carePlan of carePlans">
+                <ion-item class="item" color="light" detail [routerLink]="['detail-care-plan',carePlan['Id']]">
+                    <ion-avatar slot="start">
+                        <img src="assets/icon/carePlans.png">
+
+                    </ion-avatar>
+                    <ion-label> {{carePlan['Name']}}</ion-label>
+                </ion-item>
+
+            </div>
+        </ion-list>
+    </ion-card>
+</ion-content>

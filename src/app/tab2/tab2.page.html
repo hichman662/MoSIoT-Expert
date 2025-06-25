@@ -1,17 +1,109 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+<!-- <ion-header [translucent]="true"> -->
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons slot="start" class="backButton">
+            <ion-back-button text="{{ 'CAREPLANTAB.return' | translate }}" defaultHref="/scenarios" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+
+        <ion-row>
+            <ion-col size="4" class="ion-align-self-start">
+
+            </ion-col>
+            <ion-col size="4" class="ion-align-self-end">
+                <ion-card color="transparent" class="pati-card">
+                    <ion-img src='assets/icon/carePlan.png'></ion-img>
+
+                </ion-card>
+            </ion-col>
+            <ion-col size="4" class="ion-align-self-center">
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="ion-align-self-start">
+
+            </ion-col>
+            <ion-col size="10" class="ion-align-self-center">
+
+                <ion-list-header class="justify-content-start">
+                    <ion-label class="text-top">{{ 'CAREPLANTAB.title' | translate }}</ion-label>
+                </ion-list-header>
+
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-end">
+
+            </ion-col>
+
+        </ion-row>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <section id="dashboardSection">
+        <ion-grid>
+            <ion-row class="animate__animated animate__fadeInUp animate__fast">
+
+                <ion-col size="6" class="ion-align-self-start" [routerLink]="['carePlan']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/carePlans.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.carePlans' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="6" class="ion-align-self-end" [routerLink]="['vitalSign']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/vitalSigns.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.vitalSigns' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+            <ion-item-divider>
+                <ion-label text-center style="width: 100%;" class="textMedio">{{ 'CAREPLANTAB.careActivities' | translate }}</ion-label>
+            </ion-item-divider>
+            <ion-row class="animate__animated animate__fadeInUp animate__slow">
+                <ion-col size="6" class="ion-align-self-start" [routerLink]="['medication']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/medication.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.medication' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="6" class="ion-align-self-start" [routerLink]="['appointment']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/appointment.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.appointment' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+            <ion-row class="animate__animated animate__fadeInUp animate__slow">
+                <ion-col size="6" class="ion-align-self-start" [routerLink]="['communication']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/communication.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.communication' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="6" class="ion-align-self-start" [routerLink]="['nutrition']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/nutrition.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.nutrition' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+            <ion-row class="animate__animated animate__fadeInUp animate__slower">
+                <ion-col size="6" class="ion-align-self-start" [routerLink]="['chat']">
+                    <ion-card color="transparent" class="disability-card">
+                        <ion-img src='assets/icon/message.png'></ion-img>
+                        <ion-label>{{ 'CAREPLANTAB.messanger' | translate }}</ion-label>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="6" class="ion-align-self-start">
+
+                </ion-col>
+            </ion-row>
+
+
+        </ion-grid>
+    </section>
+
 </ion-content>

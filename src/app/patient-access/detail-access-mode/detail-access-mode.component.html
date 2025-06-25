@@ -1,0 +1,145 @@
+<ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+    <ion-segment-button value="AdaptationRequest">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationRequest' | translate }} </ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="AdaptationType">
+        <ion-icon name="star-half-outline"></ion-icon>
+        <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationType' | translate }} </ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="AdaptationDetail">
+        <ion-icon name="telescope-outline"></ion-icon>
+        <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationDetail' | translate }} </ion-label>
+    </ion-segment-button>
+</ion-segment>
+<div *ngIf="segmentModel === 'AdaptationRequest'">
+    <div class="container" *ngFor="let AdaptationRequest of AdaptationRequests|keyvalue">
+        <mat-expansion-panel details>
+            <mat-expansion-panel-header slot="start">
+                <mat-panel-title>
+                    <ion-item>
+                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                        <ion-label>{{AdaptationRequest.value['Description']}}</ion-label>
+                    </ion-item>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option color="danger" (click)="null" expandable>
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+
+            <ion-card>
+                <ion-item>
+
+                    <ion-label>{{ 'PATIENTACCESSDETAIL.accessModeTarget' | translate }}</ion-label>
+
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 1"> {{ 'PATIENTACCESSDETAIL.auditory' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 2"> {{ 'PATIENTACCESSDETAIL.colour' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 3"> {{ 'PATIENTACCESSDETAIL.itemSize' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 4"> {{ 'PATIENTACCESSDETAIL.olfactory' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 5"> {{ 'PATIENTACCESSDETAIL.orientation' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 6"> {{ 'PATIENTACCESSDETAIL.position' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 7"> {{ 'PATIENTACCESSDETAIL.tactile' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 8"> {{ 'PATIENTACCESSDETAIL.textOnImage' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 9"> {{ 'PATIENTACCESSDETAIL.textual' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.AccessModeTarget === 10"> {{ 'PATIENTACCESSDETAIL.visual' | translate }}</ion-badge>
+
+                </ion-item>
+                <ion-item>
+
+                    <ion-label>{{ 'PATIENTACCESSDETAIL.languageOfAdaptation' | translate }}</ion-label>
+
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 1">ES</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 2">EN</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 3">FR</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 4">IT</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 5">PR</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 6">DE</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 7">JA</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 8">KO</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationRequest).value.LanguageOfAdaptation === 9">ZH</ion-badge>
+
+
+                </ion-item>
+
+            </ion-card>
+
+        </mat-expansion-panel>
+
+
+
+    </div>
+</div>
+<div *ngIf="segmentModel === 'AdaptationType'">
+    <div class="container" *ngFor="let AdaptationType of AdaptationTypes|keyvalue">
+        <mat-expansion-panel details>
+            <mat-expansion-panel-header slot="start">
+                <mat-panel-title>
+                    <ion-item>
+                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                        <ion-label>{{AdaptationType.value['Description']}}</ion-label>
+                    </ion-item>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option color="danger" (click)="null" expandable>
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+            <ion-card>
+                <ion-item>
+                    <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationRequest' | translate }}</ion-label>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 1"> {{ 'PATIENTACCESSDETAIL.alternativeText' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 2"> {{ 'PATIENTACCESSDETAIL.audioDescription' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 3"> {{ 'PATIENTACCESSDETAIL.captions' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 4">{{ 'PATIENTACCESSDETAIL.E_book' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 5"> {{ 'PATIENTACCESSDETAIL.haptic' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 6"> {{ 'PATIENTACCESSDETAIL.highContrast' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 7"> {{ 'PATIENTACCESSDETAIL.longDescription' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 8"> {{ 'PATIENTACCESSDETAIL.signLanguage' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationType).value.AdaptionRequest === 9"> {{ 'PATIENTACCESSDETAIL.transcript' | translate }}</ion-badge>
+                </ion-item>
+            </ion-card>
+        </mat-expansion-panel>
+    </div>
+</div>
+<div *ngIf="segmentModel === 'AdaptationDetail'">
+    <div class="container" *ngFor="let AdaptationDetail of AdaptationDetails|keyvalue">
+        <mat-expansion-panel details>
+            <mat-expansion-panel-header slot="start">
+                <mat-panel-title>
+                    <ion-item>
+                        <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
+                        <ion-label>{{AdaptationDetail.value['Description']}}</ion-label>
+                    </ion-item>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option color="danger" (click)="null" expandable>
+                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+            <ion-card>
+                <ion-item>
+                    <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationRequest' | translate }}</ion-label>
+                    <ion-badge *ngIf="$any(AdaptationDetail).value.AdaptationRequest === 1"> {{ 'PATIENTACCESSDETAIL.enhanced' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationDetail).value.AdaptationRequest === 2"> {{ 'PATIENTACCESSDETAIL.realTime' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationDetail).value.AdaptationRequest === 3"> {{ 'PATIENTACCESSDETAIL.record' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationDetail).value.AdaptationRequest === 4"> {{ 'PATIENTACCESSDETAIL.symbolic' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationDetail).value.AdaptationRequest === 5"> {{ 'PATIENTACCESSDETAIL.synthesized' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(AdaptationDetail).value.AdaptationRequest === 6"> {{ 'PATIENTACCESSDETAIL.verbatim' | translate }}</ion-badge>
+
+                </ion-item>
+            </ion-card>
+        </mat-expansion-panel>
+    </div>
+</div>
