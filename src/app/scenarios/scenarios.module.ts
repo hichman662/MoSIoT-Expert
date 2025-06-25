@@ -6,22 +6,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ScenariosPageRoutingModule } from './scenarios-routing.module';
 import { ScenariosPage } from './scenarios.page';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ScenariosPageRoutingModule,
-    HttpClientModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    TranslateModule
-  ],
-  declarations: [ScenariosPage]
-})
+@NgModule({ declarations: [ScenariosPage], imports: [CommonModule,
+        FormsModule,
+        IonicModule,
+        ScenariosPageRoutingModule,
+        RouterModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        TranslateModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class ScenariosPageModule {}
