@@ -9,9 +9,10 @@ import { Storage } from '@ionic/storage';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-rel-person',
-  templateUrl: './add-rel-person.page.html',
-  styleUrls: ['./add-rel-person.page.scss'],
+    selector: 'app-add-rel-person',
+    templateUrl: './add-rel-person.page.html',
+    styleUrls: ['./add-rel-person.page.scss'],
+    standalone: false
 })
 export class AddRelPersonPage implements OnInit {
 

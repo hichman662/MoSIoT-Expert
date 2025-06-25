@@ -8,9 +8,10 @@ import { Storage } from '@ionic/storage';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+    selector: 'app-profile',
+    templateUrl: './profile.page.html',
+    styleUrls: ['./profile.page.scss'],
+    standalone: false
 })
 export class ProfilePage implements OnInit {
 

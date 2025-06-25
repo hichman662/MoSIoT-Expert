@@ -8,9 +8,10 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-rel-person',
-  templateUrl: './rel-person.page.html',
-  styleUrls: ['./rel-person.page.scss'],
+    selector: 'app-rel-person',
+    templateUrl: './rel-person.page.html',
+    styleUrls: ['./rel-person.page.scss'],
+    standalone: false
 })
 export class RelPersonPage implements OnInit {
 

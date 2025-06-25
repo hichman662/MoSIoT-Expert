@@ -10,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-detail-medication',
-  templateUrl: './detail-medication.page.html',
-  styleUrls: ['./detail-medication.page.scss'],
+    selector: 'app-detail-medication',
+    templateUrl: './detail-medication.page.html',
+    styleUrls: ['./detail-medication.page.scss'],
+    standalone: false
 })
 export class DetailMedicationPage implements OnInit {
   public attriubute: Attribute[] = [];

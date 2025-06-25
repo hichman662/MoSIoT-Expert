@@ -13,9 +13,10 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 @Component({
-  selector: 'app-telemetry',
-  templateUrl: './telemetry.page.html',
-  styleUrls: ['./telemetry.page.scss'],
+    selector: 'app-telemetry',
+    templateUrl: './telemetry.page.html',
+    styleUrls: ['./telemetry.page.scss'],
+    standalone: false
 })
 export class TelemetryPage implements OnInit {
 

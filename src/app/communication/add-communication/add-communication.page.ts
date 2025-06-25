@@ -12,9 +12,10 @@ import { CareActivity } from 'src/app/models/careActivity.model';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-add-communication',
-  templateUrl: './add-communication.page.html',
-  styleUrls: ['./add-communication.page.scss'],
+    selector: 'app-add-communication',
+    templateUrl: './add-communication.page.html',
+    styleUrls: ['./add-communication.page.scss'],
+    standalone: false
 })
 export class AddCommunicationPage implements OnInit {
   addCommunicationForm: FormGroup;

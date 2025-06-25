@@ -15,9 +15,10 @@ import { IonItemSliding, AlertController, ToastController, NavController } from 
 import { Attribute } from './../../models/attribute.model';
 import { Entity } from './../../models/entity.model';
 @Component({
-  selector: 'app-detail-care-plan',
-  templateUrl: './detail-care-plan.page.html',
-  styleUrls: ['./detail-care-plan.page.scss'],
+    selector: 'app-detail-care-plan',
+    templateUrl: './detail-care-plan.page.html',
+    styleUrls: ['./detail-care-plan.page.scss'],
+    standalone: false
 })
 export class DetailCarePlanPage implements OnInit {
 

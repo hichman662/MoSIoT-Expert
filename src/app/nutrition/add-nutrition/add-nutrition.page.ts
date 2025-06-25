@@ -12,9 +12,10 @@ import { Storage } from '@ionic/storage';
 import { CareActivity } from 'src/app/models/careActivity.model';
 
 @Component({
-  selector: 'app-add-nutrition',
-  templateUrl: './add-nutrition.page.html',
-  styleUrls: ['./add-nutrition.page.scss'],
+    selector: 'app-add-nutrition',
+    templateUrl: './add-nutrition.page.html',
+    styleUrls: ['./add-nutrition.page.scss'],
+    standalone: false
 })
 export class AddNutritionPage implements OnInit {
   addNutritionForm: FormGroup;

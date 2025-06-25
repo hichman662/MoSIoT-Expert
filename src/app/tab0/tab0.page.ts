@@ -20,9 +20,10 @@ import { Nutrition } from '../models/nutrition.model';
 import { Communication } from '../models/communication.model';
 
 @Component({
-  selector: 'app-tab0',
-  templateUrl: './tab0.page.html',
-  styleUrls: ['./tab0.page.scss'],
+    selector: 'app-tab0',
+    templateUrl: './tab0.page.html',
+    styleUrls: ['./tab0.page.scss'],
+    standalone: false
 })
 export class Tab0Page implements OnInit {
   public patientProfile: PatientProfile;

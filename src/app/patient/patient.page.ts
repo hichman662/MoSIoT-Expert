@@ -6,9 +6,10 @@ import { Storage } from '@ionic/storage';
 import { UserData } from '../models/userData.model';
 
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.page.html',
-  styleUrls: ['./patient.page.scss'],
+    selector: 'app-patient',
+    templateUrl: './patient.page.html',
+    styleUrls: ['./patient.page.scss'],
+    standalone: false
 })
 export class PatientPage implements OnInit {
 

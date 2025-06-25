@@ -8,9 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 import { UserData } from 'src/app/models/userData.model';
 
 @Component({
-  selector: 'app-detail-rel-person',
-  templateUrl: './detail-rel-person.page.html',
-  styleUrls: ['./detail-rel-person.page.scss'],
+    selector: 'app-detail-rel-person',
+    templateUrl: './detail-rel-person.page.html',
+    styleUrls: ['./detail-rel-person.page.scss'],
+    standalone: false
 })
 export class DetailRelPersonPage implements OnInit {
 

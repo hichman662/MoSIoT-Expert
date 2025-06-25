@@ -5,9 +5,10 @@ import { Storage } from '@ionic/storage';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-appointment',
-  templateUrl: './appointment.page.html',
-  styleUrls: ['./appointment.page.scss'],
+    selector: 'app-appointment',
+    templateUrl: './appointment.page.html',
+    styleUrls: ['./appointment.page.scss'],
+    standalone: false
 })
 export class AppointmentPage implements OnInit {
   public appointments: Appointment[] = [];

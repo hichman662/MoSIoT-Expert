@@ -4,9 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { CareActivity } from 'src/app/models/careActivity.model';
 @Component({
-  selector: 'app-detail-care-activity',
-  templateUrl: './detail-care-activity.page.html',
-  styleUrls: ['./detail-care-activity.page.scss'],
+    selector: 'app-detail-care-activity',
+    templateUrl: './detail-care-activity.page.html',
+    styleUrls: ['./detail-care-activity.page.scss'],
+    standalone: false
 })
 export class DetailCareActivityPage implements OnInit {
 

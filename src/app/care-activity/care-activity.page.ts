@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { CareActivity } from '../models/careActivity.model';
 @Component({
-  selector: 'app-care-activity',
-  templateUrl: './care-activity.page.html',
-  styleUrls: ['./care-activity.page.scss'],
+    selector: 'app-care-activity',
+    templateUrl: './care-activity.page.html',
+    styleUrls: ['./care-activity.page.scss'],
+    standalone: false
 })
 export class CareActivityPage implements OnInit {
 

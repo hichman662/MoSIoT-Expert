@@ -9,9 +9,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'app-add-practitioner',
-  templateUrl: './add-practitioner.page.html',
-  styleUrls: ['./add-practitioner.page.scss'],
+    selector: 'app-add-practitioner',
+    templateUrl: './add-practitioner.page.html',
+    styleUrls: ['./add-practitioner.page.scss'],
+    standalone: false
 })
 export class AddPractitionerPage implements OnInit {
 

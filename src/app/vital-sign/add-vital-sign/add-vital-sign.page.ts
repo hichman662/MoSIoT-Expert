@@ -9,9 +9,10 @@ import { VitalSign } from 'src/app/models/vitalSign.model';
 
 
 @Component({
-  selector: 'app-add-vital-sign',
-  templateUrl: './add-vital-sign.page.html',
-  styleUrls: ['./add-vital-sign.page.scss'],
+    selector: 'app-add-vital-sign',
+    templateUrl: './add-vital-sign.page.html',
+    styleUrls: ['./add-vital-sign.page.scss'],
+    standalone: false
 })
 export class AddVitalSignPage implements OnInit {
 

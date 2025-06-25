@@ -8,9 +8,10 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 @Component({
-  selector: 'app-blood-pressure',
-  templateUrl: './blood-pressure.page.html',
-  styleUrls: ['./blood-pressure.page.scss'],
+    selector: 'app-blood-pressure',
+    templateUrl: './blood-pressure.page.html',
+    styleUrls: ['./blood-pressure.page.scss'],
+    standalone: false
 })
 export class BloodPressurePage implements OnInit {
 

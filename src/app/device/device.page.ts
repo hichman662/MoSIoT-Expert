@@ -6,9 +6,10 @@ import { Storage } from '@ionic/storage';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-device',
-  templateUrl: './device.page.html',
-  styleUrls: ['./device.page.scss'],
+    selector: 'app-device',
+    templateUrl: './device.page.html',
+    styleUrls: ['./device.page.scss'],
+    standalone: false
 })
 export class DevicePage implements OnInit {
   public devices: Device[] = [];

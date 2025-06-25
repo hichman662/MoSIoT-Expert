@@ -7,9 +7,10 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 
 
 @Component({
-  selector: 'app-communication',
-  templateUrl: './communication.page.html',
-  styleUrls: ['./communication.page.scss'],
+    selector: 'app-communication',
+    templateUrl: './communication.page.html',
+    styleUrls: ['./communication.page.scss'],
+    standalone: false
 })
 export class CommunicationPage implements OnInit {
 

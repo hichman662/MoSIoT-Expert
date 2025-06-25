@@ -11,9 +11,10 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'app-scenarios',
-  templateUrl: './scenarios.page.html',
-  styleUrls: ['./scenarios.page.scss'],
+    selector: 'app-scenarios',
+    templateUrl: './scenarios.page.html',
+    styleUrls: ['./scenarios.page.scss'],
+    standalone: false
 })
 export class ScenariosPage implements OnInit {
 

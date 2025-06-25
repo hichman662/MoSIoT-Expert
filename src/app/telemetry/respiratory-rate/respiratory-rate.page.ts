@@ -8,9 +8,10 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 @Component({
-  selector: 'app-respiratory-rate',
-  templateUrl: './respiratory-rate.page.html',
-  styleUrls: ['./respiratory-rate.page.scss'],
+    selector: 'app-respiratory-rate',
+    templateUrl: './respiratory-rate.page.html',
+    styleUrls: ['./respiratory-rate.page.scss'],
+    standalone: false
 })
 export class RespiratoryRatePage implements OnInit {
 

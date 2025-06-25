@@ -10,9 +10,10 @@ import { Storage } from '@ionic/storage';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-detail-patient',
-  templateUrl: './detail-patient.page.html',
-  styleUrls: ['./detail-patient.page.scss'],
+    selector: 'app-detail-patient',
+    templateUrl: './detail-patient.page.html',
+    styleUrls: ['./detail-patient.page.scss'],
+    standalone: false
 })
 export class DetailPatientPage implements OnInit {
 

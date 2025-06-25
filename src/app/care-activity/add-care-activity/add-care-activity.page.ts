@@ -7,9 +7,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { CareActivity } from 'src/app/models/careActivity.model';
 @Component({
-  selector: 'app-add-care-activity',
-  templateUrl: './add-care-activity.page.html',
-  styleUrls: ['./add-care-activity.page.scss'],
+    selector: 'app-add-care-activity',
+    templateUrl: './add-care-activity.page.html',
+    styleUrls: ['./add-care-activity.page.scss'],
+    standalone: false
 })
 export class AddCareActivityPage implements OnInit {
 

@@ -13,9 +13,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Storage } from '@ionic/storage';
 @Component({
-  selector: 'app-add-patient',
-  templateUrl: './add-patient.page.html',
-  styleUrls: ['./add-patient.page.scss'],
+    selector: 'app-add-patient',
+    templateUrl: './add-patient.page.html',
+    styleUrls: ['./add-patient.page.scss'],
+    standalone: false
 })
 export class AddPatientPage implements OnInit {
 

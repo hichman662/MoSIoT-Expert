@@ -6,9 +6,10 @@ import { Storage } from '@ionic/storage';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-care-plan',
-  templateUrl: './care-plan.page.html',
-  styleUrls: ['./care-plan.page.scss'],
+    selector: 'app-care-plan',
+    templateUrl: './care-plan.page.html',
+    styleUrls: ['./care-plan.page.scss'],
+    standalone: false
 })
 export class CarePlanPage implements OnInit {
 
