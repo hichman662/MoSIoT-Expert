@@ -5,11 +5,11 @@ import { AdaptationRequest } from './adaptationRequest.model';
 import { AdaptationTypeRequired } from './adaptationTypeRequired.model';
 
 export class AccessMode {
-    Id: number;
-    Name?: string;
-    Description?: string;
-    TypeAccessMode?: number;
-    AdaptationType?: AdaptationTypeRequired [];
-    AdaptationRequest?: AdaptationRequest[];
-    AdaptationDetail?: AdaptationDetailRequired[];
+    id?: number;
+    name?: string;
+    description?: string;
+    typeAccessMode?: number;
+    adaptationType?: AdaptationTypeRequired [];
+    adaptationRequest?: AdaptationRequest[];
+    adaptationDetail?: AdaptationDetailRequired[];
 }

@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { ValueAppointment } from './ValueAppointment.model';
+import { ValueAppointment } from './valueAppointment.model';
+
 export class Appointment {
-  Id:               number;
-  Name:             string;
-  Date:             Date;
-  Description:      string;
-  ValueAppointment: ValueAppointment;
+  id?:               number;
+  name?:             string;
+  date?:             Date;
+  description?:      string;
+  valueAppointment?: ValueAppointment;
 }

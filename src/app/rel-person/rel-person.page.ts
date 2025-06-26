@@ -16,7 +16,7 @@ import { UserService } from '../services/user.service';
 export class RelPersonPage implements OnInit {
 
   public relatedPersons: UserData[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   relPersonNull= false;
   constructor(
     private userService: UserService,
@@ -42,14 +42,14 @@ ionViewWillEnter(){
 }
 callRelatedPerson(){
   this.userService.getRelatedPersonByIdScenario(this.idScenario)
-  .subscribe( (res: UserData[]) => {
+  .subscribe( (res: RelatedPerson[]) => {
     console.log(res);
     if(res != null){
     this.relatedPersons = res;
     this.relPersonNull= false;
     }else
     {
-      this.relatedPersons = null;
+      this.relatedPersons = [];
       this.relPersonNull= true;
     }
 

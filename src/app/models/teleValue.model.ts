@@ -5,7 +5,7 @@
 
 
 export class TeleValue {
-    Id: number;
-    TimeStamp?: Date;
-    Valu?: string;
+    id?: number;
+    timeStamp?: Date;
+    valu?: string;
 }

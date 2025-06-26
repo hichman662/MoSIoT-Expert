@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export class ValueAppointment {
-       Id: number;
-      IsVirtual: boolean;
-      Description: string;
-      Direction: string;
-      ReasonCode: string;
+       id?: number;
+      isVirtual?: boolean;
+      description?: string;
+      direction?: string;
+      reasonCode?: string;
 }

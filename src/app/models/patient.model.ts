@@ -5,8 +5,8 @@ import { UserData } from 'src/app/models/userData.model';
 import { PatientProfile } from './patientProfile.model';
 
 export class Patient {
-  Id?:             number;
-  Email?:          string;
-  PatientProfile?: PatientProfile;
-  UserPatient?: UserData;
+  id?:             number;
+  email?:          string;
+  patientProfile?: PatientProfile;
+  userPatient?: UserData;
 }

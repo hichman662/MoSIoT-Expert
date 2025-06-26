@@ -5,18 +5,18 @@ import { RelatedPerson } from './relatedPerson.model';
 
 
 export class UserData {
-  Id?:            number;
-  BirthDate?:     null;
-  Surnames?:      string;
-  Address?:       null;
-  Phone?:         null;
-  Photo?:         null;
-  IsActive?:      boolean;
-  Type?:          number;
-  IsDiseased?:    boolean;
-  Name?:          string;
-  Description?:   string;
-  RelatedPerson?: RelatedPerson;
-  Patient?:       Patient;
-  Practitioner?:  Practitioner;
+  id?:            number;
+  birthDate?:     null;
+  surnames?:      string;
+  address?:       null;
+  phone?:         null;
+  photo?:         null;
+  isActive?:      boolean;
+  type?:          number;
+  isDiseased?:    boolean;
+  name?:          string;
+  description?:   string;
+  relatedPerson?: RelatedPerson;
+  patient?:       Patient;
+  practitioner?:  Practitioner;
 }

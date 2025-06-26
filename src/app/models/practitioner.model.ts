@@ -4,7 +4,7 @@ import { PractitionerData } from './practitionerData.model';
 
 
 export class Practitioner {
-      Id!: number;
-      Email?: string;
-      UserPractitioner!: PractitionerData;
+      id!: number;
+      email?: string;
+      userPractitioner!: PractitionerData;
 }
