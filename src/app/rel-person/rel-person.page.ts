@@ -42,7 +42,7 @@ ionViewWillEnter(){
 }
 callRelatedPerson(){
   this.userService.getRelatedPersonByIdScenario(this.idScenario)
-  .subscribe( (res: RelatedPerson[]) => {
+  .subscribe( (res: UserData[]) => {
     console.log(res);
     if(res != null){
     this.relatedPersons = res;

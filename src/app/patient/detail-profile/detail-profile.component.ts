@@ -31,16 +31,16 @@ import { Disease } from 'src/app/models/disease.model';
 export class DetailProfileComponent implements OnInit {
   name = '';
   patientProfileForm: FormGroup;
-  public patientProfile: PatientProfile;
+  public patientProfile: PatientProfile = new PatientProfile();
   public diseases: Disease [] = [];
   public disabilities: Disability [] = [];
   public patientProfileNull = false;
   public allPatientProfile: any [] = [];
-  patientprofileId: number;
+  patientprofileId: number = 0;
   load: boolean = false;
     segmentModel = 'details';
-  public patientId: number;
-  private idScenario: number;
+  public patientId: number = 0;
+  private idScenario: number = 0;
   public attriubute: Attribute[] = [];
   constructor(
     private userService: UserService,
@@ -91,11 +91,11 @@ export class DetailProfileComponent implements OnInit {
   callingPatient(){
     this.userService.getPatientByIdScenario(this.idScenario)
     .subscribe((res: UserData[] ) => {
-    if(res[0].Patient.PatientProfile != null){
+    if(res[0]?.patient?.patientProfile != null){
       this.patientProfileNull = false;
-       this.patientProfile = res[0].Patient.PatientProfile;
-      this.diseases = res[0].Patient.PatientProfile.Diseases;
-      this.disabilities = res[0].Patient.PatientProfile.Disabilities;
+       this.patientProfile = res[0].patient.patientProfile;
+      this.diseases = res[0].patient.patientProfile.diseases ?? [];
+      this.disabilities = res[0].patient.patientProfile.disabilities ?? [];
       this.load= true;
 
     }else{
@@ -118,7 +118,7 @@ export class DetailProfileComponent implements OnInit {
 
   onSubmit(){
 
-    this.patientprofileId = this.patientProfileForm.get('p_patientprofile_oid').value;
+    this.patientprofileId = this.patientProfileForm.get('p_patientprofile_oid')?.value;
     this.patientService.assignPatientProfileTemplate(this.patientId, this.patientprofileId)
     .subscribe( (res: any) => {
       this.storage.set('idPatientProfile', this.patientprofileId);
@@ -191,6 +191,7 @@ export class DetailProfileComponent implements OnInit {
               console.log(err);
               this.presentToast('danger','Your settings have not been saved.');
               });
+              return true;
             } else {
               return false;
             }

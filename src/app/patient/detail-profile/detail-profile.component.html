@@ -43,23 +43,23 @@
             <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>{{ 'PATIENTPROFILE.profileName' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-label text-wrap> {{patientProfile.Name}}</ion-label>
+            <ion-label text-wrap> {{patientProfile.name}}</ion-label>
         </ion-item>
         <ion-list-header>
             <ion-icon class="segmentIcon" name="clipboard-outline"></ion-icon>{{ 'PATIENTPROFILE.profileDescription' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-label text-wrap> {{patientProfile.Description}}</ion-label>
+            <ion-label text-wrap> {{patientProfile.description}}</ion-label>
 
         </ion-item>
         <ion-list-header>
             <ion-icon class="segmentIcon" name="warning-outline"></ion-icon>{{ 'PATIENTPROFILE.hazardValue' | translate }}</ion-list-header>
         <ion-item>
-            <ion-label *ngIf="patientProfile.HazardAvoidance === 0"> {{ 'PATIENTPROFILE.undefined' | translate }}</ion-label>
-            <ion-label *ngIf="patientProfile.HazardAvoidance === 1"> {{ 'PATIENTPROFILE.flashing' | translate }}</ion-label>
-            <ion-label *ngIf="patientProfile.HazardAvoidance === 2"> {{ 'PATIENTPROFILE.motionSimulation' | translate }}</ion-label>
-            <ion-label *ngIf="patientProfile.HazardAvoidance === 3"> {{ 'PATIENTPROFILE.olfactoryHazard' | translate }}</ion-label>
-            <ion-label *ngIf="patientProfile.HazardAvoidance === 4"> {{ 'PATIENTPROFILE.sound' | translate }}</ion-label>
+            <ion-label *ngIf="patientProfile.hazardAvoidance === 0"> {{ 'PATIENTPROFILE.undefined' | translate }}</ion-label>
+            <ion-label *ngIf="patientProfile.hazardAvoidance === 1"> {{ 'PATIENTPROFILE.flashing' | translate }}</ion-label>
+            <ion-label *ngIf="patientProfile.hazardAvoidance === 2"> {{ 'PATIENTPROFILE.motionSimulation' | translate }}</ion-label>
+            <ion-label *ngIf="patientProfile.hazardAvoidance === 3"> {{ 'PATIENTPROFILE.olfactoryHazard' | translate }}</ion-label>
+            <ion-label *ngIf="patientProfile.hazardAvoidance === 4"> {{ 'PATIENTPROFILE.sound' | translate }}</ion-label>
         </ion-item>
         <ion-list-header>
             <ion-icon class="segmentIcon" name="globe-outline"></ion-icon> {{ 'PATIENTPROFILE.region' | translate }}</ion-list-header>
@@ -74,15 +74,15 @@
             <ion-icon class="segmentIcon" name="language-outline"></ion-icon>{{ 'PATIENTPROFILE.preferredLanguage' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 1"> ES</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 2"> EN</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 3"> FR</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 4"> IT</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 5"> PR</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 6"> DE</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 7"> JA</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 8"> KO</ion-label>
-            <ion-label *ngIf="patientProfile.PreferredLanguage === 9"> ZH</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 1"> ES</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 2"> EN</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 3"> FR</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 4"> IT</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 5"> PR</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 6"> DE</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 7"> JA</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 8"> KO</ion-label>
+            <ion-label *ngIf="patientProfile.preferredLanguage === 9"> ZH</ion-label>
 
 
         </ion-item>
@@ -96,7 +96,7 @@
                 <mat-panel-title>
                     <ion-item>
                         <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
-                        <ion-label>{{disease.value['Name']}}</ion-label>
+                        <ion-label>{{disease.value['name']}}</ion-label>
                     </ion-item>
                 </mat-panel-title>
 
@@ -115,20 +115,20 @@
 
                     <ion-label>{{ 'PATIENTPROFILE.disease' | translate }}</ion-label>
 
-                    <ion-badge *ngIf="disease.value['Disease'] === 1"> {{ 'PATIENTPROFILE.alzheimer' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 2"> {{ 'PATIENTPROFILE.parkinson' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 3"> {{ 'PATIENTPROFILE.cancer' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 4"> {{ 'PATIENTPROFILE.heartDisease' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 5"> {{ 'PATIENTPROFILE.obesity' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 6"> {{ 'PATIENTPROFILE.diabetes' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 7"> {{ 'PATIENTPROFILE.epilepsy' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 8"> {{ 'PATIENTPROFILE.apneaSleep' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 9"> {{ 'PATIENTPROFILE.narcolepsy' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 10">{{ 'PATIENTPROFILE.eatingDisorders' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 11"> {{ 'PATIENTPROFILE.osteoporosis' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 12"> {{ 'PATIENTPROFILE.asthma' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 13"> {{ 'PATIENTPROFILE.fibrosis' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disease.value['Disease'] === 14"> {{ 'PATIENTPROFILE.oralHealth' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 1"> {{ 'PATIENTPROFILE.alzheimer' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 2"> {{ 'PATIENTPROFILE.parkinson' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 3"> {{ 'PATIENTPROFILE.cancer' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 4"> {{ 'PATIENTPROFILE.heartDisease' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 5"> {{ 'PATIENTPROFILE.obesity' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 6"> {{ 'PATIENTPROFILE.diabetes' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 7"> {{ 'PATIENTPROFILE.epilepsy' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 8"> {{ 'PATIENTPROFILE.apneaSleep' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 9"> {{ 'PATIENTPROFILE.narcolepsy' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 10">{{ 'PATIENTPROFILE.eatingDisorders' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 11"> {{ 'PATIENTPROFILE.osteoporosis' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 12"> {{ 'PATIENTPROFILE.asthma' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 13"> {{ 'PATIENTPROFILE.fibrosis' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disease.value['disease'] === 14"> {{ 'PATIENTPROFILE.oralHealth' | translate }}</ion-badge>
                 </ion-item>
 
             </ion-card>
@@ -149,7 +149,7 @@
                 <mat-panel-title>
                     <ion-item>
                         <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
-                        <ion-label>{{disability['Name']}}</ion-label>
+                        <ion-label>{{disability['name']}}</ion-label>
                     </ion-item>
                 </mat-panel-title>
 
@@ -168,20 +168,20 @@
 
                     <ion-label> {{ 'PATIENTPROFILE.disabilityType' | translate }}</ion-label>
 
-                    <ion-badge *ngIf="disability.Type === 1"> {{ 'PATIENTPROFILE.auditory' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disability.Type === 2"> {{ 'PATIENTPROFILE.cognitive' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disability.Type === 3"> {{ 'PATIENTPROFILE.physical' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disability.Type === 4"> {{ 'PATIENTPROFILE.speech' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disability.Type === 5"> {{ 'PATIENTPROFILE.visual' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.type === 1"> {{ 'PATIENTPROFILE.auditory' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.type === 2"> {{ 'PATIENTPROFILE.cognitive' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.type === 3"> {{ 'PATIENTPROFILE.physical' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.type === 4"> {{ 'PATIENTPROFILE.speech' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.type === 5"> {{ 'PATIENTPROFILE.visual' | translate }}</ion-badge>
 
                 </ion-item>
                 <ion-item>
 
                     <ion-label> {{ 'PATIENTPROFILE.severity' | translate }}</ion-label>
 
-                    <ion-badge *ngIf="disability.Severity === 1"> {{ 'PATIENTPROFILE.severe' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disability.Severity === 2"> {{ 'PATIENTPROFILE.moderate' | translate }}</ion-badge>
-                    <ion-badge *ngIf="disability.Severity === 3"> {{ 'PATIENTPROFILE.mild' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.severity === 1"> {{ 'PATIENTPROFILE.severe' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.severity === 2"> {{ 'PATIENTPROFILE.moderate' | translate }}</ion-badge>
+                    <ion-badge *ngIf="disability.severity === 3"> {{ 'PATIENTPROFILE.mild' | translate }}</ion-badge>
 
 
                 </ion-item>
@@ -202,12 +202,12 @@
 
         <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="p_patientprofile_oid">
 
-            <div class="error" *ngIf="patientProfileForm.controls.p_patientprofile_oid.errors && patientProfileForm.controls.p_patientprofile_oid.touched">
+            <div class="error" *ngIf="patientProfileForm.controls['p_patientprofile_oid'].errors && patientProfileForm.controls['p_patientprofile_oid'].touched">
                 {{ 'PATIENTPROFILE.pleaseFillOutThisField' | translate }}
             </div>
 
             <div>
-                <ion-select-option *ngFor="let patientProfile of allPatientProfile" [value]="patientProfile['Id']">{{patientProfile['Name']}}</ion-select-option>
+                <ion-select-option *ngFor="let patientProfile of allPatientProfile" [value]="patientProfile['id']">{{patientProfile['name']}}</ion-select-option>
 
             </div>
 

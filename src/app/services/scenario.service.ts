@@ -14,8 +14,8 @@ import { Storage } from '@ionic/storage';
 })
 export class ScenarioService {
 
-    scenario: Scenario;
-    private idEscenario: number ;
+    scenario: Scenario = new Scenario();
+    private idEscenario: number  = 0;
     private token =  '';
    headers = new HttpHeaders ();
 constructor(private http: HttpClient,
@@ -46,14 +46,14 @@ private getHeaderToken() {
 
 
 
-public getAllScenario(token: any): Observable<object>{
+public getAllScenario(token: any): Observable<Scenario[]>{
   this.headers = new HttpHeaders ({'Authorization': token});
-   return this.http.get(`${environment.base_url}/IoTScenario/ReadAll`,{headers:this.headers});
+   return this.http.get <Scenario[]>(`${environment.base_url}/IoTScenario/ReadAll`,{headers:this.headers});
  // return this.http.get(`${environment.base_url}/IoTScenario/ReadAll`,this.getHeaderToken());
 }
 
 public getScenarioById( uid: number, token: any): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   this.headers = new HttpHeaders ({'Authorization': token});
   return this.http.get <Scenario>(`${environment.base_url}/IoTScenario/${uid}`,{headers:this.headers});
 }

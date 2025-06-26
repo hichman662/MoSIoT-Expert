@@ -7,6 +7,7 @@ import { NavController, AlertController } from '@ionic/angular';
 import { Practitioner } from 'src/app/models/practitioner.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+import { UserData } from 'src/app/models/userData.model';
 
 @Component({
     selector: 'app-add-practitioner',
@@ -18,10 +19,10 @@ export class AddPractitionerPage implements OnInit {
 
   practitionerForm: FormGroup;
   email = '';
-  practitioner: Practitioner;
-  public idScenario: number;
-  invitedUserName: string;
-  invitedUserId: number;
+  practitioner: UserData = new UserData();
+  public idScenario: number = 0;
+  invitedUserName: string = '';
+  invitedUserId: number = 0;
   findNotAlreadyPractitioner: any [] = [];
 
   data: any;
@@ -58,7 +59,7 @@ export class AddPractitionerPage implements OnInit {
     this.userService.getAllUsers()
     .subscribe( (res: any) => {
       console.log(res);
-      this.findNotAlreadyPractitioner = res.filter( obj =>  obj.Practitioner === null);
+      this.findNotAlreadyPractitioner = res.filter( (obj : UserData) =>  obj.practitioner === null);
       console.log(this.findNotAlreadyPractitioner);
         }, ( err ) => {
     });

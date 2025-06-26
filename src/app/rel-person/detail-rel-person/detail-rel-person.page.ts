@@ -33,9 +33,9 @@ export class DetailRelPersonPage implements OnInit {
     this.userService.getUserById(this.idPassedByURL)
     .subscribe((res: UserData ) => {
       console.log(res);
-    if(res && res.RelatedPerson){
+    if(res && res.relatedPerson){
        this.relPersonData = res;
-      this.relPersonEmail = res.RelatedPerson.Email ?? '';
+      this.relPersonEmail = res.relatedPerson.email ?? '';
       this.load= true;
     }
     }, (err) => {

@@ -48,7 +48,7 @@ get clearTemporalActivityArray(): boolean{
 
 // Care Plan Template By id PatientProfile
 public getCarePlantemplateByIdPatientProfile( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CarePlanTemplate>(`${environment.base_url}/CarePlanTemplate/PatientProfileCarePlanTemplate?idPatientProfile=${uid}` );
 }
 
@@ -58,12 +58,12 @@ public getAllCarePlan(): Observable<object>{
 }
 
 public getCarePlanById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CarePlan>(`${environment.base_url}/CarePlan/${uid}` );
 }
 
 public getCarePlanByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CarePlan>(`${environment.base_url}/CarePlan/CarePlanScenario?idIoTScenario=${uid}` );
 }
 
@@ -71,7 +71,7 @@ public createCarePlan( data: CarePlan ): Observable<object> {
   return this.http.post(`${environment.base_url}/CarePlan/New_`, data);
 }
 
-public deleteCarePlan(uid) {
+public deleteCarePlan(uid : number) {
   return this.http.delete(`${environment.base_url}/CarePlan/Destroy?p_careplan_oid=${uid}`);
 }
 
@@ -82,19 +82,19 @@ public getAllVitalSign(): Observable<object>{
 }
 
 public getVitalSignById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <VitalSign>(`${environment.base_url}/VitalSign/${uid}` );
 }
 
 public getVitalSignByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <VitalSign>(`${environment.base_url}/VitalSign/VitalSignsScenario?idIoTScenario=${uid}` );
 }
 public createVitalSign( data: CarePlan ): Observable<object> {
   return this.http.post(`${environment.base_url}/VitalSign/New_`, data);
 }
 
-public deleteVitalSign(uid) {
+public deleteVitalSign(uid : number) {
   return this.http.delete(`${environment.base_url}/VitalSign/Destroy?p_vitalsign_oid=${uid}`);
 }
 
@@ -107,17 +107,17 @@ public getAllCareActivities(): Observable<object>{
 }
 
 public getCareActivityById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CareActivity>(`${environment.base_url}/IMCareActivity/${uid}` );
 }
 
 public getCareActivityByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CareActivity>(`${environment.base_url}/IMCareActivity/CareActivitiesScenario?idIoTScenario=${uid}` );
 }
 
 public getCareActivityByIdCarePlanTemplate( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CareActivity>(`${environment.base_url}/CareActivity/CarePlanActivities?idCarePlanTemplate=${uid}` );
 }
 
@@ -127,16 +127,16 @@ public createCareActivity( data: CareActivity ): Observable<object> {
 
 // Appointment
 public getAppointmentByIdCareActivity( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <any>(`${environment.base_url}/IMAppointment/AppointmentCareActitivy?idIMCareActivity=${uid}`);
 }
 
 public getAppointmentsByIdScenario(uid: number): Observable<Appointment[]>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Appointment[]>(`${environment.base_url}/IMAppointment/AppointmentsCare?idIoTScenario=${uid}`);
 }
 
-public deleteAppointment(uid) {
+public deleteAppointment(uid : number) {
   return this.http.delete(`${environment.base_url}/IMAppointment/Destroy?p_imappointment_oid=${uid}`);
 }
 
@@ -151,11 +151,11 @@ public assignTemplateAppointment( idNewAppointment: number,idCareActivity: numbe
 
 // Medication
 public getMedicationByIdCareActivity( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <any>(`${environment.base_url}/IMMedication/MedicationCareActivity?idIMCareActivity=${uid}` );
 }
 public getMedicationsByIdScenario(uid: number): Observable<Medication[]>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Medication[]>(`${environment.base_url}/IMMedication/Medications?idIoTScenario=${uid}`);
 }
 
@@ -163,7 +163,7 @@ public createMedication( data: Medication ): Observable<object> {
   return this.http.post(`${environment.base_url}/IMMedication/New_`, data);
 }
 
-public deleteMedication(uid) {
+public deleteMedication(uid : number) {
   return this.http.delete(`${environment.base_url}/IMMedication/Destroy?p_immedication_oid=${uid}`);
 }
 
@@ -173,14 +173,14 @@ public assignTemplateMedication( idNewMedication: number,idCareActivity: number,
 
 //Nutrition Order
 public getNutritionyByIdCareActivity( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <any>(`${environment.base_url}/IMNutritionOrder/NutritionOrderCareActivity?idIMCareActivity=${uid}` );
 }
 public getnutritionsByIdScenario(uid: number): Observable<Nutrition[]>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Nutrition[]>(`${environment.base_url}/IMNutritionOrder/NutritionsCare?idIoTScenario=${uid}`);
 }
-public deleteNutrition(uid) {
+public deleteNutrition(uid : number) {
   return this.http.delete(`${environment.base_url}/IMNutritionOrder/Destroy?p_imnutritionorder_oid=${uid}`);
 }
 
@@ -194,16 +194,16 @@ public assignTemplateNutritionOrder( idNewNutrition: number,idCareActivity: numb
 
 //Communication
 public getCommunicationByIdCareActivity( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <any>(`${environment.base_url}/IMCommunication/CommunicationCareActivity?idIMCareActivity=${uid}` );
 }
 
 public getCommunicationByIdScenario(uid: number): Observable<Communication[]>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Communication[]>(`${environment.base_url}/IMCommunication/CommunicationsCare?idIoTScenario=${uid}`);
 }
 
-public deleteCommunication(uid) {
+public deleteCommunication(uid : number) {
   return this.http.delete(`${environment.base_url}/IMCommunication/Destroy?p_imcommunication_oid=${uid}`);
 }
 
@@ -217,13 +217,13 @@ public assignTemplateCommunication( idNewCommunication: number,idCareActivity: n
 
 // Goal
 public getGoalByIdCarePlan( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <any>(`${environment.base_url}/IMGoal/GoalsCarePlan?idCarePlan=${uid}` );
 }
 
 //Target
 public getTargetByIdCarePlan( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <any>(`${environment.base_url}/IMTarget/TargetsCarePlan?idCarePlan=${uid}` );
 }
 
@@ -234,7 +234,7 @@ public assignCarePlanTemplateToCarePlan(carePlanId: number, carePlanTemplateId: 
 }
 
 public getCarePlanTemplateByIdPatientProfile( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <CarePlanTemplate>(`${environment.base_url}/CarePlanTemplate/PatientProfileCarePlanTemplate?idPatientProfile=${uid}` );
 }
 

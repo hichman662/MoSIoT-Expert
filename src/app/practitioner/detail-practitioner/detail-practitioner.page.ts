@@ -16,10 +16,10 @@ import { UserService } from 'src/app/services/user.service';
 export class DetailPractitionerPage implements OnInit {
 
 
-  public practitionerEmail: string;
-  public practitionerData: UserData = null;
+  public practitionerEmail: string = '';
+  public practitionerData: UserData = new UserData();
   segmentModel = 'details';
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
   load: boolean = false;
 
   constructor(
@@ -30,7 +30,7 @@ export class DetailPractitionerPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     console.log(this.idPassedByURL);
     this.userService.getUserById(this.idPassedByURL)
     .subscribe((res: UserData ) => {

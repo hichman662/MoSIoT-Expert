@@ -53,15 +53,15 @@
         <ion-item>
 
             <ion-label position="stacked">{{ 'ADDPRACTITIONER.email' | translate }}</ion-label>
-            <ion-input type="email" formControlName="Email" class="form-control" required></ion-input>
-            <div class="error" *ngIf="practitionerForm.controls.Email.errors && practitionerForm.controls.Email.touched">
+            <ion-input type="email" formControlName="email" class="form-control" required></ion-input>
+            <div class="error" *ngIf="practitionerForm.controls['email'].errors && practitionerForm.controls['email'].touched">
                 {{ 'ADDPRACTITIONER.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDPRACTITIONER.password' | translate }}</ion-label>
-            <ion-input type="password" formControlName="Pass" class="form-control" required></ion-input>
-            <div class="error" *ngIf="practitionerForm.controls.Pass.errors && practitionerForm.controls.Pass.touched">
+            <ion-input type="password" formControlName="pass" class="form-control" required></ion-input>
+            <div class="error" *ngIf="practitionerForm.controls['pass'].errors && practitionerForm.controls['pass'].touched">
                 {{ 'ADDPRACTITIONER.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -69,14 +69,14 @@
         <ion-item lines="full">
             <ion-label position="stacked">{{ 'ADDPRACTITIONER.user' | translate }}</ion-label>
 
-            <ion-select multiple="false" [value]="invitedUserId" [placeholder]="invitedUserName" okText="Okay" cancelText="Dismiss" formControlName="UserPractitioner_oid">
+            <ion-select multiple="false" [value]="invitedUserId" [placeholder]="invitedUserName" okText="Okay" cancelText="Dismiss" formControlName="userPractitioner_oid">
 
-                <div class="error" *ngIf="practitionerForm.controls.UserPractitioner_oid.errors && practitionerForm.controls.UserPractitioner_oid.touched">
+                <div class="error" *ngIf="practitionerForm.controls['userPractitioner_oid'].errors && practitionerForm.controls['userPractitioner_oid'].touched">
                     {{ 'ADDPRACTITIONER.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div>
-                    <ion-select-option *ngFor="let user of findNotAlreadyPractitioner" [value]="user['Id']">{{user['Name']}} {{user['Surnames']}}</ion-select-option>
+                    <ion-select-option *ngFor="let user of findNotAlreadyPractitioner" [value]="user['id']">{{user['name']}} {{user['surnames']}}</ion-select-option>
 
                 </div>
 

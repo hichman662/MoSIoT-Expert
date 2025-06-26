@@ -6,11 +6,11 @@ import { RelatedPerson } from './relatedPerson.model';
 
 export class UserData {
   id?:            number;
-  birthDate?:     null;
+  birthDate?:     Date;
   surnames?:      string;
-  address?:       null;
-  phone?:         null;
-  photo?:         null;
+  address?:       string;
+  phone?:         string;
+  photo?:         string;
   isActive?:      boolean;
   type?:          number;
   isDiseased?:    boolean;

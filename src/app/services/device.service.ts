@@ -19,7 +19,9 @@ import { Device } from '../models/device.model';
   providedIn: 'root'
 })
 export class DeviceService {
-  headers: HttpHeaders;
+   
+headers: HttpHeaders = new HttpHeaders();
+
 constructor(private http: HttpClient) {
 
 }
@@ -29,28 +31,28 @@ public getAllDevice(): Observable<object>{
   return this.http.get(`${environment.base_url}/Device/ReadAll`);
 }
 
-public getDeviceById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+public getDeviceById( uid: number | null): Observable<object>{
+  if (!uid) { uid = 0; }
   return this.http.get <Device>(`${environment.base_url}/Device/${uid}` );
 }
 
-public getDeviceByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
-  return this.http.get <Device>(`${environment.base_url}/Device/DevicesScenario?idIoTScenario=${uid}` );
+public getDeviceByIdScenario( uid: number | null): Observable<Device[]>{
+  if (!uid) { uid = 0; }
+  return this.http.get <Device[]>(`${environment.base_url}/Device/DevicesScenario?idIoTScenario=${uid}` );
 }
 
 public createDevice( data: Device ): Observable<object> {
   return this.http.post(`${environment.base_url}/Device/New_`, data);
 }
 
-public deleteDevice(uid) {
+public deleteDevice(uid : number) {
   return this.http.delete(`${environment.base_url}/Device/Destroy?p_device_oid=${uid}`);
 }
 
 //Device Templates
 
-public getDeviceTemplateByIdAccessMode( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+public getDeviceTemplateByIdAccessMode( uid: number | null): Observable<object>{
+  if (!uid) { uid = 0; }
   return this.http.get <DeviceTemplate>(`${environment.base_url}/DeviceTemplate/DevTemplatesAccessMode?idAccessMode=${uid}` );
 }
 
@@ -63,20 +65,20 @@ public assignDeviceTemplate( p_device_oid: number , p_devicetemplate_oid: number
 }
 
 // IMCommand
-public getCommandByIdDevice( uid: number): Observable<Command>{
-  if (!uid) { uid = null; }
+public getCommandByIdDevice( uid: number | null): Observable<Command>{
+  if (!uid) { uid = 0; }
   return this.http.get <Command>(`${environment.base_url}/IMCommand/DeviceCommands?idDevice=${uid}` );
 }
 
 //Property
-public getPropertiesByIdDevice( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+public getPropertiesByIdDevice( uid: number | null): Observable<object>{
+  if (!uid) { uid = 0; }
   return this.http.get <Property>(`${environment.base_url}/IMProperty/DeviceProperties?idDevice=${uid}` );
 }
 
 //ImTelemetry
-public getImTelemetryByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+public getImTelemetryByIdScenario( uid: number | null): Observable<object>{
+  if (!uid) { uid = 0; }
   return this.http.get <ImTelemetry>(`${environment.base_url}/IMTelemetry/IMTelemetriesScenario?idIoTScenario=${uid}` );
 }
 
