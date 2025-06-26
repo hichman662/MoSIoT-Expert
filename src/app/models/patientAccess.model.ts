@@ -3,8 +3,8 @@
 
 import { AccessMode } from './accessMode.model';
 export class PatientAccess {
-      Id: number;
-      Name?: string;
-      Description?: string;
-      AccessMode?: AccessMode;
+      id?: number;
+      name?: string;
+      description?: string;
+      accessMode?: AccessMode;
 }

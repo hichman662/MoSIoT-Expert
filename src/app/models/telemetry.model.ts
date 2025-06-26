@@ -5,10 +5,10 @@
 
 
 export class Telemetry {
-    Id:number;
-    Frecuency?:number;
-    Schema?: number;
-    Unit?: number;
-    Name?: string;
-    Type?: number;
+    id?:number;
+    frecuency?:number;
+    schema?: number;
+    unit?: number;
+    name?: string;
+    type?: number;
 }

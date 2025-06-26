@@ -5,12 +5,12 @@ import { Disease } from './disease.model';
 import { Disability } from './disability.model';
 
 export class PatientProfile {
-  Id?:                number;
-  PreferredLanguage?: number;
-  Region?:            string;
-  HazardAvoidance?:   number;
-  Name?:              string;
-  Description?:       string;
-  Diseases?:          Disease[];
-  Disabilities?:      Disability[];
+  id?:                number;
+  preferredLanguage?: number;
+  region?:            string;
+  hazardAvoidance?:   number;
+  name?:              string;
+  description?:       string;
+  diseases?:          Disease[];
+  disabilities?:      Disability[];
 }

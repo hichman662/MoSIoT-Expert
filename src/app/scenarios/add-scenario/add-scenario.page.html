@@ -64,7 +64,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDSCENARIO.name' | translate }}</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="scanearioForm.controls.Name.errors && scanearioForm.controls.Name.touched">
+            <div class="error" *ngIf="scanearioForm.controls.Name.errors && scanearioForm.controls['Name'].touched">
                 To add Scenario please fill out this field
             </div>
         </ion-item>

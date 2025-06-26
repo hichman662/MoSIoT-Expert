@@ -5,10 +5,10 @@
 import { Measure } from './measure.model';
 
 export class Target {
-    Id: number;
-    DesiredValue?: string;
-    Description?:string;
-    DueDate?:Date;
-    Measure?: Measure;
+    id?: number;
+    desiredValue?: string;
+    description?:string;
+    dueDate?:Date;
+    measure?: Measure;
 
 }

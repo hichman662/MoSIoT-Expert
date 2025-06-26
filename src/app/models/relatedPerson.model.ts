@@ -2,6 +2,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 
 export class RelatedPerson {
-      Id: number;
-      Email?: string;
+      id?: number;
+      email?: string;
 }

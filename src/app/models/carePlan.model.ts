@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { CarePlanTemplate } from './carePlanTemplate.model';
 export class CarePlan {
-    Id: number;
-    Name?: string;
-    Description?: string;
-    CarePlanTemplate?: CarePlanTemplate;
+    id?: number;
+    name?: string;
+    description?: string;
+    carePlanTemplate?: CarePlanTemplate;
 }

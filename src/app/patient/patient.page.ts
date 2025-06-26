@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { PatientService } from './../services/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { UserData } from '../models/userData.model';
+import { Patient } from '../models/patient.model';
 
 @Component({
     selector: 'app-patient',
@@ -13,7 +13,8 @@ import { UserData } from '../models/userData.model';
 })
 export class PatientPage implements OnInit {
 
-  public patient: UserData = new UserData();
+  public patient: Patient = new Patient();
+
   public idScenario: number = 0;
   constructor(
     private userService: UserService,
@@ -32,9 +33,9 @@ export class PatientPage implements OnInit {
   }
   callPatient(){
     this.userService.getPatientByIdScenario(this.idScenario)
-    .subscribe( (res: UserData[]) => {
-      console.log(res[0]);
-        this.patient = res[0];
+    .subscribe( (res: Patient) => {
+      console.log(res);
+        this.patient = res;
     }, ( err) => {
         console.log(err);
     });
