@@ -20,12 +20,12 @@ export class AddScenarioPage implements OnInit {
 
 
   scanearioForm: FormGroup;
-  scenario: Scenario;
+  scenario: Scenario = new Scenario();
   scenarioAddDone = false;
   name = '';
   token: any;
-  textSuccess: string;
-  textAlertSuccess: string;
+  textSuccess: string = '';
+  textAlertSuccess: string = '';
   constructor(
     private scenarioService: ScenarioService,
     public alertController: AlertController,

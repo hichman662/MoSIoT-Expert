@@ -32,7 +32,7 @@
         <ion-col size="10" class="ion-align-self-center">
 
             <ion-list-header *ngIf="load">
-                <ion-label class="text-top">{{relPersonData.Name}}</ion-label>
+                <ion-label class="text-top">{{relPersonData.name}}</ion-label>
 
             </ion-list-header>
 
@@ -51,7 +51,7 @@
             <ion-list-header>
 
                 <ion-label class="text-top" *ngIf="load">
-                    <h4>{{relPersonData.Description}}</h4>
+                    <h4>{{relPersonData.description}}</h4>
                 </ion-label>
             </ion-list-header>
 
@@ -78,7 +78,7 @@
             <ion-icon class="segmentIcon" name="person-outline"></ion-icon>{{ 'RELATEDPERSON.surnames' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-label text-wrap> {{relPersonData.Surnames}}</ion-label>
+            <ion-label text-wrap> {{relPersonData.surnames}}</ion-label>
         </ion-item>
         <ion-list-header>
             <ion-icon class="segmentIcon" name="at-outline"></ion-icon>{{ 'RELATEDPERSON.email' | translate }}</ion-list-header>
@@ -91,10 +91,10 @@
 
             <ion-icon class="segmentIcon" name="power-outline"></ion-icon>{{ 'RELATEDPERSON.activeStatus' | translate }}</ion-list-header>
         <ion-item>
-            <ion-item [hidden]="relPersonData.IsActive === true">
+            <ion-item [hidden]="relPersonData.isActive === true">
                 <ion-label>{{ 'RELATEDPERSON.deactivated' | translate }}</ion-label>
             </ion-item>
-            <ion-item [hidden]="relPersonData.IsActive === false">
+            <ion-item [hidden]="relPersonData.isActive === false">
                 <ion-label>{{ 'RELATEDPERSON.activated' | translate }}</ion-label>
             </ion-item>
 
@@ -105,10 +105,10 @@
             <ion-icon class="segmentIcon" name="heart-half-outline"></ion-icon>{{ 'RELATEDPERSON.isDiseased' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-item [hidden]="relPersonData.IsDiseased === false">
+            <ion-item [hidden]="relPersonData.isDiseased === false">
                 <ion-label>{{ 'RELATEDPERSON.yes' | translate }}</ion-label>
             </ion-item>
-            <ion-item [hidden]="relPersonData.IsDiseased === true">
+            <ion-item [hidden]="relPersonData.isDiseased === true">
                 <ion-label>{{ 'RELATEDPERSON.no' | translate }}</ion-label>
             </ion-item>
 
@@ -117,10 +117,10 @@
         <ion-list-header>
             <ion-icon class="segmentIcon" name="male-female-outline"></ion-icon>{{ 'RELATEDPERSON.gender' | translate }}</ion-list-header>
         <ion-item>
-            <ion-label *ngIf="relPersonData.Type === 1"> {{ 'RELATEDPERSON.male' | translate }}</ion-label>
-            <ion-label *ngIf="relPersonData.Type === 2"> {{ 'RELATEDPERSON.female' | translate }}</ion-label>
-            <ion-label *ngIf="relPersonData.Type === 3"> {{ 'RELATEDPERSON.other' | translate }}</ion-label>
-            <ion-label *ngIf="relPersonData.Type === 4"> {{ 'RELATEDPERSON.unknown' | translate }}</ion-label>
+            <ion-label *ngIf="relPersonData.type === 1"> {{ 'RELATEDPERSON.male' | translate }}</ion-label>
+            <ion-label *ngIf="relPersonData.type === 2"> {{ 'RELATEDPERSON.female' | translate }}</ion-label>
+            <ion-label *ngIf="relPersonData.type === 3"> {{ 'RELATEDPERSON.other' | translate }}</ion-label>
+            <ion-label *ngIf="relPersonData.type === 4"> {{ 'RELATEDPERSON.unknown' | translate }}</ion-label>
         </ion-item>
 
 

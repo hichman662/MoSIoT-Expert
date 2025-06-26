@@ -32,7 +32,7 @@
         <ion-col size="10" class="ion-align-self-center">
 
             <ion-list-header>
-                <ion-label class="text-top" *ngIf="load">{{ practitionerData.Name}}</ion-label>
+                <ion-label class="text-top" *ngIf="load">{{ practitionerData.name}}</ion-label>
 
             </ion-list-header>
 
@@ -51,7 +51,7 @@
             <ion-list-header>
 
                 <ion-label class="text-top" *ngIf="load">
-                    <h4>{{ practitionerData.Description}}</h4>
+                    <h4>{{ practitionerData.description}}</h4>
                 </ion-label>
             </ion-list-header>
 
@@ -78,7 +78,7 @@
             <ion-icon class="segmentIcon" name="person-outline"></ion-icon>{{ 'PRACTITIONER.surnames' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-label text-wrap> {{practitionerData.Surnames}}</ion-label>
+            <ion-label text-wrap> {{practitionerData.surnames}}</ion-label>
         </ion-item>
         <!--  <ion-list-header>
             <ion-icon class="segmentIcon" name="at-outline"></ion-icon>Email</ion-list-header>
@@ -91,10 +91,10 @@
 
             <ion-icon class="segmentIcon" name="power-outline"></ion-icon>{{ 'PRACTITIONER.activeStatus' | translate }}</ion-list-header>
         <ion-item>
-            <ion-item [hidden]="practitionerData.IsActive === true">
+            <ion-item [hidden]="practitionerData.isActive === true">
                 <ion-label>{{ 'PRACTITIONER.deactivated' | translate }}</ion-label>
             </ion-item>
-            <ion-item [hidden]="practitionerData.IsActive === false">
+            <ion-item [hidden]="practitionerData.isActive === false">
                 <ion-label>{{ 'PRACTITIONER.activated' | translate }}</ion-label>
             </ion-item>
 
@@ -105,10 +105,10 @@
             <ion-icon class="segmentIcon" name="heart-half-outline"></ion-icon>{{ 'PRACTITIONER.isDiseased' | translate }}</ion-list-header>
         <ion-item>
 
-            <ion-item [hidden]="practitionerData.IsDiseased === false">
+            <ion-item [hidden]="practitionerData.isDiseased === false">
                 <ion-label>{{ 'PRACTITIONER.yes' | translate }}</ion-label>
             </ion-item>
-            <ion-item [hidden]="practitionerData.IsDiseased === true">
+            <ion-item [hidden]="practitionerData.isDiseased === true">
                 <ion-label>{{ 'PRACTITIONER.no' | translate }}</ion-label>
             </ion-item>
 
@@ -118,10 +118,10 @@
         <ion-list-header>
             <ion-icon class="segmentIcon" name="male-female-outline"></ion-icon>{{ 'PRACTITIONER.gender' | translate }}</ion-list-header>
         <ion-item>
-            <ion-label *ngIf="practitionerData.Type === 1"> {{ 'PRACTITIONER.male' | translate }}</ion-label>
-            <ion-label *ngIf="practitionerData.Type === 2"> {{ 'PRACTITIONER.female' | translate }}</ion-label>
-            <ion-label *ngIf="practitionerData.Type === 3"> {{ 'PRACTITIONER.other' | translate }}</ion-label>
-            <ion-label *ngIf="practitionerData.Type === 4"> {{ 'PRACTITIONER.unknown' | translate }}</ion-label>
+            <ion-label *ngIf="practitionerData.type === 1"> {{ 'PRACTITIONER.male' | translate }}</ion-label>
+            <ion-label *ngIf="practitionerData.type === 2"> {{ 'PRACTITIONER.female' | translate }}</ion-label>
+            <ion-label *ngIf="practitionerData.type === 3"> {{ 'PRACTITIONER.other' | translate }}</ion-label>
+            <ion-label *ngIf="practitionerData.type === 4"> {{ 'PRACTITIONER.unknown' | translate }}</ion-label>
         </ion-item>
 
 

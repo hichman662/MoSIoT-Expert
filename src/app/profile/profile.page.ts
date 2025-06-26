@@ -49,8 +49,8 @@ export class ProfilePage implements OnInit {
     .subscribe((res: Practitioner[]) => {
       console.log(res);
     if(res && res.length > 0){
-      this.practitionerEmail = res[0].Email ?? '';
-       this.practitionerData = res[0].UserPractitioner;
+      this.practitionerEmail = res[0].email ?? '';
+       this.practitionerData = res[0].userPractitioner;
        this.load= true;
 
     }else{

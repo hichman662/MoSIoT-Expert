@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Time } from "@angular/common";
+import { Time } from "./time.model";
 export class Communication {
     id?: number;
     name?: string;

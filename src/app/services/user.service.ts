@@ -38,25 +38,25 @@ public getAllUsers(): Observable<object>{
   return this.http.get(`${environment.base_url}/User/ReadAll`);
 }
 
-public getPatientByIdScenario( uid: number): Observable<Patient>{
+public getPatientByIdScenario( uid: number): Observable<UserData[]>{
   if (!uid) { uid = 0; }
- return this.http.get <Patient>(`${environment.base_url}/User/DamePacientePorScenario?p_idscenario=${uid}` );
+ return this.http.get <UserData[]>(`${environment.base_url}/User/DamePacientePorScenario?p_idscenario=${uid}` );
 }
 
-public getPractitionerByIdScenario( uid: number): Observable<object>{
+public getPractitionerByIdScenario( uid: number): Observable<UserData[]>{
   if (!uid) { uid = 0; }
- return this.http.get <Practitioner>(`${environment.base_url}/User/DameMedicoPorScenario?p_idscenario=${uid}` );
+ return this.http.get <UserData[]>(`${environment.base_url}/User/DameMedicoPorScenario?p_idscenario=${uid}` );
 }
 
 public getPractitionerByEmail( email: string): Observable<Practitioner[]>{
  return this.http.get <Practitioner[]>(`${environment.base_url}/Practitioner/DamePorEmail?p_email=${email}` );
 }
-public getRelatedPersonByIdScenario( uid: number): Observable<object>{
+public getRelatedPersonByIdScenario( uid: number): Observable<UserData[]>{
   if (!uid) { uid = 0; }
- return this.http.get <RelatedPersonData[]>(`${environment.base_url}/User/DameRelatedPersonPorScenario?p_idscenario=${uid}` );
+ return this.http.get <UserData[]>(`${environment.base_url}/User/DameRelatedPersonPorScenario?p_idscenario=${uid}` );
 }
 
-public getUserById( uid: number): Observable<object>{
+public getUserById( uid: number): Observable<UserData>{
   if (!uid) { uid = 0; }
  return this.http.get <UserData>(`${environment.base_url}/User/${uid}` );
 }
@@ -100,11 +100,11 @@ get getToken(): string {
 }
 
  get idNewUser(): number {
-  return this.newUserData.Id ?? 0;
+  return this.newUserData.id ?? 0;
 }
 
 get nameNewUser(): string {
-  return this.newUserData.Surnames ?? '';
+  return this.newUserData.surnames ?? '';
 }
 
 async logout(){

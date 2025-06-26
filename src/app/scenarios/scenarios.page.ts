@@ -20,7 +20,7 @@ export class ScenariosPage implements OnInit {
 
   load: boolean = false;
   public listScenario: Scenario[] = [];
-  private idScenario: number;
+  private idScenario: number = 0;
   private token: any;
   constructor(
     private scenarioService: ScenarioService,

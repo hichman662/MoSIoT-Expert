@@ -27,7 +27,7 @@ export class ProgressBarComponent implements OnInit {
   public patientProfileNull   = true;
   public patientNull   = true;
   public scenarioNull = true;
-  public idScenario: number = null;
+  public idScenario: number = 0;
   public carePlanNull   = true;
   public patientAccessNull   = true;
   public devicesNull  = true;

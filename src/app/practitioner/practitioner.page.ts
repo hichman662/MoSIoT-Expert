@@ -5,6 +5,7 @@ import { Practitioner } from './../models/practitioner.model';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { IonItemSliding, AlertController, LoadingController } from '@ionic/angular';
+import { UserData } from '../models/userData.model';
 @Component({
     selector: 'app-practitioner',
     templateUrl: './practitioner.page.html',
@@ -13,9 +14,9 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 })
 export class PractitionerPage implements OnInit {
 
-  public practitioners: Practitioner[] = [];
+  public practitioners: UserData [] | null = null;
   public practitionerNull = false;
-  public idScenario: number;
+  public idScenario: number = 0;
   constructor(
     private patientService: PatientService,
     private userService: UserService,
@@ -39,7 +40,7 @@ export class PractitionerPage implements OnInit {
   }
   callPractitioner(){
     this.userService.getPractitionerByIdScenario(this.idScenario)
-    .subscribe( (res: any) => {
+    .subscribe( (res: UserData[]) => {
       console.log(res);
       if(res != null){
         this.practitioners = res;

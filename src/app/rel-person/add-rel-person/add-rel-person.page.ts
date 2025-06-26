@@ -72,7 +72,7 @@ export class AddRelPersonPage implements OnInit {
   onSubmit(){
     this.patientService.createRelatedPerson(this.relPersonForm.value)
     .subscribe( (res: any) => {
-      this.email = res.Email;
+      this.email = res.email;
      /*  this.userService.removeUserId();
       this.userService.removeUserName(); */
 

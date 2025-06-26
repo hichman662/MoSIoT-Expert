@@ -48,29 +48,29 @@
         <ion-item>
 
             <ion-label position="stacked">{{ 'ADDRELATEDPERSON.email' | translate }}</ion-label>
-            <ion-input type="email" formControlName="Email" class="form-control" required></ion-input>
-            <div class="error" *ngIf="relPersonForm.controls.Email.errors && relPersonForm.controls.Email.touched">
+            <ion-input type="email" formControlName="email" class="form-control" required></ion-input>
+            <div class="error" *ngIf="relPersonForm.controls['email'].errors && relPersonForm.controls['email'].touched">
                 {{ 'ADDRELATEDPERSON.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDRELATEDPERSON.password' | translate }}</ion-label>
-            <ion-input type="password" formControlName="Pass" class="form-control" required></ion-input>
-            <div class="error" *ngIf="relPersonForm.controls.Pass.errors && relPersonForm.controls['Pass'].touched">
+            <ion-input type="password" formControlName="pass" class="form-control" required></ion-input>
+            <div class="error" *ngIf="relPersonForm.controls['pass'].errors && relPersonForm.controls['pass'].touched">
                 {{ 'ADDRELATEDPERSON.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item lines="full">
             <ion-label position="stacked">{{ 'ADDRELATEDPERSON.user' | translate }}</ion-label>
 
-            <ion-select multiple="false" [value]="invitedUserId" [placeholder]="invitedUserName" okText="Okay" cancelText="Dismiss" formControlName="UserRelatedPerson_oid">
+            <ion-select multiple="false" [value]="invitedUserId" [placeholder]="invitedUserName" okText="Okay" cancelText="Dismiss" formControlName="userRelatedPerson_oid">
 
-                <div class="error" *ngIf="relPersonForm.controls.UserRelatedPerson_oid.errors && relPersonForm.controls['UserRelatedPerson_oid'].touched">
+                <div class="error" *ngIf="relPersonForm.controls['userRelatedPerson_oid'].errors && relPersonForm.controls['userRelatedPerson_oid'].touched">
                     {{ 'ADDRELATEDPERSON.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div *ngIf="findNotAlreadyRelatedPerson !== null">
-                    <ion-select-option *ngFor="let user of findNotAlreadyRelatedPerson" [value]="user['Id']">{{user['Name']}} {{user['Surnames']}}</ion-select-option>
+                    <ion-select-option *ngFor="let user of findNotAlreadyRelatedPerson" [value]="user['id']">{{user['name']}} {{user['surnames']}}</ion-select-option>
                 </div>
 
             </ion-select>
