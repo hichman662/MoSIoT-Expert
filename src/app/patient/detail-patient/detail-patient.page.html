@@ -86,7 +86,7 @@
                 <ion-icon class="segmentIcon" name="person-outline"></ion-icon>{{ 'PATIENT.surnames' | translate }}</ion-list-header>
             <ion-item>
 
-                <ion-label text-wrap> {{patientData.Surnames}}</ion-label>
+                <ion-label text-wrap> {{patientData.surnames}}</ion-label>
             </ion-item>
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="at-outline"></ion-icon>{{ 'PATIENT.email' | translate }}</ion-list-header>
@@ -99,10 +99,10 @@
 
                 <ion-icon class="segmentIcon" name="power-outline"></ion-icon>{{ 'PATIENT.activeStatus' | translate }}</ion-list-header>
             <ion-item>
-                <ion-item [hidden]="patientData.IsActive === true">
+                <ion-item [hidden]="patientData.isActive === true">
                     <ion-label>{{ 'PATIENT.deactivated' | translate }}</ion-label>
                 </ion-item>
-                <ion-item [hidden]="patientData.IsActive === false">
+                <ion-item [hidden]="patientData.isActive === false">
                     <ion-label>{{ 'PATIENT.activated' | translate }}</ion-label>
                 </ion-item>
 
@@ -113,10 +113,10 @@
                 <ion-icon class="segmentIcon" name="heart-half-outline"></ion-icon>{{ 'PATIENT.isDiseased' | translate }}</ion-list-header>
             <ion-item>
 
-                <ion-item [hidden]="patientData.IsDiseased === false">
+                <ion-item [hidden]="patientData.isDiseased === false">
                     <ion-label>{{ 'PATIENT.yes' | translate }}</ion-label>
                 </ion-item>
-                <ion-item [hidden]="patientData.IsDiseased === true">
+                <ion-item [hidden]="patientData.isDiseased === true">
                     <ion-label>{{ 'PATIENT.no' | translate }}</ion-label>
                 </ion-item>
 
@@ -126,10 +126,10 @@
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="male-female-outline"></ion-icon>{{ 'PATIENT.gender' | translate }}</ion-list-header>
             <ion-item>
-                <ion-label *ngIf="patientData.Type === 1"> {{ 'PATIENT.male' | translate }}</ion-label>
-                <ion-label *ngIf="patientData.Type === 2"> {{ 'PATIENT.female' | translate }}</ion-label>
-                <ion-label *ngIf="patientData.Type === 3"> {{ 'PATIENT.other' | translate }}</ion-label>
-                <ion-label *ngIf="patientData.Type === 4"> {{ 'PATIENT.unknown' | translate }}</ion-label>
+                <ion-label *ngIf="patientData.type === 1"> {{ 'PATIENT.male' | translate }}</ion-label>
+                <ion-label *ngIf="patientData.type === 2"> {{ 'PATIENT.female' | translate }}</ion-label>
+                <ion-label *ngIf="patientData.type === 3"> {{ 'PATIENT.other' | translate }}</ion-label>
+                <ion-label *ngIf="patientData.type === 4"> {{ 'PATIENT.unknown' | translate }}</ion-label>
             </ion-item>
 
 

@@ -15,14 +15,15 @@ import { Entity } from '../models/entity.model';
   providedIn: 'root'
 })
 export class EntityService {
-  headers: HttpHeaders;
+  headers: HttpHeaders = new HttpHeaders();
+
 constructor(private http: HttpClient) {
 
 }
 
 // *********************************vital Sign attribute******************
 public getEntitynById( uid: number): Observable<Entity>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Entity>(`${environment.base_url}/Entity/${uid}` );
 }
 

@@ -21,12 +21,12 @@ export class AddMedicationPage implements OnInit {
 
   addMedicationForm: FormGroup;
   name = '';
-  careActivity: CareActivity;
-  public idScenario: number;
-  idNewMedication: number;
-  idCareactivityForAdd: number;
-  idMedicationForAdd: number;
-  textAlertSuccess: string;
+  careActivity: CareActivity = new CareActivity();
+  public idScenario: number = 0;
+  idNewMedication: number = 0;
+  idCareactivityForAdd: number = 0;
+  idMedicationForAdd: number = 0;
+  textAlertSuccess: string = '';
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -62,7 +62,7 @@ translateService.get('TOASTALERT.addSuccessfully').subscribe(value => {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addMedicationForm.get('Scenario_oid').setValue(val);
+      this.addMedicationForm.get('Scenario_oid')?.setValue(val);
     });
     this.storage.get('careActivityIdForAdd').then((val) => {
       this.idCareactivityForAdd = val;
@@ -75,8 +75,8 @@ translateService.get('TOASTALERT.addSuccessfully').subscribe(value => {
   onSubmit(){
     this.carePlanService.createMedication(this.addMedicationForm.value)
     .subscribe( (res: Medication) => {
-      this.name = res.Name;
-      this.idNewMedication = res.Id;
+      this.name = res.name ?? '';
+      this.idNewMedication = res.id ?? 0;
       this.assignMedicationTemplate();
       console.log("id new mediction: " + this.idNewMedication);
       window.history.back();

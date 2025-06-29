@@ -50,15 +50,15 @@
 
             <ion-item-sliding #slidingItem>
 
-                <ion-item class="item" detail [routerLink]="['detail-vital-signs',vitalSign['Id']]">
+                <ion-item class="item" detail [routerLink]="['detail-vital-signs',vitalSign['id']]">
                     <ion-avatar slot="start">
                         <img src="assets/icon/vitalSigns.png">
 
                     </ion-avatar>
 
                     <ion-label text-wrap>
-                        <h3>{{vitalSign['Name']}}</h3>
-                        <h4>{{vitalSign['Description']}}</h4>
+                        <h3>{{vitalSign['name']}}</h3>
+                        <h4>{{vitalSign['description']}}</h4>
                     </ion-label>
 
 
@@ -66,8 +66,8 @@
                 </ion-item>
 
 
-                <ion-item-options side="end" (ionSwipe)="deleteVitalSign(slidingItem,vitalSign['Id'], vitalSign['Name'])">
-                    <ion-item-option color="danger" expandable (click)="deleteVitalSign(slidingItem,vitalSign['Id'], vitalSign['Name'])">
+                <ion-item-options side="end" (ionSwipe)="deleteVitalSign(slidingItem,vitalSign['id']!, vitalSign['name']!)">
+                    <ion-item-option color="danger" expandable (click)="deleteVitalSign(slidingItem,vitalSign['id']!, vitalSign['name']!)">
 
                         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
 
@@ -77,7 +77,7 @@
 
                 <ion-item-options side="start">
 
-                    <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-vital-sign',vitalSign['Id']]">
+                    <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-vital-sign',vitalSign['id']]">
                         {{'VITALSIGNLIST.title'| translate}}
                         <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
 

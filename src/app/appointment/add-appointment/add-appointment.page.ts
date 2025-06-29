@@ -21,12 +21,12 @@ export class AddAppointmentPage implements OnInit {
 
   addAppointmentForm: FormGroup;
   name = '';
-  careActivity: CareActivity;
-  public idScenario: number;
-  idNewAppointment: number;
-  idCareactivityForAdd: number;
-  idAppointmentForAdd: number;
-  textAlertSuccess: string;
+  careActivity: CareActivity = new CareActivity();
+  public idScenario: number = 0;
+  idNewAppointment: number = 0;
+  idCareactivityForAdd: number = 0;
+  idAppointmentForAdd: number = 0;
+  textAlertSuccess: string = '';
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -62,7 +62,7 @@ export class AddAppointmentPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addAppointmentForm.get('Scenario_oid').setValue(val);
+      this.addAppointmentForm.get('Scenario_oid')?.setValue(val);
     });
 
     this.storage.get('careActivityIdForAdd').then((val) => {
@@ -76,8 +76,8 @@ export class AddAppointmentPage implements OnInit {
   onSubmit(){
     this.carePlanService.createAppointment(this.addAppointmentForm.value)
     .subscribe( (res: Appointment) => {
-      this.name = res.Name;
-      this.idNewAppointment = res.Id;
+      this.name = res.name ?? '';
+      this.idNewAppointment = res.id ?? 0;
       this.assignAppointmentTemplate();
       console.log("id new appointment: " + this.idNewAppointment);
       window.history.back();

@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
 export class DetailAppointmentPage implements OnInit {
   public attriubute: Attribute[] = [];
   segmentModel = 'appointment';
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
   constructor(
     private route: ActivatedRoute,
     private entityService: EntityService,
@@ -29,14 +29,14 @@ export class DetailAppointmentPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.callAppointmentDetail();
   }
 
   callAppointmentDetail(){
     this.entityService.getEntitynById(this.idPassedByURL)
     .subscribe((res: Entity ) => {
-      this.attriubute = res.Attributes;
+      this.attriubute = res.attributes ?? [];
     }, (err) => {
       console.log(err);
     });
@@ -86,6 +86,7 @@ export class DetailAppointmentPage implements OnInit {
               console.log(err);
               this.presentToast('danger','Your settings have not been saved.');
               });
+              return true;
             } else {
               return false;
             }

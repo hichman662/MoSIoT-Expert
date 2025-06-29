@@ -15,14 +15,14 @@ import { Chart, registerables } from 'chart.js';
 })
 export class RespiratoryRatePage implements OnInit {
 
-  @ViewChild('barCanvas') private barCanvas: ElementRef;
+  @ViewChild('barCanvas') private barCanvas!: ElementRef;
 
   public respiratoryRate: any;
   barChart: any;
-  label: any [] =['2022/5/22', '2022/5/23', '2022/5/26', '2022/5/27', '2022/6/1','2022/6/2'];
+  label: any [] =['2025/5/22', '2025/5/23', '2025/5/26', '2025/5/27', '2025/6/1','2025/6/2'];
   data: any[]=[15, 24, 18, 22, 17, 27];
   date= new Date();
-  textPerMinute: string;
+  textPerMinute: string = '';
   constructor(  public router: Router,
     private route: ActivatedRoute,
     private storage: Storage,
@@ -35,7 +35,7 @@ export class RespiratoryRatePage implements OnInit {
   ngOnInit() {
 
   }
-  doRefresh(event) {
+  doRefresh(event : any) {
        console.log('Begin async operation');
 
     setTimeout(() => {
@@ -48,14 +48,14 @@ export class RespiratoryRatePage implements OnInit {
     }, 4000);
   }
   ionViewWillEnter() {
-    this.respiratoryRate = this.route.snapshot.params.respiratoryRate;
+    this.respiratoryRate = this.route.snapshot.params['respiratoryRate'];
     this.data.push(this.respiratoryRate);
     this.label.push(this.date.getFullYear()+'/'+this.date.getUTCMonth()+'/'+this.date.getDate());
     this.barChartMethod();
     console.log(this.date);
   }
 
-  randomNumber(min, max) {
+  randomNumber(min :number , max : number) {
     return Math.floor(Math.random() * (max - min )) + min;
   }
 

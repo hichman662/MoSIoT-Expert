@@ -71,7 +71,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDCAREPLAN.name' | translate }}</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="carePlanForm.controls.Name.errors && carePlanForm.controls.Name.touched">
+            <div class="error" *ngIf="carePlanForm.controls['Name'].errors && carePlanForm.controls['Name'].touched">
                 {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -79,7 +79,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDCAREPLAN.description' | translate }}</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="carePlanForm.controls.Description.errors && carePlanForm.controls.Description.touched">
+            <div class="error" *ngIf="carePlanForm.controls['Description'].errors && carePlanForm.controls['Description'].touched">
                 {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -97,12 +97,12 @@
 
             <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idCarePlanTemplate">
 
-                <div class="error" *ngIf="carePlantemplateForm.controls.idCarePlanTemplate.errors && carePlantemplateForm.controls.idCarePlanTemplate.touched">
+                <div class="error" *ngIf="carePlantemplateForm.controls['idCarePlanTemplate'].errors && carePlantemplateForm.controls['idCarePlanTemplate'].touched">
                     {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div>
-                    <ion-select-option *ngFor="let carePlan of carePlanTemplateList" [value]="carePlan['Id']">{{carePlan['Name']}}</ion-select-option>
+                    <ion-select-option *ngFor="let carePlan of carePlanTemplateList" [value]="carePlan['id']">{{carePlan['name']}}</ion-select-option>
 
                 </div>
 

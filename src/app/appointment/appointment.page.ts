@@ -12,7 +12,7 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 })
 export class AppointmentPage implements OnInit {
   public appointments: Appointment[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public appointmentNull = false;
   constructor(
     private carePlanService: CarePlanService,
@@ -39,7 +39,7 @@ export class AppointmentPage implements OnInit {
         this.appointments = res;
         this.appointmentNull = false;
       }else{
-        this.appointments = null;
+        this.appointments = [];
         this.appointmentNull = true;
       }
     }, ( err) => {

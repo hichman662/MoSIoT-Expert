@@ -14,12 +14,12 @@ import { CareActivity } from '../models/careActivity.model';
 export class CareActivityPage implements OnInit {
 
   public careActivities: any[] = [];
-  public idScenario: number;
-  public valueCareActivity: number;
+  public idScenario: number = 0;
+  public valueCareActivity: number = 0;
   public careActivityNull = false;
   public nameCareActivity = '';
-  public idPatientProfile: number;
-  public idcarePlanTemplate: number;
+  public idPatientProfile: number = 0;
+  public idcarePlanTemplate: number = 0;
   public addedCareActivityList: any [] = [];
   public listFilter = 'all';
   constructor(
@@ -51,7 +51,7 @@ export class CareActivityPage implements OnInit {
 
 
   ionViewWillEnter(){
-    this.listFilter = this.route.snapshot.params.Id;
+    this.listFilter = this.route.snapshot.params['Id'];
     console.log("Type of filter: " + this.listFilter);
     this.addedCareActivityList = this.carePlanService.getTemporalAddedActivity;
    console.log(this.addedCareActivityList);
@@ -63,12 +63,12 @@ export class CareActivityPage implements OnInit {
     .subscribe( (res: any) => {
       if(res != null){
         this.careActivities = res;
-        res.filter( obj =>  obj.Patient === null);
+        res.filter( (obj:any )=>  obj.Patient === null);
         this.nameCareActivity = res.Name;
         this.careActivityNull= false;
       }else{
         this.careActivityNull= true;
-        this.careActivities = null;
+        this.careActivities = [];
       }
       console.log(res);
 
@@ -88,7 +88,7 @@ export class CareActivityPage implements OnInit {
         this.careActivityNull= false;
       }else{
         this.careActivityNull= true;
-        this.careActivities = null;
+        this.careActivities = [];
       }
       console.log(res);
 

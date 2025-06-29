@@ -17,11 +17,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DetailPatientPage implements OnInit {
 
-  public patientName = '';
-  public patientDescrip = '';
-  public patientData: UserData;
-  public idScenario: number;
-  public patientEmail = '';
+  public patientName : string = '';
+  public patientDescrip : string = '';
+  public patientData: UserData = new UserData();
+  public idScenario: number = 0;
+  public patientEmail: string = '';
   public patientNull = false;
   load: boolean = false;
   segmentModel = 'details';
@@ -38,7 +38,7 @@ export class DetailPatientPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     if(this.idPassedByURL === 'profile'){
       this.segmentModel = 'profile';
     }else{
@@ -54,13 +54,14 @@ export class DetailPatientPage implements OnInit {
 
   callingPatient(){
     this.userService.getPatientByIdScenario(this.idScenario)
-    .subscribe((res: Patient ) => {
+    .subscribe((res: UserData[] ) => {
       console.log(res);
-    if(res != null){
-      this.storage.set('idPatient',res[0].Patient.Id);
-       this.patientName = res[0].Name;
-       this.patientDescrip = res[0].Description;
-       this.patientEmail = res[0].Patient.Email;
+    if(res && res[0]?.patient?.id){
+      this.storage.set('idPatient',res[0].patient.id);
+
+       this.patientName = res[0].name ?? '';
+       this.patientDescrip = res[0].description ?? '';
+       this.patientEmail = res[0].patient.email ?? '';
        this.patientData = res[0];
        this.load= true;
 

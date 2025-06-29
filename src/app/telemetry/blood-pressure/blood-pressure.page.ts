@@ -15,13 +15,13 @@ import { Chart, registerables } from 'chart.js';
 })
 export class BloodPressurePage implements OnInit {
 
-  @ViewChild('lineCanvas') private lineCanvas: ElementRef;
+  @ViewChild('lineCanvas') private lineCanvas!: ElementRef;
   public systolic: any;
   public diastolic: any;
   lineChart: any;
-  textSystolic: string;
-  textDiastolic: string;
-  label: any [] =[ '2022/5/22', '2022/5/23', '2022/5/26', '2022/5/27', '2022/6/1','2022/6/2'];
+  textSystolic: string = '';
+  textDiastolic: string = '';
+  label: any [] =[ '2025/5/22', '2025/5/23', '2025/5/26', '2025/5/27', '2025/6/1','2025/6/2'];
   public syst: any[]=[115, 118, 121, 119, 125, 111];
   public dias: any[]=[ 65, 78, 68, 75, 78, 69];
   date= new Date();
@@ -43,7 +43,7 @@ export class BloodPressurePage implements OnInit {
 
   }
 
-  doRefresh(event) {
+  doRefresh(event : any) {
     console.log('Begin async operation');
 
  setTimeout(() => {
@@ -58,13 +58,13 @@ export class BloodPressurePage implements OnInit {
  }, 4000);
 }
 
-randomNumber(min, max) {
+randomNumber(min : number, max : number) {
  return Math.floor(Math.random() * (max - min )) + min;
 }
 
 ionViewWillEnter() {
-    this.systolic = this.route.snapshot.params.systolic;
-    this.diastolic = this.route.snapshot.params.diastolic;
+    this.systolic = this.route.snapshot.params['systolic'];
+    this.diastolic = this.route.snapshot.params['diastolic'];
     this.syst.push(this.systolic);
     this.dias.push(this.diastolic);
     this.label.push(this.date.getFullYear()+'/'+this.date.getUTCMonth()+'/'+this.date.getDate());

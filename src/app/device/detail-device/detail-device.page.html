@@ -81,27 +81,27 @@
                 <ion-icon class="segmentIcon" name="logo-apple"></ion-icon>{{ 'DEVICE.trademark' | translate }}</ion-list-header>
             <ion-item>
 
-                <ion-label text-wrap> {{deviceData.Trademark}}</ion-label>
+                <ion-label text-wrap> {{deviceData!.trademark}}</ion-label>
             </ion-item>
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="hardware-chip-outline"></ion-icon>{{ 'DEVICE.firmVersion' | translate }}</ion-list-header>
             <ion-item>
 
-                <ion-label> {{$any(deviceData)?.FirmVersion}}</ion-label>
+                <ion-label> {{$any(deviceData)?.firmVersion}}</ion-label>
 
             </ion-item>
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="barcode-outline"></ion-icon>{{ 'DEVICE.serialNumber' | translate }}</ion-list-header>
             <ion-item>
 
-                <ion-label> {{$any(deviceData)?.SerialNumber}}</ion-label>
+                <ion-label> {{$any(deviceData)?.serialNumber}}</ion-label>
 
             </ion-item>
             <ion-list-header>
                 <ion-icon class="segmentIcon" name="pricetag-outline"></ion-icon>{{ 'DEVICE.tag' | translate }}</ion-list-header>
             <ion-item>
 
-                <ion-label> {{$any(deviceData)?.Tag}}</ion-label>
+                <ion-label> {{$any(deviceData)?.tag}}</ion-label>
 
             </ion-item>
             <ion-list-header>

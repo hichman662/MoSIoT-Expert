@@ -18,8 +18,8 @@ export class AddVitalSignPage implements OnInit {
 
   vitalSignForm: FormGroup;
   name = '';
-  vitalSign: VitalSign;
-  public idScenario: number;
+  vitalSign: VitalSign = new VitalSign();
+  public idScenario: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -47,7 +47,7 @@ export class AddVitalSignPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.vitalSignForm.get('Scenario_oid').setValue(val);
+      this.vitalSignForm.get('Scenario_oid')?.setValue(val);
     });
   }
   onSubmit(){

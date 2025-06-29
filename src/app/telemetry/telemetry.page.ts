@@ -22,11 +22,11 @@ export class TelemetryPage implements OnInit {
 
 
   public imTelemetry: any[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public heartRate: any;
   public bodyTemperature: any;
   public bloodPressure: any;
-  public respiratoryRate: number;
+  public respiratoryRate: number = 0;
   public systolic: any;
   public diastolic: any;
   arraySystolic: number[]=[];

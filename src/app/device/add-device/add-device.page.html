@@ -64,42 +64,42 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDDEVICE.name' | translate }}</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="deviceForm.controls.Name.errors && deviceForm.controls.Name.touched">
+            <div class="error" *ngIf="deviceForm.controls['Name'].errors && deviceForm.controls['Name'].touched">
                 {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDDEVICE.description' | translate }}</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="deviceForm.controls.Description.errors && deviceForm.controls.Description.touched">
+            <div class="error" *ngIf="deviceForm.controls['Description'].errors && deviceForm.controls['Description'].touched">
                 {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDDEVICE.firmVersion' | translate }}</ion-label>
             <ion-input type="text" formControlName="FirmVersion" class="form-control"></ion-input>
-            <div class="error" *ngIf="deviceForm.controls.FirmVersion.errors && deviceForm.controls.FirmVersion.touched">
+            <div class="error" *ngIf="deviceForm.controls['FirmVersion'].errors && deviceForm.controls['FirmVersion'].touched">
                 {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDDEVICE.tag' | translate }}</ion-label>
             <ion-input type="text" formControlName="Tag" class="form-control"></ion-input>
-            <div class="error" *ngIf="deviceForm.controls.Tag.errors && deviceForm.controls.Tag.touched">
+            <div class="error" *ngIf="deviceForm.controls['Tag'].errors && deviceForm.controls['Tag'].touched">
                 {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDDEVICE.serialNumber' | translate }}</ion-label>
             <ion-input type="text" formControlName="SerialNumber" class="form-control"></ion-input>
-            <div class="error" *ngIf="deviceForm.controls.SerialNumber.errors && deviceForm.controls.SerialNumber.touched">
+            <div class="error" *ngIf="deviceForm.controls['SerialNumber'].errors && deviceForm.controls['SerialNumber'].touched">
                 {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDDEVICE.trademark' | translate }}</ion-label>
             <ion-input type="text" formControlName="Trademark" class="form-control"></ion-input>
-            <div class="error" *ngIf="deviceForm.controls.Trademark.errors && deviceForm.controls.Trademark.touched">
+            <div class="error" *ngIf="deviceForm.controls['Trademark'].errors && deviceForm.controls['Trademark'].touched">
                 {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -126,11 +126,11 @@
 
                 <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idAccessMode">
 
-                    <div class="error" *ngIf="accessModeForm.controls.idAccessMode.errors && accessModeForm.controls.idAccessMode.touched">
+                    <div class="error" *ngIf="accessModeForm.controls['idAccessMode'].errors && accessModeForm.controls['idAccessMode'].touched">
                         {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
                     </div>
                     <div>
-                        <ion-select-option *ngFor="let profileAccessMode of allProfileAccessMods" [value]="profileAccessMode['Id']">{{profileAccessMode['Name']}}</ion-select-option>
+                        <ion-select-option *ngFor="let profileAccessMode of allProfileAccessMods" [value]="profileAccessMode['id']">{{profileAccessMode['name']}}</ion-select-option>
                     </div>
 
                 </ion-select>
@@ -148,12 +148,12 @@
 
             <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="p_devicetemplate_oid">
 
-                <div class="error" *ngIf="deviceTemplateForm.controls.p_devicetemplate_oid.errors && deviceTemplateForm.controls.p_devicetemplate_oid.touched">
+                <div class="error" *ngIf="deviceTemplateForm.controls['p_devicetemplate_oid'].errors && deviceTemplateForm.controls['p_devicetemplate_oid'].touched">
                     {{ 'ADDDEVICE.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div>
-                    <ion-select-option *ngFor="let deviceTemplate of allDeviceTemplates" [value]="deviceTemplate['Id']">{{deviceTemplate['Name']}} </ion-select-option>
+                    <ion-select-option *ngFor="let deviceTemplate of allDeviceTemplates" [value]="deviceTemplate['id']">{{deviceTemplate['name']}} </ion-select-option>
 
                 </div>
 

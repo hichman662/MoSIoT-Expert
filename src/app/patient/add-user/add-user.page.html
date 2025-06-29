@@ -52,28 +52,28 @@
         <ion-item>
             <ion-label position="stacked"> {{ 'ADDUSER.name' | translate }}</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control" required></ion-input>
-            <div class="error" *ngIf="userForm.controls.Name.errors && userForm.controls.Name.touched">
+            <div class="error" *ngIf="userForm.controls['Name'].errors && userForm.controls['Name'].touched">
                 {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked"> {{ 'ADDUSER.surnames' | translate }}</ion-label>
             <ion-input type="text" formControlName="Surnames" class="form-control" required></ion-input>
-            <div class="error" *ngIf="userForm.controls.Surnames.errors && userForm.controls.Surnames.touched">
+            <div class="error" *ngIf="userForm.controls['Surnames'].errors && userForm.controls['Surnames'].touched">
                 {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked"> {{ 'ADDUSER.description' | translate }}</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="userForm.controls.Description.errors && userForm.controls.Description.touched">
+            <div class="error" *ngIf="userForm.controls['Description'].errors && userForm.controls['Description'].touched">
                 {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item lines="full">
             <ion-label>{{ 'ADDUSER.gender' | translate }}</ion-label>
             <ion-select value="number" okText="Okay" cancelText="Dismiss" formControlName="Type">
-                <div class="error" *ngIf="userForm.controls.Type.errors && userForm.controls.Type.touched">
+                <div class="error" *ngIf="userForm.controls['Type'].errors && userForm.controls['Type'].touched">
                     {{ 'ADDUSER.pleaseFillOutThisField' | translate }}
                 </div>
                 <ion-select-option value="1">{{ 'ADDUSER.male' | translate }}</ion-select-option>

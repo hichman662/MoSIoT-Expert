@@ -16,17 +16,17 @@ import { AlertController, NavController } from '@ionic/angular';
 export class DetailPatientAccessPage implements OnInit {
 
 
-  public patientAccessName: '';
-  public patientAccessDescrip: '';
-  public accessMode: AccessMode;
-  patientProfileId: number;
-  idScenario: number;
+  public patientAccessName : string = '';
+  public patientAccessDescrip : string = '';
+  public accessMode: AccessMode | null = null;
+  patientProfileId: number = 0;
+  idScenario: number = 0;
   segmentModel = 'details';
   public allAccessMode: AccessMode []= [];
   patientAccessDetailNull = false;
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
   patientAccessForm: FormGroup;
-  idAccessMode: number;
+  idAccessMode: number = 0;
   name = '';
   constructor(
     private patientService: PatientService,
@@ -49,7 +49,7 @@ export class DetailPatientAccessPage implements OnInit {
         this.idScenario= val;
       }
     });
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.callingAccessdatil();
   }
 
@@ -91,7 +91,7 @@ accessModeId() {
 
   onSubmit(){
 
-    this.idAccessMode = this.patientAccessForm.get('idPatientProfile').value;
+    this.idAccessMode = this.patientAccessForm.get('idPatientProfile')?.value;
     this.patientService.assignAccessModeTemplateToPatientAccess(this.idPassedByURL, this.idAccessMode)
     .subscribe( (res: any) => {
       this.presentAlert();

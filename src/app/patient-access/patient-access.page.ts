@@ -12,13 +12,13 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
     standalone: false
 })
 export class PatientAccessPage implements OnInit {
-  public idScenario: number;
+  public idScenario: number = 0;
   public patientAccess: PatientAccess[] = [];
   public patientAccessNull = false;
   public patientNull = false;
   public patientProfileNull = false;
-  public idPatient: number;
-  public idPatientProfile: number;
+  public idPatient: number = 0;
+  public idPatientProfile: number = 0;
 
 
   constructor(
@@ -64,7 +64,7 @@ export class PatientAccessPage implements OnInit {
         this.patientAccess = res;
         this.patientAccessNull = false;
       }else{
-        this.patientAccess = null;
+        this.patientAccess = [];
         this.patientAccessNull = true;
       }
     }, ( err) => {
