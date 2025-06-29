@@ -13,7 +13,7 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 })
 export class DevicePage implements OnInit {
   public devices: Device[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   devicesNull= false;
   idPassedByURL = '';
 
@@ -32,7 +32,7 @@ export class DevicePage implements OnInit {
 
   }
   ionViewWillEnter(){
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.storage.get('idScenario').then((val) => {
       this.idScenario = val;
       if(this.idScenario != null){

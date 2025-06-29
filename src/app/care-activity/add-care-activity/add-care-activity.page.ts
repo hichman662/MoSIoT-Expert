@@ -16,8 +16,8 @@ export class AddCareActivityPage implements OnInit {
 
   careActivityForm: FormGroup;
   name = '';
-  careActivity: CareActivity;
-  public idScenario: number;
+  careActivity: CareActivity = new CareActivity();
+  public idScenario: number = 0;
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -44,7 +44,7 @@ export class AddCareActivityPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.careActivityForm.get('Scenario_oid').setValue(val);
+      this.careActivityForm.get('Scenario_oid')?.setValue(val);
     });
   }
 

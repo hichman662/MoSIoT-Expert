@@ -18,7 +18,7 @@ export class DetailAccessModeComponent implements OnInit {
   public AdaptationTypes: AdaptationTypeRequired [] = [];
   public AdaptationDetails: AdaptationDetailRequired [] = [];
     segmentModel = 'AdaptationRequest';
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
   constructor(
     private patientService: PatientService,
     private route: ActivatedRoute
@@ -27,7 +27,7 @@ export class DetailAccessModeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.patientService.getPatientAccessById(this.idPassedByURL)
     .subscribe((res: any ) => {
     if(res != null){

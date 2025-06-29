@@ -19,7 +19,7 @@ export class Tab1Page implements OnInit {
   public relPersonNull= false;
   public patientAccessNull = false;
   public practitionerNull = false;
-  public idScenario: number;
+  public idScenario: number = 0;
 
   constructor(private storage: Storage,
     private userService: UserService,

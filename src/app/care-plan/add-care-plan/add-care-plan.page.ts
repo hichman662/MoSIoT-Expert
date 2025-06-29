@@ -24,17 +24,17 @@ export class AddCarePlanPage implements OnInit {
   carePlanForm: FormGroup;
   carePlantemplateForm: FormGroup;
   name = '';
-  carePlan: CarePlan;
-  public idScenario: number;
-  patientProfileId: number;
+  carePlan: CarePlan = new CarePlan();
+  public idScenario: number = 0;
+  patientProfileId: number = 0;
   carePlanTemplateList: CarePlanTemplate[] =[];
   carePlanAddDone = false;
-  idcarePlanTemplate: number;
-  idCarePlan: number;
+  idcarePlanTemplate: number = 0;
+  idCarePlan: number = 0;
   idPatientProfileNull = false;
   idPatient = false;
   assignCarePlanTemplateDone= false;
-  textAlertSuccess: string;
+  textAlertSuccess: string = '';
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -73,7 +73,7 @@ export class AddCarePlanPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.carePlanForm.get('Scenario_oid').setValue(val);
+      this.carePlanForm.get('Scenario_oid')?.setValue(val);
     });
 
     this.storage.get('idPatientProfile').then((val) => {
@@ -110,7 +110,7 @@ export class AddCarePlanPage implements OnInit {
   }
 
   assignCarePlanTemplate(){
-  this.idcarePlanTemplate = this.carePlantemplateForm.get('idCarePlanTemplate').value;
+  this.idcarePlanTemplate = this.carePlantemplateForm.get('idCarePlanTemplate')?.value;
 
   this.carePlanService.assignCarePlanTemplateToCarePlan(this.idCarePlan, this.idcarePlanTemplate)
   .subscribe( (res: any) => {

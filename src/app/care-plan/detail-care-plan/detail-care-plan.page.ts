@@ -22,20 +22,20 @@ import { Entity } from './../../models/entity.model';
 })
 export class DetailCarePlanPage implements OnInit {
 
-  public carePlanTemplate: CarePlanTemplate;
-  public carePlan: CarePlan;
-  public carePlanName: string;
-  public carePlanDescription: string;
-  public goals: Goal[];
-  public targets: Target[];
+  public carePlanTemplate: CarePlanTemplate = new CarePlanTemplate();
+  public carePlan: CarePlan = new CarePlan();
+  public carePlanName: string = '';
+  public carePlanDescription: string = '';
+  public goals: Goal[] = [];  
+  public targets: Target[] = []; 
   carePlanDetailNull = false;
   segmentModel = 'details';
-  patientProfileId: number;
+  patientProfileId: number = 0;
   carePlanTemplateList: CarePlanTemplate[] =[];
   carePlantemplateForm: FormGroup;
-  idcarePlantemplate: number;
+  idcarePlantemplate: number = 0;
   public attriubute: Attribute[] = [];
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
   constructor(
     private carePlanService: CarePlanService,
     private entityService: EntityService,
@@ -54,7 +54,7 @@ export class DetailCarePlanPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.callCarePlanDetail();
 
    /*  this.carePlanService.getGoalByIdCarePlan(this.idPassedByURL)
@@ -82,7 +82,7 @@ export class DetailCarePlanPage implements OnInit {
       //la parte de los detalles de Care plan
     this.entityService.getEntitynById(this.idPassedByURL)
     .subscribe((res: Entity ) => {
-      this.attriubute = res.Attributes;
+      this.attriubute = res.attributes ?? [];
     }, (err) => {
       console.log(err);
     });
@@ -96,22 +96,24 @@ export class DetailCarePlanPage implements OnInit {
     });
 
     this.carePlanService.getCarePlanById(this.idPassedByURL)
-    .subscribe((res: CarePlan ) => {
-    if(res.CarePlanTemplate != null){
+  .subscribe((res: CarePlan) => {
+    if (res.carePlanTemplate != null) {
       this.carePlanDetailNull = false;
-      this.carePlanName = res.Name;
-      this.carePlanDescription = res.Description;
-      // this.carePlanTemplate = res.CarePlanTemplate;
-       this.goals = res.CarePlanTemplate.Goals;
-       this.targets =  res.CarePlanTemplate.Goals[0].Targets;
-       console.log(this.targets);
-    }else{
+      this.carePlanName = res.name ?? '';
+      this.carePlanDescription = res.description ?? '';
+      // this.carePlanTemplate = res.carePlanTemplate;
+
+      this.goals = res.carePlanTemplate.goals ?? [];
+      this.targets = this.goals.length > 0 ? this.goals[0].targets ?? [] : [];
+
+      console.log(this.targets);
+    } else {
       this.carePlanDetailNull = true;
-      this.carePlanTemplate = null;
+      this.carePlanTemplate = new CarePlanTemplate(); 
     }
-    }, (err) => {
-      console.log(err);
-    });
+  }, (err) => {
+    console.log(err);
+  });
   }
 
   callCarePlanTemplate(){
@@ -126,7 +128,7 @@ export class DetailCarePlanPage implements OnInit {
 
   onSubmit(){
 
-    this.idcarePlantemplate = this.carePlantemplateForm.get('idCarePlanTemplate').value;
+    this.idcarePlantemplate = this.carePlantemplateForm.get('idCarePlanTemplate')?.value;
     console.log("Id Care plan template " + this.idcarePlantemplate);
     console.log("pass by Url " +this.idPassedByURL);
     this.carePlanService.assignCarePlanTemplateToCarePlan(this.idPassedByURL, this.idcarePlantemplate)
@@ -197,6 +199,7 @@ export class DetailCarePlanPage implements OnInit {
               console.log(err);
               this.presentToast('danger','Your settings have not been saved.');
               });
+              return true;
             } else {
               return false;
             }

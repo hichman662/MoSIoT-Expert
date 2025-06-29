@@ -82,32 +82,43 @@ export class DetailProfileComponent implements OnInit {
   callPatientProfileEntity(){
     this.entityService.getEntitynById(this.patientId)
     .subscribe((res: Entity ) => {
-      this.attriubute = res.Attributes;
+      this.attriubute = res.attributes ?? [];
     }, (err) => {
       console.log(err);
     });
   }
 
-  callingPatient(){
-    this.userService.getPatientByIdScenario(this.idScenario)
-    .subscribe((res: UserData[] ) => {
-    if(res[0]?.patient?.patientProfile != null){
-      this.patientProfileNull = false;
-       this.patientProfile = res[0].patient.patientProfile;
-      this.diseases = res[0].patient.patientProfile.diseases ?? [];
-      this.disabilities = res[0].patient.patientProfile.disabilities ?? [];
-      this.load= true;
+ callingPatient() {
+  this.userService.getPatientByIdScenario(this.idScenario).subscribe(
+    (res: UserData[]) => {
+      const patientProfile = res[0]?.patient?.patientProfile;
+      if (patientProfile) {
+        this.patientProfileNull = false;
+        this.patientProfile = patientProfile;
 
-    }else{
-      this.callingPatientProfile();
-      this.patientProfileNull = true;
+        // Convert diseases and disabilities to arrays if they are not
+        const rawDiseases = patientProfile.diseases ?? [];
+        this.diseases = Array.isArray(rawDiseases)
+          ? rawDiseases
+          : Object.values(rawDiseases);
 
+        const rawDisabilities = patientProfile.disabilities ?? [];
+        this.disabilities = Array.isArray(rawDisabilities)
+          ? rawDisabilities
+          : Object.values(rawDisabilities);
+
+        this.load = true;
+      } else {
+        this.callingPatientProfile();
+        this.patientProfileNull = true;
+      }
+    },
+    (err) => {
+      console.log(err);
     }
-    }, (err) => {
-      console.log(err);
-    });
+  );
+}
 
-  }
   callingPatientProfile(){
      this.patientService.getAllPatientProfile()
     .subscribe( (res2: any) => {
@@ -145,6 +156,9 @@ export class DetailProfileComponent implements OnInit {
     await alert.present();
   }
 
+  castToDisease(value: any): Disease {
+  return value as Disease;
+}
 
 
   closeSliding(slidingItem: IonItemSliding){

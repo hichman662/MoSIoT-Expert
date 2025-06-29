@@ -44,10 +44,10 @@ export class DetailVitalSignPage implements OnInit {
 
   ngOnInit() {
 
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.entityService.getEntitynById(this.idPassedByURL)
     .subscribe((res: Entity ) => {
-      this.attriubute = res.Attributes;
+      this.attriubute = res.attributes ?? [];
     }, (err) => {
       console.log(err);
     });
@@ -97,6 +97,7 @@ export class DetailVitalSignPage implements OnInit {
               console.log(err);
               this.presentToast('danger','Your settings have not been saved.');
               });
+              return true;
             } else {
               return false;
             }

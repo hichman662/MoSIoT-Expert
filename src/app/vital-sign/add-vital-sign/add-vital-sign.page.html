@@ -52,7 +52,7 @@
         <ion-item>
             <ion-label position="stacked">Name</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="vitalSignForm.controls.Name.errors && vitalSignForm.controls.Name.touched">
+            <div class="error" *ngIf="vitalSignForm.controls['Name'].errors && vitalSignForm.controls['Name'].touched">
                 Please fill out this field
             </div>
         </ion-item>
@@ -60,7 +60,7 @@
         <ion-item>
             <ion-label position="stacked">Description</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="vitalSignForm.controls.Description.errors && vitalSignForm.controls.Description.touched">
+            <div class="error" *ngIf="vitalSignForm.controls['description'].errors && vitalSignForm.controls['Description'].touched">
                 Please fill out this field
             </div>
         </ion-item>

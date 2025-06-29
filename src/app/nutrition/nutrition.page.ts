@@ -13,7 +13,7 @@ import { Nutrition } from '../models/nutrition.model';
 export class NutritionPage implements OnInit {
 
   public nutritions: Nutrition[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public nutritionNull = false;
   constructor(
     private carePlanService: CarePlanService,
@@ -40,7 +40,7 @@ export class NutritionPage implements OnInit {
         this.nutritions = res;
         this.nutritionNull = false;
       }else{
-        this.nutritions = null;
+        this.nutritions = [];
         this.nutritionNull = true;
       }
     }, ( err) => {

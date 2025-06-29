@@ -66,14 +66,14 @@
 
             <ion-label position="stacked">{{ 'ADDPATIENT.email' | translate }}</ion-label>
             <ion-input type="email" formControlName="Email" class="form-control" required></ion-input>
-            <div class="error" *ngIf="patientForm.controls.Email.errors && patientForm.controls.Email.touched">
+            <div class="error" *ngIf="patientForm.controls['Email'].errors && patientForm.controls['Email'].touched">
                 {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
         <ion-item>
             <ion-label position="stacked">{{ 'ADDPATIENT.password' | translate }}</ion-label>
             <ion-input type="password" formControlName="Pass" class="form-control" required></ion-input>
-            <div class="error" *ngIf="patientForm.controls.Pass.errors && patientForm.controls.Pass.touched">
+            <div class="error" *ngIf="patientForm.controls['Pass'].errors && patientForm.controls['Pass'].touched">
                 {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -83,12 +83,12 @@
 
             <ion-select multiple="false" [value]="invitedUserId" [placeholder]="invitedUserName" okText="Okay" cancelText="Dismiss" formControlName="UserPatient_oid">
 
-                <div class="error" *ngIf="patientForm.controls.UserPatient_oid.errors && patientForm.controls.UserPatient_oid.touched">
+                <div class="error" *ngIf="patientForm.controls['UserPatient_oid'].errors && patientForm.controls['UserPatient_oid'].touched">
                     {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div>
-                    <ion-select-option *ngFor="let user of findNotAlreadyPatient" [value]="user['Id']">{{user['Name']}} {{user['Surnames']}}</ion-select-option>
+                    <ion-select-option *ngFor="let user of findNotAlreadyPatient" [value]="user['Id']">{{user['name']}} {{user['surnames']}}</ion-select-option>
 
                 </div>
 
@@ -117,12 +117,12 @@
 
             <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="p_patientprofile_oid">
 
-                <div class="error" *ngIf="patientProfileForm.controls.p_patientprofile_oid.errors && patientProfileForm.controls.p_patientprofile_oid.touched">
+                <div class="error" *ngIf="patientProfileForm.controls['p_patientprofile_oid'].errors && patientProfileForm.controls['p_patientprofile_oid'].touched">
                     {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div>
-                    <ion-select-option *ngFor="let patientProfile of allPatientProfile" [value]="patientProfile['Id']">{{patientProfile['Name']}}</ion-select-option>
+                    <ion-select-option *ngFor="let patientProfile of allPatientProfile" [value]="patientProfile['Id']">{{patientProfile['name']}}</ion-select-option>
 
                 </div>
 

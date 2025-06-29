@@ -52,7 +52,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDCOMMUNICATION.name' | translate }}</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="addCommunicationForm.controls.Name.errors && addCommunicationForm.controls.Name.touched">
+            <div class="error" *ngIf="addCommunicationForm.controls['Name'].errors && addCommunicationForm.controls['Name'].touched">
                 {{ 'ADDCOMMUNICATION.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -60,7 +60,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDCOMMUNICATION.description' | translate }}</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="addCommunicationForm.controls.Description.errors && addCommunicationForm.controls.Description.touched">
+            <div class="error" *ngIf="addCommunicationForm.controls['Description'].errors && addCommunicationForm.controls['Description'].touched">
                 {{ 'ADDCOMMUNICATION.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>

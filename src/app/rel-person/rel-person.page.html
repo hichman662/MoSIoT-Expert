@@ -65,8 +65,8 @@
                 </ion-item>
 
 
-                <ion-item-options side="end" (ionSwipe)="deleterelatedPerson(slidingItem,relatedPerson['id'], relatedPerson['name'])">
-                    <ion-item-option color="danger" expandable (click)="deleterelatedPerson(slidingItem,relatedPerson['id'], relatedPerson['name'])">
+                <ion-item-options side="end" (ionSwipe)="deleterelatedPerson(slidingItem,relatedPerson['id']!, relatedPerson['name']!)">
+                    <ion-item-option color="danger" expandable (click)="deleterelatedPerson(slidingItem,relatedPerson['id']!, relatedPerson['name']!)">
 
                         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
 

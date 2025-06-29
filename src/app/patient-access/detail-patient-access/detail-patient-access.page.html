@@ -126,12 +126,12 @@
 
             <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idPatientProfile">
 
-                <div class="error" *ngIf="patientAccessForm.controls.idPatientProfile.errors && patientAccessForm.controls.idPatientProfile.touched">
+                <div class="error" *ngIf="patientAccessForm.controls['idPatientProfile'].errors && patientAccessForm.controls['idPatientProfile'].touched">
                     {{ 'PATIENTACCESS.pleaseFillOutThisField' | translate }}
                 </div>
 
                 <div>
-                    <ion-select-option *ngFor="let accessMode of allAccessMode" [value]="accessMode['Id']">{{accessMode['Name']}}</ion-select-option>
+                    <ion-select-option *ngFor="let accessMode of allAccessMode" [value]="accessMode['id']">{{accessMode['name']}}</ion-select-option>
 
                 </div>
 

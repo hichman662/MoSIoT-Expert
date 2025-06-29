@@ -66,8 +66,8 @@
                 </ion-item>
 
 
-                <ion-item-options side="end" (ionSwipe)="deletePractitioner(slidingItem,practitioner['id'], practitioner['name'])">
-                    <ion-item-option color="danger" expandable (click)="deletePractitioner(slidingItem,practitioner['id'], practitioner['name'])">
+                <ion-item-options side="end" (ionSwipe)="deletePractitioner(slidingItem,practitioner['id']!, practitioner['name']!)">
+                    <ion-item-option color="danger" expandable (click)="deletePractitioner(slidingItem,practitioner['id']!, practitioner['name']!)">
 
                         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
 

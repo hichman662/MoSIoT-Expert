@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {of, Observable} from 'rxjs';
 import { Practitioner } from '../models/practitioner.model';
 import { RelatedPerson } from '../models/relatedPerson.model';
+import { AccessMode } from '../models/accessMode.model';
 
 
 
@@ -16,7 +17,7 @@ import { RelatedPerson } from '../models/relatedPerson.model';
 })
 export class PatientService {
 
-    patient: Patient;
+    patient: Patient | null = null;
 
 constructor(private http: HttpClient) {
 
@@ -28,7 +29,7 @@ public getAllPatient(): Observable<object>{
 }
 
 public getPatientById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Patient>(`${environment.base_url}/Patient/${uid}` );
 }
 
@@ -56,14 +57,14 @@ public getAllPractitioner(): Observable<object>{
   return this.http.get(`${environment.base_url}/Practitioner/ReadAll`);
 }
 public getPractitionerById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <Practitioner>(`${environment.base_url}/Practitioner/${uid}` );
 }
 
 public createPractitioner( data: Practitioner ): Observable<object> {
   return this.http.post(`${environment.base_url}/Practitioner/New_`, data);
 }
-public deletePractitioner(uid) {
+public deletePractitioner(uid : number) {
   return this.http.delete(`${environment.base_url}/Practitioner/Destroy?p_practitioner_oid=${uid}`);
 }
 
@@ -72,18 +73,18 @@ public getAllRelatedPerson(): Observable<object>{
   return this.http.get(`${environment.base_url}/RelatedPerson/ReadAll`);
 }
 public getRelatedPersonById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <RelatedPerson>(`${environment.base_url}/RelatedPerson/${uid}` );
 }
 public getRelatedPersonByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <RelatedPerson>(`${environment.base_url}/RelatedPerson/RelatedPeople?idIoTScenario=${uid}` );
 }
 public createRelatedPerson( data: RelatedPerson ): Observable<object> {
   return this.http.post(`${environment.base_url}/RelatedPerson/New_`, data);
 }
 
-public deleteRelatedPerson(uid) {
+public deleteRelatedPerson(uid : number) {
   return this.http.delete(`${environment.base_url}/RelatedPerson/Destroy?p_relatedperson_oid=${uid}`);
 }
 
@@ -93,24 +94,24 @@ public getAllPatientAccess(): Observable<object>{
   return this.http.get(`${environment.base_url}/PatientAccess/ReadAll`);
 }
 public getPatientAccessById( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <PatientAccess>(`${environment.base_url}/PatientAccess/${uid}` );
 }
 public getPatientAccessByIdScenario( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
+  if (!uid) { uid = 0; }
   return this.http.get <PatientAccess>(`${environment.base_url}/PatientAccess/PatientAccessScenario?idIoTScenario=${uid}` );
 }
 public createPatientAccess( data: RelatedPerson ): Observable<object> {
   return this.http.post(`${environment.base_url}/PatientAccess/New_`, data);
 }
 
-public deletePatientAccess(uid) {
+public deletePatientAccess(uid : number) {
   return this.http.delete(`${environment.base_url}/PatientAccess/Destroy?p_patientaccess_oid=${uid}`);
 }
 
-public getAccessModeByIdPatientprofile( uid: number): Observable<object>{
-  if (!uid) { uid = null; }
-  return this.http.get <PatientAccess>(`${environment.base_url}/AccessMode/ProfileAccessMode?idPatientProfile=${uid}` );
+public getAccessModeByIdPatientprofile( uid: number): Observable<AccessMode[]>{
+  if (!uid) { uid = 0; }
+  return this.http.get <AccessMode[]>(`${environment.base_url}/AccessMode/ProfileAccessMode?idPatientProfile=${uid}` );
 }
 
 // Assign Access mode to Patient Access

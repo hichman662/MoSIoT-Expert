@@ -11,10 +11,10 @@ import { CareActivity } from 'src/app/models/careActivity.model';
 })
 export class DetailCareActivityPage implements OnInit {
 
-  public patientName: '';
-  public patientDescrip: '';
-  public patientData: CareActivity;
-  public idScenario: number;
+  public patientName: string =  '';
+  public patientDescrip: string = '';
+  public patientData: CareActivity = new CareActivity();
+  public idScenario: number = 0;
   segmentModel = 'details';
 
   constructor(

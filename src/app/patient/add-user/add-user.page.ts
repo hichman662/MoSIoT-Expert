@@ -20,8 +20,8 @@ export class AddUserPage implements OnInit {
 
   userForm: FormGroup;
   surenames = '';
-  user: UserData;
-  textAlertSuccess: string;
+  user: UserData = new UserData();
+  textAlertSuccess: string = '';
   constructor(
     private userService: UserService,
     public alertController: AlertController,
@@ -63,7 +63,7 @@ export class AddUserPage implements OnInit {
 
   ngOnInit() {
   this.storage.get('idScenario').then((val) => {
-      this.userForm.get('Scenario_oid').setValue(val);
+      this.userForm.get('Scenario_oid')?.setValue(val);
     });
   }
 

@@ -15,7 +15,7 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 export class VitalSignPage implements OnInit {
 
   public vitalSigns: VitalSign[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public vitalSignNull = false;
 
   constructor(
@@ -45,7 +45,7 @@ export class VitalSignPage implements OnInit {
         this.vitalSigns = res;
         this.vitalSignNull = false;
       }else{
-        this.vitalSigns = null;
+        this.vitalSigns = [];
         this.vitalSignNull = true;
       }
     }, ( err) => {

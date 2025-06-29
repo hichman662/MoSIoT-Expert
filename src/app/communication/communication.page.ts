@@ -15,7 +15,7 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 export class CommunicationPage implements OnInit {
 
   public communications: Communication[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public communicationNull = false;
   constructor(
     private carePlanService: CarePlanService,
@@ -43,7 +43,7 @@ export class CommunicationPage implements OnInit {
         this.communications = res;
         this.communicationNull = false;
       }else{
-        this.communications = null;
+        this.communications = [];
         this.communicationNull = true;
       }
     }, ( err) => {

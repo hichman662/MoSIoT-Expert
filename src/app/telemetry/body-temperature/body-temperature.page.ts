@@ -15,11 +15,11 @@ import { Chart, registerables } from 'chart.js';
 })
 export class BodyTemperaturePage implements OnInit {
 
-  @ViewChild('barCanvas') private barCanvas: ElementRef;
+  @ViewChild('barCanvas') private barCanvas!: ElementRef;
   public bodyTemperature: any;
   barChart: any;
-  textCelsius: string;
-  label: any [] =[' 2022/5/22', '2022/5/23', '2022/5/26', '2022/5/27', '2022/6/01','2022/6/2'];
+  textCelsius: string = '';
+  label: any [] =[' 2025/5/22', '2025/5/23', '2025/5/26', '2025/5/27', '2025/6/01','2025/6/2'];
   data: any[]=[37, 37.5, 36, 37.5, 36.5, 37,5 ];
   date= new Date();
   constructor(  public router: Router,
@@ -34,7 +34,7 @@ export class BodyTemperaturePage implements OnInit {
   ngOnInit() {
 
   }
-  doRefresh(event) {
+  doRefresh(event : any) {
     console.log('Begin async operation');
 
  setTimeout(() => {
@@ -48,12 +48,12 @@ export class BodyTemperaturePage implements OnInit {
 }
 
 
-randomNumber(min, max) {
+randomNumber(min : number, max : number) {
  return Math.floor(Math.random() * (max - min )) + min;
 }
 
   ionViewWillEnter() {
-    this.bodyTemperature = this.route.snapshot.params.bodyTemperature;
+    this.bodyTemperature = this.route.snapshot.params['bodyTemperature'];
     this.data.push(this.bodyTemperature);
     this.label.push(this.date.getFullYear()+'/'+this.date.getUTCMonth()+'/'+this.date.getDate());
     this.barChartMethod();

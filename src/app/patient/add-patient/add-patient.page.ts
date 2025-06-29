@@ -22,21 +22,21 @@ export class AddPatientPage implements OnInit {
 
   patientForm: FormGroup;
   email = '';
-  patient: Patient;
-  public idScenario: number;
-  invitedUserName: string;
-  invitedUserId: number;
+  patient: Patient = new Patient();
+  public idScenario: number = 0;
+  invitedUserName: string = '';
+  invitedUserId: number = 0;
   findNotAlreadyPatient: any [] = [];
   patientAddDone = false;
   patientProfileAddDone = false;
   patientProfileForm: FormGroup;
   public patientProfileNull = false;
   public allPatientProfile: any [] = [];
-  patientprofileId: number;
-  patientId: number;
+  patientprofileId: number = 0;
+  patientId: number = 0;
   data: any;
-  textSuccess: string;
-  textAlertSuccess: string;
+  textSuccess: string = '';
+  textAlertSuccess: string = '';
 
   constructor(
     public navCtrl: NavController,
@@ -86,7 +86,7 @@ export class AddPatientPage implements OnInit {
     this.userService.getAllUsers()
     .subscribe( (res: any) => {
       console.log(res);
-      this.findNotAlreadyPatient = res.filter( obj =>  obj.Patient === null);
+      this.findNotAlreadyPatient = res.filter( (obj:any) =>  obj.Patient === null);
       console.log(this.findNotAlreadyPatient);
         }, ( err ) => {
     });
@@ -153,7 +153,7 @@ export class AddPatientPage implements OnInit {
 
  AssignPatientProfile(){
 
-  this.patientprofileId = this.patientProfileForm.get('p_patientprofile_oid').value;
+  this.patientprofileId = this.patientProfileForm.get('p_patientprofile_oid')?.value;
   this.patientService.assignPatientProfileTemplate(this.patientId, this.patientprofileId)
   .subscribe( (res: any) => {
     this.storage.set('idPatientProfile', this.patientprofileId);

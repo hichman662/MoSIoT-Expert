@@ -22,13 +22,15 @@ export class TranslateConfigService {
       }else{
         let language = this.translate.getBrowserLang();
         console.log('language is: '+ language);
+        if (language) {
         this.translate.setDefaultLang(language);
+        }
         return language;
       }
     });
   }
 
-  setLanguage(setLang) {
+  setLanguage(setLang : string) {
     this.translate.use(setLang);
     this.storage.set('language', setLang);
   }

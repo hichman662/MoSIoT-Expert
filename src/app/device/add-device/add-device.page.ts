@@ -26,21 +26,22 @@ export class AddDevicePage implements OnInit {
   accessModeForm: FormGroup;
   deviceTemplateForm: FormGroup;
   name = '';
-  carePlan: CarePlan;
-  patientProfileId: number;
-  public idScenario: number;
-  public allProfileAccessMods: AccessMode[];
-  public allDeviceTemplates: DeviceTemplate[];
+  carePlan: CarePlan | null = null;
+  patientProfileId: number = 0;
+  public idScenario: number = 0;
+  public allProfileAccessMods: AccessMode[] | null = null;
+  public allDeviceTemplates: DeviceTemplate[] | null = null;;
   assignDeviceTemplateDone = false;
   deviceAddDone = false;
   assignAccessModeDone = false;
   allOkey = false;
-  idDevice: number;
-  idDeviceTemplateChoosen: number;
-  idAccessModeChoosen: number;
-  idAccessModeFromStorage: number;
+  idDevice: number = 0;
+  idDeviceTemplateChoosen: number = 0;
+  idAccessModeChoosen: number = 0;
+  idAccessModeFromStorage: number =  0;
   weHaveAccessModeId = false;
-  textAlertSuccess: string;
+  textAlertSuccess: string = '';
+
   constructor(
     public navCtrl: NavController,
     private deviceService: DeviceService,
@@ -105,7 +106,7 @@ ngOnInit() {
 
 ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.deviceForm.get('Scenario_oid').setValue(val);
+      this.deviceForm.get('Scenario_oid')?.setValue(val);
     });
 
     this.storage.get('idPatientProfile').then((val) => {
@@ -181,7 +182,7 @@ ionViewWillEnter(){
 
 //Second
  callAccessMode(){
-  this.idAccessModeChoosen = this.accessModeForm.get('idAccessMode').value;
+  this.idAccessModeChoosen = this.accessModeForm.get('idAccessMode')?.value;
   this.deviceService.getDeviceTemplateByIdAccessMode(this.idAccessModeChoosen)
   .subscribe( (res: DeviceTemplate[]) => {
     this.allDeviceTemplates = res;
@@ -204,7 +205,7 @@ ionViewWillEnter(){
  }
 
  assignDeviceTemplate(){
-  this.idDeviceTemplateChoosen = this.deviceTemplateForm.get('p_devicetemplate_oid').value;
+  this.idDeviceTemplateChoosen = this.deviceTemplateForm.get('p_devicetemplate_oid')?.value;
   this.deviceService.assignDeviceTemplate( this.idDevice, this.idDeviceTemplateChoosen)
   .subscribe( (res: any) => {
     console.log(res);

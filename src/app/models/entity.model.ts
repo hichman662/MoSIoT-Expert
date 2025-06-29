@@ -5,9 +5,9 @@ import { Attribute } from "./attribute.model";
 import { Operation } from "./operation.model";
 export class Entity {
 
-    Id: number;
-    OriginAssociations: any[];
-    TargetAssociations: any[];
-    Attributes: Attribute[];
-    Operations: Operation[];
+    id?: number;
+    originAssociations?: any[];
+    targetAssociations?: any[];
+    attributes?: Attribute[];
+    operations?: Operation[];
 }

@@ -15,11 +15,11 @@ import { Chart, registerables } from 'chart.js';
 })
 export class HeartRatePage implements OnInit {
 
-  @ViewChild('barCanvas') private barCanvas: ElementRef;
+  @ViewChild('barCanvas') private barCanvas!: ElementRef;
   public heartRate: any;
   barChart: any;
-  textBeats: string;
-  label: any [] =[ '2022/5/22', '2022/5/23', '2022/5/26', '2022/5/27', '2022/6/1'];
+  textBeats: string = '';
+  label: any [] =[ '2025/5/22', '2025/5/23', '2025/5/26', '2025/5/27', '2025/6/1'];
   data: any[]=[ 78, 90, 89,94,98];
   date= new Date();
   constructor(  public router: Router,
@@ -36,7 +36,7 @@ export class HeartRatePage implements OnInit {
   ngOnInit() {
 
   }
-  doRefresh(event) {
+  doRefresh(event : any) {
     console.log('Begin async operation');
 
  setTimeout(() => {
@@ -49,12 +49,12 @@ export class HeartRatePage implements OnInit {
  }, 4000);
 }
 
-randomNumber(min, max) {
+randomNumber(min : number, max : number) {
  return Math.floor(Math.random() * (max - min )) + min;
 }
 
   ionViewWillEnter() {
-    this.heartRate = this.route.snapshot.params.heartRate;
+    this.heartRate = this.route.snapshot.params['heartRate'];
     this.data.push(this.heartRate);
     this.label.push(this.date.getFullYear()+'/'+this.date.getUTCMonth()+'/'+this.date.getDate());
     this.barChartMethod();

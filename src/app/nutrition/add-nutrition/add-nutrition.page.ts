@@ -20,12 +20,12 @@ import { CareActivity } from 'src/app/models/careActivity.model';
 export class AddNutritionPage implements OnInit {
   addNutritionForm: FormGroup;
   name = '';
-  careActivity: CareActivity;
-  public idScenario: number;
-  idNewNutrition: number;
-  idCareactivityForAdd: number;
-  idNutritionForAdd: number;
-  textAlertSuccess: string;
+  careActivity: CareActivity = new CareActivity();
+  public idScenario: number = 0;
+  idNewNutrition: number = 0;
+  idCareactivityForAdd: number = 0;
+  idNutritionForAdd: number = 0;
+  textAlertSuccess: string = '';
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -62,7 +62,7 @@ export class AddNutritionPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addNutritionForm.get('Scenario_oid').setValue(val);
+      this.addNutritionForm.get('Scenario_oid')?.setValue(val);
     });
     this.storage.get('careActivityIdForAdd').then((val) => {
       this.idCareactivityForAdd = val;
@@ -75,8 +75,8 @@ export class AddNutritionPage implements OnInit {
   onSubmit(){
     this.carePlanService.createNutritionOrder(this.addNutritionForm.value)
     .subscribe( (res: Nutrition) => {
-      this.name = res.Name;
-      this.idNewNutrition = res.Id;
+      this.name = res.name ?? '';
+      this.idNewNutrition = res.id ?? 0;
       this.assignNutritionTemplate();
       console.log("id new nutrition: " + this.idNewNutrition);
       window.history.back();

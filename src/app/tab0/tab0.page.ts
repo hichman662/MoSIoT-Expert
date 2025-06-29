@@ -26,7 +26,7 @@ import { Communication } from '../models/communication.model';
     standalone: false
 })
 export class Tab0Page implements OnInit {
-  public patientProfile: PatientProfile;
+  public patientProfile: PatientProfile = new PatientProfile();
   public diseases: Disease [] = [];
   public disabilities: Disability [] = [];
   public patientProfileNull = false;
@@ -35,12 +35,12 @@ export class Tab0Page implements OnInit {
   public patientSurnames = '';
   patientDescription = '';
   load = false;
-  public scenario: Scenario;
-  public idScenario: number;
-  public scenarioName: string;
+  public scenario: Scenario = new Scenario ();
+  public idScenario: number = 0;
+  public scenarioName: string = '';
   public carePlans: CarePlan[] = [];
   public carePlanNull = false;
-  token: '';
+  token : string = '';
   segmentModel = 'diseases';
   public patientAccess: PatientAccess[] = [];
   public patientAccessNull = false;
@@ -95,33 +95,40 @@ export class Tab0Page implements OnInit {
     });
   }
 
-  async callingPatientByIdScenario(id: number){
-    await this.userService.getPatientByIdScenario(id)
-    .subscribe((res: UserData[] ) => {
-      if(res !== null ){
-        this.patientName = res[0].Name;
-        this.patientSurnames = res[0].Surnames;
-        this.patientDescription = res[0].Description;
+async callingPatientByIdScenario(id: number) {
+  this.userService.getPatientByIdScenario(id)
+    .subscribe((res: UserData[]) => {
+      const user = res?.[0];
+
+      if (user) {
+        this.patientName = user.name ?? '';
+        this.patientSurnames = user.surnames ?? '';
+        this.patientDescription = user.description ?? '';
         this.patientNull = false;
-      }else{
+
+        const profile = user.patient?.patientProfile;
+
+        if (profile) {
+          this.patientProfile = profile;
+          this.diseases = profile.diseases ?? [];
+          this.disabilities = profile.disabilities ?? [];
+          this.patientProfileNull = false;
+          this.load = true;
+        } else {
+          this.patientProfileNull = true;
+          this.storage.set('idPatientProfile', null);
+        }
+      } else {
         this.patientNull = true;
-        this.storage.set('idPatient',null);
-      }
-      if(res !== null && res[0].Patient.PatientProfile !== null){
-        this.patientProfileNull = false;
-         this.patientProfile = res[0].Patient.PatientProfile;
-        this.diseases = res[0].Patient.PatientProfile.Diseases;
-        this.disabilities = res[0].Patient.PatientProfile.Disabilities;
-        this.load= true;
-      }else{
+        this.storage.set('idPatient', null);
         this.patientProfileNull = true;
-        this.storage.set('idPatientProfile',null);
+        this.storage.set('idPatientProfile', null);
       }
     }, (err) => {
-      console.log(err);
+      console.error(err);
     });
+}
 
-  }
 
 
   callCarePlans(id: number){
@@ -131,7 +138,7 @@ export class Tab0Page implements OnInit {
         this.carePlans = res;
         this.carePlanNull = false;
       }else{
-        this.carePlans = null;
+        this.carePlans = [];
         this.carePlanNull = true;
       }
     }, ( err) => {

@@ -14,7 +14,7 @@ import { IonItemSliding, AlertController, LoadingController } from '@ionic/angul
 export class CarePlanPage implements OnInit {
 
   public carePlans: CarePlan[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public carePlanNull = false;
   patientNull = false;
   constructor(
@@ -51,7 +51,7 @@ export class CarePlanPage implements OnInit {
         this.carePlans = res;
         this.carePlanNull = false;
       }else{
-        this.carePlans = null;
+        this.carePlans = [];
         this.carePlanNull = true;
       }
     }, ( err) => {

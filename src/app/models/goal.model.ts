@@ -3,11 +3,11 @@
 import { CarePlanTemplate } from './carePlanTemplate.model';
 import { Target } from './target.model';
 export class Goal {
-    Id: number;
-    Name?: string;
-    Description?: string;
-    CarePlanTemplate?: CarePlanTemplate;
-    LOINCcode?: string;
-    Targets: Target[];
+    id?: number;
+    name?: string;
+    description?: string;
+    carePlanTemplate?: CarePlanTemplate;
+    lOINCcode?: string;
+    targets?: Target[];
 
 }

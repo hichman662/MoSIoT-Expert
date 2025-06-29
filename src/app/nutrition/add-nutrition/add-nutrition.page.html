@@ -52,7 +52,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDNUTRITION.name' | translate }}</ion-label>
             <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="addNutritionForm.controls.Name.errors && addNutritionForm.controls.Name.touched">
+            <div class="error" *ngIf="addNutritionForm.controls['Name'].errors && addNutritionForm.controls['Name'].touched">
                 {{ 'ADDNUTRITION.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -60,7 +60,7 @@
         <ion-item>
             <ion-label position="stacked">{{ 'ADDNUTRITION.description' | translate }}</ion-label>
             <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="addNutritionForm.controls.Description.errors && addNutritionForm.controls.Description.touched">
+            <div class="error" *ngIf="addNutritionForm.controls['Description'].errors && addNutritionForm.controls['Description'].touched">
                 {{ 'ADDNUTRITION.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>

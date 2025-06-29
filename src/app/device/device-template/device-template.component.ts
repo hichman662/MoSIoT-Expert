@@ -28,7 +28,7 @@ export class DeviceTemplateComponent implements OnInit {
   public attriubute: Attribute[] = [];
   public allCommands: CommandTemplate[] = [];
   public allProperties: PropertyTemplate[] = [];
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
 
   constructor(
     private entityService: EntityService,
@@ -44,11 +44,11 @@ export class DeviceTemplateComponent implements OnInit {
 
 
 
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.callDeviceByIdTemporal();
     this.entityService.getEntitynById(this.idPassedByURL)
     .subscribe((res: Entity ) => {
-      this.attriubute = res.Attributes;
+      this.attriubute = res.attributes ?? [];
       //this.allCommands = res.Operations;
       console.log(this.allCommands);
     }, (err) => {
@@ -57,21 +57,23 @@ export class DeviceTemplateComponent implements OnInit {
   }
 
 
-  callDeviceByIdTemporal(){
-
-    this.deviceService.getDeviceById(this.idPassedByURL)
-    .subscribe((res: Device ) => {
+  callDeviceByIdTemporal() {
+  this.deviceService.getDeviceById(this.idPassedByURL)
+    .subscribe((res: Device) => {
       console.log(res);
-    if(res != null){
-      this.allProperties = res.DeviceTemplate.Properties;
-      this.allCommands = res.DeviceTemplate.Commands;
-      console.log(this.allProperties);
-    }
+      if (res != null && res.deviceTemplate != null) {
+        this.allProperties = res.deviceTemplate.Properties ?? [];
+        this.allCommands = res.deviceTemplate.Commands ?? [];
+        console.log(this.allProperties);
+      } else {
+        this.allProperties = [];
+        this.allCommands = [];
+      }
     }, (err) => {
       console.log(err);
     });
+}
 
-  }
 
   closeSliding(slidingItem: IonItemSliding){
     slidingItem.close();
@@ -118,6 +120,7 @@ export class DeviceTemplateComponent implements OnInit {
               console.log(err);
               this.presentToast('danger','Your settings have not been saved.');
               });
+              return true;
             } else {
               return false;
             }

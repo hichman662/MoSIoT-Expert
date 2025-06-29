@@ -19,19 +19,19 @@ import { Storage } from '@ionic/storage';
 })
 export class AddPatientAccessPage implements OnInit {
 
-  patientProfileId: number;
+  patientProfileId: number = 0;
   patientAccessForm: FormGroup;
   patientAccessProfileForm: FormGroup;
   name = '';
-  patientAccess: PatientAccess;
+  patientAccess: PatientAccess = new PatientAccess();
   public idScenario: any;
   public allAccessMode: AccessMode []= [];
-  idAccessMode: number;
+  idAccessMode: number = 0;
   accessModeAddDone = false;
   accessModeProfileAddDone = false;
-  idPatientAcess: number;
+  idPatientAcess: number = 0;
   idPassedByURL = '';
-  textAlertSuccess: string;
+  textAlertSuccess: string = '';
   constructor(
     public navCtrl: NavController,
     private patientService: PatientService,
@@ -69,10 +69,10 @@ export class AddPatientAccessPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     console.log(this.idPassedByURL);
     this.storage.get('idScenario').then((val) => {
-      this.patientAccessForm.get('Scenario_oid').setValue(val);
+      this.patientAccessForm.get('Scenario_oid')?.setValue(val);
     });
 
   }
@@ -144,7 +144,7 @@ this.patientService.getAccessModeByIdPatientprofile(this.patientProfileId)
 
 assignAccessMode(){
 
-  this.idAccessMode = this.patientAccessProfileForm.get('idPatientProfile').value;
+  this.idAccessMode = this.patientAccessProfileForm.get('idPatientProfile')?.value;
   this.patientService.assignAccessModeTemplateToPatientAccess(this.idPatientAcess, this.idAccessMode)
   .subscribe( (res: any) => {
 //    this.presentAlert('access mode');

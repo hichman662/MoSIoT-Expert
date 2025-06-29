@@ -6,9 +6,9 @@ import { TeleValue } from './teleValue.model';
 import { Telemetry } from './telemetry.model';
 
 export class ImTelemetry {
-    Id: number;
-    Name?: string;
-    Description?:string;
-    Telemetry?:Telemetry;
-    TeleValues?: TeleValue[];
+    id?: number;
+    name?: string;
+    description?:string;
+    telemetry?:Telemetry;
+    teleValues?: TeleValue[];
 }

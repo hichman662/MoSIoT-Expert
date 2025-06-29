@@ -18,7 +18,7 @@ import { Storage } from '@ionic/storage';
 export class LoginPage implements OnInit {
   public formSubmit = false;
   public waiting = false;
-  textAlertActionNotComplete: string;
+  textAlertActionNotComplete: string = '';
 
   public loginForm = this.fb.group({
     Email: ['', [Validators.required, Validators.email]],
@@ -55,7 +55,7 @@ async  ngOnInit() {
     this.userService.login(this.loginForm.value)
       .subscribe( (res: any) => {
         this.waiting = false;
-        this.storage.set('email', this.loginForm.get('Email').value);
+        this.storage.set('email', this.loginForm.get('email')?.value);
         this.router.navigateByUrl('/scenarios', { replaceUrl:true });
       }, (err: any) => {
         console.warn('Error respuesta api', err);

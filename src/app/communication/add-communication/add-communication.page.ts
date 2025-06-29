@@ -20,12 +20,12 @@ import { ToastController } from '@ionic/angular';
 export class AddCommunicationPage implements OnInit {
   addCommunicationForm: FormGroup;
   name = '';
-  careActivity: CareActivity;
-  public idScenario: number;
-  idNewCummunication: number;
-  idCareactivityForAdd: number;
-  idCummunicationForAdd: number;
-  textAlertSuccess: string;
+  careActivity: CareActivity = new CareActivity();
+  public idScenario: number = 0;
+  idNewCummunication: number = 0;
+  idCareactivityForAdd: number = 0;
+  idCummunicationForAdd: number = 0;
+  textAlertSuccess: string = '';
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -62,7 +62,7 @@ export class AddCommunicationPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addCommunicationForm.get('Scenario_oid').setValue(val);
+      this.addCommunicationForm.get('Scenario_oid')?.setValue(val);
     });
     this.storage.get('careActivityIdForAdd').then((val) => {
       this.idCareactivityForAdd = val;
@@ -75,8 +75,8 @@ export class AddCommunicationPage implements OnInit {
   onSubmit(){
     this.carePlanService.createNutritionOrder(this.addCommunicationForm.value)
     .subscribe( (res: Communication) => {
-      this.name = res.Name;
-      this.idNewCummunication = res.Id;
+      this.name = res.name ?? '';
+      this.idNewCummunication = res.id ?? 0;
       this.assignNutritionTemplate();
       console.log("id new Communication: " + this.idNewCummunication);
       window.history.back();

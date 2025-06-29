@@ -20,12 +20,12 @@ import { Device } from 'src/app/models/device.model';
     standalone: false
 })
 export class DetailDevicePage implements OnInit {
-  public deviceName: string;
-  public deviceDescrip: string;
-  public deviceData: Device;
+  public deviceName: string = '';
+  public deviceDescrip: string = '';
+public deviceData: Device | null = null;
   segmentModel = 'details';
   load = false;
-  private idPassedByURL: number = null;
+  private idPassedByURL: number = 0;
 
   constructor(
     private entityService: EntityService,
@@ -40,14 +40,14 @@ export class DetailDevicePage implements OnInit {
   ngOnInit() {
 
     this.load = true;
-    this.idPassedByURL = this.route.snapshot.params.Id;
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.deviceService.getDeviceById(this.idPassedByURL)
     .subscribe((res: Device ) => {
       console.log(res);
     if(res != null){
       this.load = false;
-       this.deviceName = res.Name;
-       this.deviceDescrip = res.Description;
+       this.deviceName = res.name ?? '';
+       this.deviceDescrip = res.description ?? '';
        this.deviceData = res;
 
     }
@@ -102,6 +102,7 @@ export class DetailDevicePage implements OnInit {
               console.log(err);
               this.presentToast('danger','Your settings have not been saved.');
               });
+              return true;
             } else {
               return false;
             }

@@ -14,7 +14,7 @@ import { Storage } from '@ionic/storage';
 export class MedicationPage implements OnInit {
 
   public medications: Medication[] = [];
-  public idScenario: number;
+  public idScenario: number = 0;
   public medicationNull = false;
   constructor(
     private carePlanService: CarePlanService,
@@ -42,7 +42,7 @@ export class MedicationPage implements OnInit {
         this.medications = res;
         this.medicationNull = false;
       }else{
-        this.medications = null;
+        this.medications = [];
         this.medicationNull = true;
       }
     }, ( err) => {

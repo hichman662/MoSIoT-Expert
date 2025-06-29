@@ -51,9 +51,9 @@ public deleteDevice(uid : number) {
 
 //Device Templates
 
-public getDeviceTemplateByIdAccessMode( uid: number | null): Observable<object>{
+public getDeviceTemplateByIdAccessMode( uid: number | null): Observable<DeviceTemplate[]>{
   if (!uid) { uid = 0; }
-  return this.http.get <DeviceTemplate>(`${environment.base_url}/DeviceTemplate/DevTemplatesAccessMode?idAccessMode=${uid}` );
+  return this.http.get <DeviceTemplate[]>(`${environment.base_url}/DeviceTemplate/DevTemplatesAccessMode?idAccessMode=${uid}` );
 }
 
 
