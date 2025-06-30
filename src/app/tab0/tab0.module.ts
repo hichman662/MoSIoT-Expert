@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { Tab0PageRoutingModule } from './tab0-routing.module';
 import { Tab0Page } from './tab0.page';
 import { ExploreContainerComponentModule } from './../explore-container/explore-container.module';
-
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +19,7 @@ import { ExploreContainerComponentModule } from './../explore-container/explore-
     ReactiveFormsModule,
     MatExpansionModule,
     ProgressBarModule,
+    NgChartsModule,
     TranslateModule
   ],
   declarations: [Tab0Page]
