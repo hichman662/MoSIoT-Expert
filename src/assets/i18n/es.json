@@ -1,4 +1,8 @@
 {
+    "Email": "Correo electrónico",
+  "Password": "Contraseña",
+  "Login": "Iniciar sesión",
+  
     "SCENARIO": {
         "title": "Escenario",
         "profile": "Perfil",
@@ -550,6 +554,7 @@
         "return": "Sección de plan de cuidado"
     },
     "TOASTALERT": {
+        "actionCouldNotBeCompleted": "No se pudo completar la acción",
         "success": "EXITOSO!",
         "addSuccessfully": "ha sido agregado exitosamente"
 

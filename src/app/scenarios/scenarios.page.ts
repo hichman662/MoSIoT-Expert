@@ -55,6 +55,10 @@ export class ScenariosPage implements OnInit {
 
   }
 
+hasScenarios(): boolean {
+  return Array.isArray(this.listScenario) && this.listScenario.length > 0;
+}
+
 
   async getEscenario(token: any){
     console.log();

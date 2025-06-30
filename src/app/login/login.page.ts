@@ -21,8 +21,8 @@ export class LoginPage implements OnInit {
   textAlertActionNotComplete: string = '';
 
   public loginForm = this.fb.group({
-    Email: ['', [Validators.required, Validators.email]],
-    Pass: ['', Validators.required ]
+    email: ['', [Validators.required, Validators.email]],
+    pass: ['', Validators.required ]
   });
   constructor(private router: Router,
     private storage: Storage,

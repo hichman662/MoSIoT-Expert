@@ -41,7 +41,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card-header [hidden]="listScenario" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+    <ion-card-header *ngIf="load && listScenario.length === 0" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
         <ion-icon size="large" name="warning-outline"></ion-icon> No scenario has been added to this application. To add a new scenario, press the Add button.
     </ion-card-header>
     <!-- <ion-spinner class="spin" *ngIf="!load" name="bubbles"></ion-spinner> -->

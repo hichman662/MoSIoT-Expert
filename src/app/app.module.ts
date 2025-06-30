@@ -14,6 +14,10 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { TranslateConfigService } from '../app/services/translate-config.service';
+import { NgChartsModule } from 'ng2-charts';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http,'assets/i18n/', '.json');
@@ -29,6 +33,7 @@ export function LanguageLoader(http: HttpClient) {
         IonicStorageModule.forRoot(),
         NgIdleKeepaliveModule.forRoot(),
         ProgressBarRoutingModule,
+        NgChartsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -36,5 +41,7 @@ export function LanguageLoader(http: HttpClient) {
                 deps: [HttpClient]
             },
             defaultLanguage: 'es'
-        })], providers: [Platform, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, TranslateConfigService, provideHttpClient(withInterceptorsFromDi())] })
+        })], providers: [Platform, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, TranslateConfigService, provideHttpClient(withInterceptorsFromDi())],
+     schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    })
 export class AppModule {}
