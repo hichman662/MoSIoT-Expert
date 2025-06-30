@@ -18,6 +18,7 @@ import { PatientAccess } from '../models/patientAccess.model';
 import { Device } from '../models/device.model';
 import { Nutrition } from '../models/nutrition.model';
 import { Communication } from '../models/communication.model';
+import { ChartConfiguration } from 'chart.js';
 
 @Component({
     selector: 'app-tab0',
@@ -145,6 +146,66 @@ async callingPatientByIdScenario(id: number) {
         console.log(err);
     });
   }
+
+   radarChartData: ChartConfiguration<'radar'>['data'] = {
+     labels: [
+    ['Physical', 'Well-being'],
+    ['Interpersonal', 'Relationships'],
+    ['Emotional', 'Well-being'],
+    ['Material', 'Well-being'],
+    ['Personal', 'Development'],
+    ['Self-', 'Determination'],
+    ['Social', 'Inclusion'],
+    ['Rights']
+  ],
+    datasets: [
+      {
+        label: 'Initial Values',
+        data: [0.24, 0.74, 0.34, 0.43, 0.37, 0.66, 0.26, 0.53],
+        fill: true
+      },
+      {
+        label: 'Patient Value Improvement',
+        data: [0.64, 0.75, 0.54, 0.43, 0.45, 0.66, 0.26, 0.53],
+        fill: true
+      }
+    ]
+  };
+
+  radarChartOptions: ChartConfiguration<'radar'>['options'] = {
+  responsive: true,
+  scales: {
+    r: {
+      suggestedMin: 0,
+      suggestedMax: 1,
+      ticks: {
+        stepSize: 0.1,
+        display: true,
+        font: {
+          size: 8  
+        }
+      },
+      pointLabels: {
+        font: {
+          size: 8  
+        }
+      }
+    }
+  },
+  plugins: {
+    legend: {
+      position: 'top',
+      labels: {
+        font: {
+          size: 12  
+        }
+      }
+    },
+    title: {
+      display: false
+    }
+  }
+};
 
 
 }
