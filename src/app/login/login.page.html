@@ -61,12 +61,12 @@
 
                                 <ion-item>
                                     <ion-icon name="person" class="icon-login"></ion-icon>
-                                    <ion-input formControlName="Email" name="user" type="email" required placeholder="Email"></ion-input>
+                                    <ion-input formControlName="email" name="user" type="email" required placeholder="Email"></ion-input>
                                 </ion-item>
                                 <br />
                                 <ion-item>
                                     <ion-icon name="lock-closed" class="icon-login"></ion-icon>
-                                    <ion-input formControlName="Pass" name="password" type="password" required placeholder="Password"></ion-input>
+                                    <ion-input formControlName="pass" name="password" type="password" required placeholder="Password"></ion-input>
                                 </ion-item>
 
                             </ion-list>
@@ -74,11 +74,9 @@
                     </ion-row>
                     <ion-row>
                         <ion-col>
-                            <ion-button (click)="login();" type="submit" [hidden]="waiting">
-                                <ion-spinner name="" *ngIf="waiting"></ion-spinner>Login
-                            </ion-button>
-                            <ion-button [hidden]="!waiting" [disabled]="waiting">
-                                <ion-spinner name="" color="danger" *ngIf="waiting"></ion-spinner>Loading
+                            <ion-button (click)="login()" type="submit" [disabled]="waiting">
+                            <ion-spinner *ngIf="waiting" name="dots" color="light"></ion-spinner>
+                            <span *ngIf="!waiting">Login</span>
                             </ion-button>
                         </ion-col>
                     </ion-row>

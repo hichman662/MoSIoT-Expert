@@ -77,9 +77,9 @@ public createUser( data: UserData ): Observable<object> {
 }
 
 login( formData: any) {
-  return this.http.post(`${environment.base_url}/PractitionerAnonimous/Login`, formData)
+  return this.http.post(`${environment.base_url}/PractitionerAnonimous/Login`, formData , { responseType: 'text' })
           .pipe(
-            tap( (res: any) => {
+            tap( (res: string) => {
              // this.isLoggedIn = true;
              this.storage.set('token', res);
               })
