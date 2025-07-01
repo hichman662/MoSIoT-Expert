@@ -81,8 +81,10 @@ async  ngOnInit() {
       await toast.present();
     }
 
-  campoValido(campo: string ){
-    return this.loginForm.get(campo)?.valid || !this.formSubmit;
-  }
+campoValido(campo: string) {
+  return this.loginForm.get(campo)?.valid || !this.formSubmit;
+}
+
+
 
 }
