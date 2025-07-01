@@ -14,9 +14,9 @@ import { AdaptationDetailRequired } from 'src/app/models/adaptationDetailRequire
 })
 export class DetailAccessModeComponent implements OnInit {
 
-  public AdaptationRequests: AdaptationRequest [] = [];
-  public AdaptationTypes: AdaptationTypeRequired [] = [];
-  public AdaptationDetails: AdaptationDetailRequired [] = [];
+  public adaptationRequests: AdaptationRequest [] = [];
+  public adaptationTypes: AdaptationTypeRequired [] = [];
+  public adaptationDetails: AdaptationDetailRequired [] = [];
     segmentModel = 'AdaptationRequest';
   private idPassedByURL: number = 0;
   constructor(
@@ -27,14 +27,14 @@ export class DetailAccessModeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params['Id'];
+    this.idPassedByURL = this.route.snapshot.params['id'];
     this.patientService.getPatientAccessById(this.idPassedByURL)
     .subscribe((res: any ) => {
     if(res != null){
 
-       this.AdaptationRequests = res.AccessMode.AdaptationRequest;
-      this.AdaptationTypes = res.AccessMode.AdaptationType;
-      this.AdaptationDetails = res.AccessMode.AdaptationDetail;
+       this.adaptationRequests = res.accessMode.adaptationRequest;
+      this.adaptationTypes = res.accessMode.adaptationType;
+      this.adaptationDetails = res.accessMode.adaptationDetail;
     }
     }, (err) => {
       console.log(err);

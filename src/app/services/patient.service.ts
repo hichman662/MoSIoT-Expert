@@ -93,7 +93,7 @@ public deleteRelatedPerson(uid : number) {
 public getAllPatientAccess(): Observable<object>{
   return this.http.get(`${environment.base_url}/PatientAccess/ReadAll`);
 }
-public getPatientAccessById( uid: number): Observable<object>{
+public getPatientAccessById( uid: number): Observable<PatientAccess>{
   if (!uid) { uid = 0; }
   return this.http.get <PatientAccess>(`${environment.base_url}/PatientAccess/${uid}` );
 }
