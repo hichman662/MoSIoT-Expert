@@ -1,92 +1,166 @@
-/* DOES NOT WORK - not specific enough */
-
-
-/* Works - pass "my-custom-class" in cssClass to increase specificity */
-
-.my-custom-class {
-    color: green;
+ion-content {
+  --background: linear-gradient(to bottom right, rgba(207, 218, 182, 0.658), #ffffff);
 }
 
-ion-content {
-    --background: url('/assets/icon/backW.jpg') 0 0/100% 100% no-repeat;
-    border-radius: 20px;
+.section-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #2d3a1d;
+  margin: 6px 0 4px;
+}
+
+.textMedio {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.toolbar-icon-img {
+  width: 80px;
+  height: 80px;
+}
+
+.form-card,
+.soft-card {
+  margin: 14px 12px;
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding-bottom: 10px;
 }
 
 ion-card {
-    box-shadow: none !important
+  border-radius: 18px;
+  margin: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-ion-toolbar {
-    --background: rgba(207, 218, 182, 0.658) !important;
+ion-card ion-item,
+ion-item {
+  --background: transparent;
+  --color: #1e1e1e;
+  white-space: normal;
 }
 
-ion-header {
-    background-color: rgb(248, 248, 248);
+ion-icon {
+  font-size: 22px;
+  color: #2d3a1d;
 }
 
-ion-badge {
-    background-color: rgb(248, 248, 248);
-    color: black;
+ion-label h3 {
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0;
+  color: #2d3a1d;
 }
 
-.text-top {
+ion-label p {
+  font-size: 14px;
+  margin: 2px 0 0;
+  color: #555;
+}
+
+ion-card-header[color="warning"] {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 12px;
+}
+
+.save {
+  margin: 16px;
+  font-weight: 600;
+}
+
+.access-segment {
+  margin-top: 4px;
+}
+
+.segment {
+  padding-bottom: 10px;
+}
+
+ion-segment {
+  --background: transparent;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-wrap: nowrap;
+
+  ion-segment-button {
+    flex: 1 1 auto;
+    max-width: 33%;
+    min-width: 100px;
+    white-space: normal;
     text-align: center;
-    margin-top: -18px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
-.ion-align-self-end {
-    margin-top: -18px;
-}
-
-:root {
-    ion-tab-button:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
+    ion-label {
+      white-space: normal;
+      font-size: 13px;
+      line-height: 1.2;
+      padding: 0 6px;
     }
-    ion-tab-button.tab-selected:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
+
+    ion-icon {
+      font-size: 18px;
+      margin-bottom: 2px;
     }
+  }
 }
 
-ion-loading {
-    color: green;
+.mat-expansion-panel {
+  background: #ffffff !important;
+  border-radius: 18px;
+  margin: 8px 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-.iconText>ion-col>ion-icon {
-    margin-left: 25px;
+.mat-expansion-panel-header {
+  border-radius: 18px 18px 0 0;
+  background: transparent;
 }
 
-.iconText>ion-col>ion-label {
-    position: flex;
-    font-size: 12px;
-    margin-left: 14px;
+
+
+mat-expansion-panel-header ion-item {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+
+  ion-icon {
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  ion-label {
+    flex: 1 1 auto;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: normal;
+    word-break: break-word;
+    padding-right: 8px;
+  }
+
+  ion-badge {
+    flex-shrink: 0;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-top: 4px;
+  }
 }
 
-.segmentIcon {
-    margin-right: 7px;
-    height: 14px;
-}
-
-ion-list-header {
-    margin-bottom: -9px;
-}
-
-app-component-telemetry {
-    width: 100%;
-}
-
-ion-segment-button {
-    width: 40px;
-    margin-top: 2px;
-    font-size: 10px;
-    border: none;
-    background-color: rgb(248, 248, 248);
-    border-radius: 0%;
-}

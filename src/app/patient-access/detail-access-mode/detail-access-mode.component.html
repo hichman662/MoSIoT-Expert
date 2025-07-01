@@ -13,7 +13,7 @@
     </ion-segment-button>
 </ion-segment>
 <div *ngIf="segmentModel === 'AdaptationRequest'">
-    <div class="container" *ngFor="let entry of AdaptationRequests | keyvalue">
+    <div class="container" *ngFor="let entry of adaptationRequests | keyvalue">
         <div *ngIf="entry.value as ar">
         <mat-expansion-panel details>
             <mat-expansion-panel-header slot="start">
@@ -77,14 +77,14 @@
     </div>
 </div>
 <div *ngIf="segmentModel === 'AdaptationType'">
-    <div class="container" *ngFor="let AdaptationType of AdaptationTypes|keyvalue">
+    <div class="container" *ngFor="let adaptationType of adaptationTypes|keyvalue">
         <mat-expansion-panel details>
             <mat-expansion-panel-header slot="start">
                 <mat-panel-title>
                     <ion-item>
                         <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
                         
-                        <ion-label>{{ $any(AdaptationType.value).description }}</ion-label>
+                        <ion-label>{{ $any(adaptationType.value).description }}</ion-label>
                     </ion-item>
                 </mat-panel-title>
             </mat-expansion-panel-header>
@@ -98,28 +98,28 @@
             <ion-card>
                 <ion-item>
                     <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationRequest' | translate }}</ion-label>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 1"> {{ 'PATIENTACCESSDETAIL.alternativeText' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 2"> {{ 'PATIENTACCESSDETAIL.audioDescription' | translate }} </ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 3"> {{ 'PATIENTACCESSDETAIL.captions' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 4">{{ 'PATIENTACCESSDETAIL.E_book' | translate }} </ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 5"> {{ 'PATIENTACCESSDETAIL.haptic' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 6"> {{ 'PATIENTACCESSDETAIL.highContrast' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 7"> {{ 'PATIENTACCESSDETAIL.longDescription' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 8"> {{ 'PATIENTACCESSDETAIL.signLanguage' | translate }} </ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationType.value).adaptionRequest === 9"> {{ 'PATIENTACCESSDETAIL.transcript' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 1"> {{ 'PATIENTACCESSDETAIL.alternativeText' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 2"> {{ 'PATIENTACCESSDETAIL.audioDescription' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 3"> {{ 'PATIENTACCESSDETAIL.captions' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 4">{{ 'PATIENTACCESSDETAIL.E_book' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 5"> {{ 'PATIENTACCESSDETAIL.haptic' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 6"> {{ 'PATIENTACCESSDETAIL.highContrast' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 7"> {{ 'PATIENTACCESSDETAIL.longDescription' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 8"> {{ 'PATIENTACCESSDETAIL.signLanguage' | translate }} </ion-badge>
+                    <ion-badge *ngIf="$any(adaptationType.value).adaptionRequest === 9"> {{ 'PATIENTACCESSDETAIL.transcript' | translate }}</ion-badge>
                 </ion-item>
             </ion-card>
         </mat-expansion-panel>
     </div>
 </div>
 <div *ngIf="segmentModel === 'AdaptationDetail'">
-    <div class="container" *ngFor="let AdaptationDetail of AdaptationDetails|keyvalue">
+    <div class="container" *ngFor="let adaptationDetail of adaptationDetails|keyvalue">
         <mat-expansion-panel details>
             <mat-expansion-panel-header slot="start">
                 <mat-panel-title>
                     <ion-item>
                         <ion-icon class="segmentIcon" name="list-circle-outline"></ion-icon>
-                        <ion-label>{{ $any(AdaptationDetail.value).Description }}</ion-label>
+                        <ion-label>{{ $any(adaptationDetail.value).description }}</ion-label>
                     </ion-item>
                 </mat-panel-title>
             </mat-expansion-panel-header>
@@ -133,12 +133,12 @@
             <ion-card>
                 <ion-item>
                     <ion-label>{{ 'PATIENTACCESSDETAIL.adaptationRequest' | translate }}</ion-label>
-                    <ion-badge *ngIf="$any(AdaptationDetail.value).adaptationRequest === 1"> {{ 'PATIENTACCESSDETAIL.enhanced' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationDetail.value).adaptationRequest === 2"> {{ 'PATIENTACCESSDETAIL.realTime' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationDetail.value).adaptationRequest === 3"> {{ 'PATIENTACCESSDETAIL.record' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationDetail.value).adaptationRequest === 4"> {{ 'PATIENTACCESSDETAIL.symbolic' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationDetail.value).adaptationRequest === 5"> {{ 'PATIENTACCESSDETAIL.synthesized' | translate }}</ion-badge>
-                    <ion-badge *ngIf="$any(AdaptationDetail.value).adaptationRequest === 6"> {{ 'PATIENTACCESSDETAIL.verbatim' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationDetail.value).adaptationRequest === 1"> {{ 'PATIENTACCESSDETAIL.enhanced' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationDetail.value).adaptationRequest === 2"> {{ 'PATIENTACCESSDETAIL.realTime' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationDetail.value).adaptationRequest === 3"> {{ 'PATIENTACCESSDETAIL.record' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationDetail.value).adaptationRequest === 4"> {{ 'PATIENTACCESSDETAIL.symbolic' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationDetail.value).adaptationRequest === 5"> {{ 'PATIENTACCESSDETAIL.synthesized' | translate }}</ion-badge>
+                    <ion-badge *ngIf="$any(adaptationDetail.value).adaptationRequest === 6"> {{ 'PATIENTACCESSDETAIL.verbatim' | translate }}</ion-badge>
 
                 </ion-item>
             </ion-card>

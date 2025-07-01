@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { AccessMode } from './../../models/accessMode.model';
+import { PatientAccess } from 'src/app/models/patientAccess.model';
 import { PatientService } from './../../services/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -49,19 +50,19 @@ export class DetailPatientAccessPage implements OnInit {
         this.idScenario= val;
       }
     });
-    this.idPassedByURL = this.route.snapshot.params['Id'];
+    this.idPassedByURL = this.route.snapshot.params['id'];
     this.callingAccessdatil();
   }
 
   callingAccessdatil(){
     this.patientService.getPatientAccessById(this.idPassedByURL)
-    .subscribe((res: any ) => {
+    .subscribe((res: PatientAccess ) => {
       console.log(res);
       this.patientAccessDetailNull = false;
-      this.patientAccessDescrip = res.Description;
-      this.patientAccessName = res.Name;
-       if(res.AccessMode != null){
-       this.accessMode = res.AccessMode;
+      this.patientAccessDescrip = res.description ?? '';
+      this.patientAccessName = res.name ?? '';
+       if(res.accessMode != null){
+       this.accessMode = res.accessMode;
        this.patientAccessDetailNull = false;
 
     }else{
