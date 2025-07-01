@@ -1,45 +1,21 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="{{ 'HOME.return' | translate }}"
+        defaultHref="/scenarios"
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
 
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'HOME.return' | translate }}" defaultHref="scenarios" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <!--  <ion-buttons slot="start">
-          <ion-menu-button menu="main-menu"></ion-menu-button>
-      </ion-buttons> -->
+    <div class="header-icon" style="margin: 0 auto;">
+      <ion-img src="assets/icon/scenario.svg" class="toolbar-icon-img"></ion-img>
+    </div>
 
-        <ion-row>
-            <ion-col size="3" class="ion-align-self-start">
-
-            </ion-col>
-            <ion-col size="6" class="ion-align-self-end">
-
-                <ion-img src='assets/icon/scenario.svg'></ion-img>
-
-            </ion-col>
-            <ion-col size="3" class="ion-align-self-center">
-            </ion-col>
-
-        </ion-row>
-        <ion-row>
-            <ion-col size="1" class="ion-align-self-start">
-
-            </ion-col>
-            <ion-col size="10" class="ion-align-self-center">
-
-                <ion-list-header>
-                    <ion-label class="text-top">{{ 'HOME.title' | translate }}</ion-label>
-                </ion-list-header>
-
-            </ion-col>
-            <ion-col size="1" class="ion-align-self-end">
-
-            </ion-col>
-
-        </ion-row>
-
-    </ion-toolbar>
-
+    <div class="section-title">
+      {{ 'HOME.title' | translate }}
+    </div>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
     <ion-spinner class="spin" *ngIf="!load" name="bubbles"></ion-spinner>

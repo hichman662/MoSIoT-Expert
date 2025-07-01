@@ -91,12 +91,19 @@ export class DetailProfileComponent implements OnInit {
  callingPatient() {
   this.userService.getPatientByIdScenario(this.idScenario).subscribe(
     (res: UserData[]) => {
-      const patientProfile = res[0]?.patient?.patientProfile;
-      if (patientProfile) {
-        this.patientProfileNull = false;
-        this.patientProfile = patientProfile;
+      console.log('Full user response:', res);
 
-        // Convert diseases and disabilities to arrays if they are not
+      const patient = res[0]?.patient;
+      console.log('Patient:', patient);
+
+      const patientProfile = patient?.patientProfile;
+      console.log('PatientProfile:', patientProfile);
+
+      // Valid only if patientProfile has keys
+      if (patientProfile && Object.keys(patientProfile).length > 0) {
+        this.patientProfile = patientProfile;
+        this.patientProfileNull = false;
+
         const rawDiseases = patientProfile.diseases ?? [];
         this.diseases = Array.isArray(rawDiseases)
           ? rawDiseases
@@ -109,15 +116,20 @@ export class DetailProfileComponent implements OnInit {
 
         this.load = true;
       } else {
-        this.callingPatientProfile();
         this.patientProfileNull = true;
+        this.callingPatientProfile();
+        this.load = true;
       }
     },
     (err) => {
       console.log(err);
+      this.patientProfileNull = true;
+      this.load = true;
     }
   );
 }
+
+
 
   callingPatientProfile(){
      this.patientService.getAllPatientProfile()

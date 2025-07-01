@@ -1,104 +1,82 @@
-/* DOES NOT WORK - not specific enough */
-
-
-/* Works - pass "my-custom-class" in cssClass to increase specificity */
-
-.my-custom-class {
-    color: green;
-}
-
-ion-card {
-    box-shadow: none !important;
-}
-
-ion-content {
-    --background: url('/assets/icon/backW.jpg') 0 0/100% 150% no-repeat;
-    //--background: url('/') 0 0/100% 100% no-repeat;
-    border-radius: 20px;
-}
-
+/* Header toolbar background */
 ion-toolbar {
-    /*  --background: rgb(196, 109, 207); */
-    --background: url('/assets/icon/backW.jpg') 0 0/100% 100% no-repeat;
+  --background: rgba(207, 218, 182, 0.658);
 }
 
+/* Centered scenario icon in header */
+.deviceTemplate-card {
+  background: transparent;
+  box-shadow: none;
+  ion-img {
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+/* Title below icon */
 .text-top {
-    color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -0.5rem;
+  color: #1e1e1e;
 }
 
+/* Add button icon */
 .ionadd {
-    margin-right: 20px;
-    margin-top: 10px;
-    color: white;
+  padding-right: 15px;
+  color: #1e1e1e;
 }
 
-.my-custom-menu {
-    --width: 500px;
+/* Empty state alert */
+ion-card-header[color="warning"] {
+  margin: 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem;
 }
 
-ion-header {
-    background-color: rgb(196, 109, 207);
+ion-icon[name="warning-outline"] {
+  font-size: 1.2rem;
 }
 
-.text-top {
-    text-align: center;
-    margin-top: -18px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+/* Scenario card container */
+.patientProfile {
+  padding: 0 10px;
 }
 
-.ion-align-self-end {
-    margin-top: -18px;
+/* Individual scenario entry */
+ion-item-sliding {
+  margin-bottom: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-:root {
-    ion-tab-button:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
-    }
-    ion-tab-button.tab-selected:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
-    }
+/* Icon avatar */
+ion-avatar {
+  width: 45px;
+  height: 45px;
 }
 
-ion-loading {
-    color: green;
+/* Scenario title */
+ion-card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 0 5px 10px;
+  white-space: normal;
+  color: #1e1e1e;
 }
 
-.iconText>ion-col>ion-icon {
-    margin-left: 25px;
-}
-
-.iconText>ion-col>ion-label {
-    position: flex;
-    font-size: 12px;
-    margin-left: 10px;
-}
-
-app-component-telemetry {
-    width: 100%;
-}
-
-.my-custom-menu {
-    --width: 500px;
-}
-
-ion-list-header {
-    font-weight: bold;
-    font-size: 22px;
-    margin-right: 10px;
-    margin-top: -24px;
-}
-
-ion-back-button {
-    color: white;
-}
-
-ion-menu-button {
-    color: white;
+/* Inner card styling */
+ion-item ion-card {
+  background: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }

@@ -1,83 +1,51 @@
-<!-- <ion-header [translucent]="true"> -->
 <ion-header>
+  <ion-toolbar>
 
-    <ion-toolbar>
+    <!-- Back button -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="{{ 'DEVICETAB.return' | translate }}"
+        defaultHref="/scenarios"
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'DEVICETAB.return' | translate }}" defaultHref="/scenarios" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
+    <!-- Centered Icon -->
+    <div class="header-icon" style="margin: 0 auto;">
+      <ion-img src="assets/icon/device.png" class="toolbar-icon-img"></ion-img>
+    </div>
 
-        <ion-row>
-            <ion-col size="4" class="ion-align-self-start">
+    <!-- Title -->
+    <div class="section-title">
+      {{ 'DEVICETAB.title' | translate }}
+    </div>
 
-            </ion-col>
-            <ion-col size="4" class="ion-align-self-end">
-                <ion-card color="transparent" class="pati-card">
-                    <ion-img src='assets/icon/device.png'></ion-img>
-
-                </ion-card>
-            </ion-col>
-            <ion-col size="4" class="ion-align-self-center">
-            </ion-col>
-
-        </ion-row>
-        <ion-row>
-            <ion-col size="1" class="ion-align-self-start">
-
-            </ion-col>
-            <ion-col size="10" class="ion-align-self-center">
-
-                <ion-list-header>
-                    <ion-label id="text-top">{{ 'DEVICETAB.title' | translate }}</ion-label>
-                </ion-list-header>
-
-            </ion-col>
-            <ion-col size="1" class="ion-align-self-end">
-
-            </ion-col>
-
-        </ion-row>
-    </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <section id="dashboardSection">
+    <ion-grid>
 
-    <section id="dashboardSection">
-        <ion-grid>
-            <ion-row class="animate__animated animate__fadeInUp animate__slow">
+      <!-- First Row -->
+      <ion-row class="animate__animated animate__fadeInUp animate__slow">
 
-                <ion-col size="6" class="ion-align-self-center" [routerLink]="['device']">
-                    <ion-card color="transparent" class="disability-card">
-                        <ion-img src='assets/icon/devices.png'></ion-img>
-                        <ion-label>{{ 'DEVICETAB.devices' | translate }}</ion-label>
-                    </ion-card>
-                </ion-col>
-                <ion-col size="6" class="ion-align-self-end" [routerLink]="['telemetry']">
-                    <ion-card color="transparent" class="deviceTemplate-card">
-                        <ion-img src='assets/icon/telemetries.png'></ion-img>
-                        <ion-label>{{ 'DEVICETAB.telemetries' | translate }}</ion-label>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <!--  <ion-col size="6" class="ion-align-self-start" [routerLink]="['relatedPerson']">
-                    <ion-card color="transparent" class="nurse-card">
-                        <ion-img src='assets/icon/family.png'></ion-img>
-                        <ion-label>Related Persons</ion-label>
-                    </ion-card>
-                </ion-col>
+        <ion-col size="6" class="ion-align-self-center" [routerLink]="['device']">
+          <ion-card color="transparent" class="disability-card">
+            <ion-img src="assets/icon/devices.png"></ion-img>
+            <ion-label>{{ 'DEVICETAB.devices' | translate }}</ion-label>
+          </ion-card>
+        </ion-col>
 
-                <ion-col size="6" class="ion-align-self-end" [routerLink]="['patientAccess']">
-                    <ion-card text-center color="transparent" class="vital-card">
-                        <ion-img src='assets/icon/access.png'></ion-img>
-                        <ion-label>Patient Access</ion-label>
-                    </ion-card>
-                </ion-col> -->
+        <ion-col size="6" class="ion-align-self-end" [routerLink]="['telemetry']">
+          <ion-card color="transparent" class="deviceTemplate-card">
+            <ion-img src="assets/icon/telemetries.png"></ion-img>
+            <ion-label>{{ 'DEVICETAB.telemetries' | translate }}</ion-label>
+          </ion-card>
+        </ion-col>
 
-            </ion-row>
+      </ion-row>
 
-
-        </ion-grid>
-    </section>
-
+    </ion-grid>
+  </section>
 </ion-content>

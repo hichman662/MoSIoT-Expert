@@ -85,9 +85,9 @@ hasScenarios(): boolean {
     this.userService.getPatientByIdScenario(this.idScenario)
     .subscribe( (res: any) => {
       console.log(res);
-      if(res != null && res[0].Patient.PatientProfile !== null){
-      this.storage.set('idPatientProfile',  res[0].Patient.PatientProfile.Id);
-      this.storage.set('idPatient',  res[0].Patient.Id);
+      if(res != null && res[0].patient.patientProfile !== null){
+      this.storage.set('idPatientProfile',  res[0].patient.patientProfile.id);
+      this.storage.set('idPatient',  res[0].patient.id);
     }
     else{
       this.storage.set('idPatientProfile',null);
