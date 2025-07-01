@@ -162,12 +162,19 @@ async callingPatientByIdScenario(id: number) {
       {
         label: 'Initial Values',
         data: [0.24, 0.74, 0.34, 0.43, 0.37, 0.66, 0.26, 0.53],
-        fill: true
+        fill: true,
+        backgroundColor: 'rgba(0, 60, 136, 0.4)',       // darker blue fill
+      borderColor: 'rgba(0, 60, 136, 0.4)',           // darker blue border
+      pointBackgroundColor: 'rgba(0, 60, 136, 1)'
       },
       {
         label: 'Patient Value Improvement',
         data: [0.64, 0.75, 0.54, 0.43, 0.45, 0.66, 0.26, 0.53],
-        fill: true
+        fill: true,
+        backgroundColor: 'rgba(173, 216, 230, 0.6)',     // lighter blue fill
+      borderColor: 'rgba(173, 216, 230, 1)',           // lighter blue border
+      pointBackgroundColor: 'rgba(173, 216, 230, 1)'
+        
       }
     ]
   };

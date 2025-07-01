@@ -1,7 +1,7 @@
-<ion-card-header [hidden]="!patientProfileNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+<ion-card-header *ngIf="patientProfileNull && load" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
     <ion-icon size="large" name="warning-outline"></ion-icon>{{ 'PATIENTPROFILE.alertNoPatientProfile' | translate }}
 </ion-card-header>
-<ion-segment [hidden]="patientProfileNull" value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
+<ion-segment *ngIf="!patientProfileNull" value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
     <ion-segment-button value="details">
         <ion-icon name="receipt-outline"></ion-icon>
         <ion-label>{{ 'PATIENTPROFILE.details' | translate }}</ion-label>
