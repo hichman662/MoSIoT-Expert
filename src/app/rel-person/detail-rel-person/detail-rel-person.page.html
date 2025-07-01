@@ -1,130 +1,90 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'RELATEDPERSON.return' | translate }}" defaultHref="tabs/tab1/relatedPerson" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <!-- Centered Image Section -->
+  <ion-row>
+    <ion-col size="4"></ion-col>
+    <ion-col size="4">
+      <ion-card color="transparent" class="deviceTemplate-card">
+        <ion-img src="assets/icon/familyW.png"></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4"></ion-col>
+  </ion-row>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'RELATEDPERSON.return' | translate }}" defaultHref="tabs/tab1/relatedPerson" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-button>
-            </ion-button>
-        </ion-buttons>
+  <!-- Name Section -->
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="text-top">{{ relPersonData.name }}</ion-label>
+      </ion-list-header>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
 
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/familyW.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header *ngIf="load">
-                <ion-label class="text-top">{{relPersonData.name}}</ion-label>
-
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-
-                <ion-label class="text-top" *ngIf="load">
-                    <h4>{{relPersonData.description}}</h4>
-                </ion-label>
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
-        <!--     <ion-segment-button value="details">
-            <ion-icon name="receipt-outline"></ion-icon>
-            <ion-label>Related Person Data</ion-label>
-        </ion-segment-button> -->
-
-    </ion-segment>
+  <!-- Description Section -->
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="text-top"><h4>{{ relPersonData.description }}</h4></ion-label>
+      </ion-list-header>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
 </ion-header>
+
 <ion-content>
+  <!-- Info Card with all the details inside a single card -->
+  <ion-card *ngIf="load">
+    <ion-list>
+      <!-- Surnames Section -->
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'RELATEDPERSON.surnames' | translate }}</ion-label>
+        <ion-label>{{ relPersonData.surnames }}</ion-label>
+      </ion-item>
 
-    <!--   <div class="segment" *ngIf="segmentModel === 'details'"> -->
-    <ion-spinner class="spin" *ngIf="!load" name="bubbles"></ion-spinner>
-    <ion-list *ngIf="load">
-        <ion-list-header>
-            <ion-icon class="segmentIcon" name="person-outline"></ion-icon>{{ 'RELATEDPERSON.surnames' | translate }}</ion-list-header>
-        <ion-item>
+      <!-- Email Section -->
+      <ion-item>
+        <ion-icon name="at-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'RELATEDPERSON.email' | translate }}</ion-label>
+        <ion-label>{{ relPersonEmail }}</ion-label>
+      </ion-item>
 
-            <ion-label text-wrap> {{relPersonData.surnames}}</ion-label>
-        </ion-item>
-        <ion-list-header>
-            <ion-icon class="segmentIcon" name="at-outline"></ion-icon>{{ 'RELATEDPERSON.email' | translate }}</ion-list-header>
-        <ion-item>
+      <!-- Active Status Section -->
+      <ion-item>
+        <ion-icon name="power-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'RELATEDPERSON.activeStatus' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.isActive === true">{{ 'RELATEDPERSON.activated' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.isActive === false">{{ 'RELATEDPERSON.deactivated' | translate }}</ion-label>
+      </ion-item>
 
-            <ion-label> {{relPersonEmail}}</ion-label>
+      <!-- Diseased Section -->
+      <ion-item>
+        <ion-icon name="heart-half-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'RELATEDPERSON.isDiseased' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.isDiseased === true">{{ 'RELATEDPERSON.yes' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.isDiseased === false">{{ 'RELATEDPERSON.no' | translate }}</ion-label>
+      </ion-item>
 
-        </ion-item>
-        <ion-list-header>
-
-            <ion-icon class="segmentIcon" name="power-outline"></ion-icon>{{ 'RELATEDPERSON.activeStatus' | translate }}</ion-list-header>
-        <ion-item>
-            <ion-item [hidden]="relPersonData.isActive === true">
-                <ion-label>{{ 'RELATEDPERSON.deactivated' | translate }}</ion-label>
-            </ion-item>
-            <ion-item [hidden]="relPersonData.isActive === false">
-                <ion-label>{{ 'RELATEDPERSON.activated' | translate }}</ion-label>
-            </ion-item>
-
-            <!-- <ion-label> {{$any(patientData)?.IsActive}}</ion-label> -->
-
-        </ion-item>
-        <ion-list-header>
-            <ion-icon class="segmentIcon" name="heart-half-outline"></ion-icon>{{ 'RELATEDPERSON.isDiseased' | translate }}</ion-list-header>
-        <ion-item>
-
-            <ion-item [hidden]="relPersonData.isDiseased === false">
-                <ion-label>{{ 'RELATEDPERSON.yes' | translate }}</ion-label>
-            </ion-item>
-            <ion-item [hidden]="relPersonData.isDiseased === true">
-                <ion-label>{{ 'RELATEDPERSON.no' | translate }}</ion-label>
-            </ion-item>
-
-        </ion-item>
-
-        <ion-list-header>
-            <ion-icon class="segmentIcon" name="male-female-outline"></ion-icon>{{ 'RELATEDPERSON.gender' | translate }}</ion-list-header>
-        <ion-item>
-            <ion-label *ngIf="relPersonData.type === 1"> {{ 'RELATEDPERSON.male' | translate }}</ion-label>
-            <ion-label *ngIf="relPersonData.type === 2"> {{ 'RELATEDPERSON.female' | translate }}</ion-label>
-            <ion-label *ngIf="relPersonData.type === 3"> {{ 'RELATEDPERSON.other' | translate }}</ion-label>
-            <ion-label *ngIf="relPersonData.type === 4"> {{ 'RELATEDPERSON.unknown' | translate }}</ion-label>
-        </ion-item>
-
-
+      <!-- Gender Section -->
+      <ion-item>
+        <ion-icon name="male-female-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'RELATEDPERSON.gender' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.type === 1">{{ 'RELATEDPERSON.male' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.type === 2">{{ 'RELATEDPERSON.female' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.type === 3">{{ 'RELATEDPERSON.other' | translate }}</ion-label>
+        <ion-label *ngIf="relPersonData.type === 4">{{ 'RELATEDPERSON.unknown' | translate }}</ion-label>
+      </ion-item>
     </ion-list>
-    <!-- </div> -->
-
+  </ion-card>
 </ion-content>

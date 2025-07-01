@@ -1,82 +1,89 @@
-/* Header toolbar background */
+/* Header toolbar background with gradient */
 ion-toolbar {
-  --background: rgba(207, 218, 182, 0.658);
+    --background: linear-gradient(to bottom right, rgba(207, 218, 182, 0.658), #ffffff) !important;
 }
 
 /* Centered scenario icon in header */
 .deviceTemplate-card {
-  background: transparent;
-  box-shadow: none;
-  ion-img {
-    width: 70px;
-    height: 70px;
-    display: block;
-    margin: 0 auto;
-  }
+    background: transparent;
+    box-shadow: none;
+    ion-img {
+        width: 70px;
+        height: 70px;
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 /* Title below icon */
 .text-top {
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: -0.5rem;
-  color: #1e1e1e;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -0.5rem;
+    color: #1e1e1e;
 }
 
 /* Add button icon */
 .ionadd {
-  padding-right: 15px;
-  color: #1e1e1e;
+    padding-right: 15px;
+    color: #1e1e1e;
 }
 
-/* Empty state alert */
+/* Empty state alert - applies to warning card headers */
 ion-card-header[color="warning"] {
-  margin: 1rem;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0.75rem;
+    margin: 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem;
 }
 
+/* Icon for warning */
 ion-icon[name="warning-outline"] {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 /* Scenario card container */
 .patientProfile {
-  padding: 0 10px;
+    padding: 0 10px;
 }
 
-/* Individual scenario entry */
+/* Individual scenario entry styling */
 ion-item-sliding {
-  margin-bottom: 10px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Icon avatar */
+/* Icon avatar styling */
 ion-avatar {
-  width: 45px;
-  height: 45px;
+    width: 45px;
+    height: 45px;
 }
 
 /* Scenario title */
 ion-card-title {
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 5px 0 5px 10px;
-  white-space: normal;
-  color: #1e1e1e;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 0 5px 10px;
+    white-space: normal;
+    color: #1e1e1e;
 }
 
 /* Inner card styling */
 ion-item ion-card {
-  background: transparent;
-  box-shadow: none;
-  margin: 0;
-  padding: 0;
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background for the whole ion-content with gradient */
+ion-content {
+    --background: linear-gradient(to bottom right, rgba(207, 218, 182, 0.658), #ffffff) !important;
+    padding-bottom: 16px;  /* optional: adjust padding to add space at the bottom */
 }
