@@ -1,90 +1,61 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="{{ 'PRACTITIONERSLIST.return' | translate }}"
+        defaultHref="/tabs/tab1"
+        icon="chevron-back-outline"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon
+        size="large"
+        class="ionadd"
+        name="add-outline"
+        slot="end"
+        [routerLink]="['add-practitioner']"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <!-- Centered header icon -->
+  <ion-row class="header-row">
+    <ion-col size="12" class="header-icon">
+      <ion-img class="toolbar-icon-img" src="assets/icon/practitioner.png"></ion-img>
+    </ion-col>
+  </ion-row>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'PRACTITIONERSLIST.return' | translate }}" defaultHref="/tabs/tab1" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-icon size="large" class="ionadd" name="add-outline" slot="end" [routerLink]="['add-practitioner']"></ion-icon>
-            <ion-button>
-            </ion-button>
-        </ion-buttons>
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/practitioner.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{ 'PRACTITIONERSLIST.title' | translate }}</ion-label>
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
+  <!-- Title row -->
+  <ion-row class="title-row">
+    <ion-col size="12" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="text-top">{{ 'PRACTITIONERSLIST.title' | translate }}</ion-label>
+      </ion-list-header>
+    </ion-col>
+  </ion-row>
 </ion-header>
+
 <ion-content>
-    <ion-card-header [hidden]="!practitionerNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
-        <ion-icon size="large" name="warning-outline"></ion-icon> {{ 'PRACTITIONERSLIST.alertNoPractitioner' | translate }}
-    </ion-card-header>
+  <!-- Alert: No practitioner -->
+  <ion-card-header
+    *ngIf="practitionerNull"
+    color="warning"
+    class="warning-card animate__animated animate__fadeInLeft animate__slow"
+  >
+    <ion-icon size="large" name="warning-outline"></ion-icon>
+    {{ 'PRACTITIONERSLIST.alertNoPractitioner' | translate }}
+  </ion-card-header>
 
-
-    <ion-list>
-        <div class="patient" *ngFor="let practitioner of practitioners">
-
-            <ion-item-sliding #slidingItem>
-
-                <ion-item class="item" detail [routerLink]="['detail-practitioner',practitioner['id']]">
-                    <ion-avatar slot="start">
-                        <img src="assets/icon/practitioner.png">
-
-                    </ion-avatar>
-
-                    <ion-label> {{practitioner['name']}}</ion-label>
-
-
-                </ion-item>
-
-
-                <ion-item-options side="end" (ionSwipe)="deletePractitioner(slidingItem,practitioner['id']!, practitioner['name']!)">
-                    <ion-item-option color="danger" expandable (click)="deletePractitioner(slidingItem,practitioner['id']!, practitioner['name']!)">
-
-                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-
-                    </ion-item-option>
-
-                </ion-item-options>
-
-                <ion-item-options side="start">
-
-                    <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-practitioner',practitioner['id']]">
-
-                        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-
-                    </ion-item-option>
-                </ion-item-options>
-            </ion-item-sliding>
-        </div>
-    </ion-list>
-
+  <!-- Practitioners List -->
+  <ion-card class="soft-card" *ngFor="let practitioner of practitioners">
+    <ion-item [routerLink]="['detail-practitioner', practitioner['id']]">
+      <ion-avatar slot="start">
+        <img src="assets/icon/practitioner.png" />
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ practitioner['name'] }}</h3>
+      </ion-label>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </ion-card>
 </ion-content>
