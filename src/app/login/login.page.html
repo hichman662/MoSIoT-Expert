@@ -1,39 +1,46 @@
-<form id="loginform" [formGroup]="loginForm">
+<ion-content>
+  <!-- Center the login form and background -->
   <div class="container-login">
     <ion-grid>
+      <!-- Title Section -->
       <ion-row>
         <ion-col>
-          <h3>MoSIoT</h3>
+          <h3 class="custom-title">MoSIoT</h3> <!-- Elegant Title -->
         </ion-col>
       </ion-row>
+      
+      <!-- Login Form -->
       <ion-row>
         <ion-col>
-          <ion-list>
-            <ion-item>
-              <ion-icon name="person" class="icon-login"></ion-icon>
-              <ion-input
-                formControlName="email"
-                name="user"
-                type="email"
-                required
-                placeholder="Email"
-              ></ion-input>
-            </ion-item>
-            <br />
-            <ion-item>
-              <ion-icon name="lock-closed" class="icon-login"></ion-icon>
-              <ion-input
-                formControlName="pass"
-                name="password"
-                type="password"
-                required
-                placeholder="Password"
-              ></ion-input>
-            </ion-item>
-          </ion-list>
+          <form [formGroup]="loginForm" id="loginform"> <!-- Apply formGroup here -->
+            <ion-list>
+              <ion-item>
+                <ion-icon name="person" class="icon-login"></ion-icon>
+                <ion-input
+                  formControlName="email"
+                  name="user"
+                  type="email"
+                  required
+                  placeholder="Email"
+                ></ion-input>
+              </ion-item>
+              <br />
+              <ion-item>
+                <ion-icon name="lock-closed" class="icon-login"></ion-icon>
+                <ion-input
+                  formControlName="pass"
+                  name="password"
+                  type="password"
+                  required
+                  placeholder="Password"
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+          </form>
         </ion-col>
       </ion-row>
 
+      <!-- Validation Messages -->
       <ion-row class="text-justify">
         <ion-col>
           <p class="text-danger" *ngIf="formSubmit && !campoValido('email')">
@@ -45,7 +52,7 @@
         </ion-col>
       </ion-row>
 
-      <!-- Center the login button in the column -->
+      <!-- Submit Button -->
       <ion-row>
         <ion-col class="ion-text-center">
           <ion-button (click)="login()" type="submit" [disabled]="waiting">
@@ -56,4 +63,4 @@
       </ion-row>
     </ion-grid>
   </div>
-</form>
+</ion-content>
