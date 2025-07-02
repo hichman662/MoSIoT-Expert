@@ -65,16 +65,16 @@
     <form [formGroup]="patientAccessForm" (ngSubmit)="onSubmit()">
         <ion-item>
             <ion-label position="stacked">{{ 'ADDACCESSMODE.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="patientAccessForm.controls['Name'].errors && patientAccessForm.controls['Name'].touched">
+            <ion-input type="text" formControlName="name" class="form-control"></ion-input>
+            <div class="error" *ngIf="patientAccessForm.controls['name']?.errors && patientAccessForm.controls['name']?.touched">
                 {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
 
         <ion-item>
             <ion-label position="stacked">{{ 'ADDACCESSMODE.description' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="patientAccessForm.controls['Description'].errors && patientAccessForm.controls['Description'].touched">
+            <ion-input type="text" formControlName="description" class="form-control"></ion-input>
+            <div class="error" *ngIf="patientAccessForm.controls['description']?.errors && patientAccessForm.controls['description']?.touched">
                 {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -92,7 +92,7 @@
 
             <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idPatientProfile">
 
-                <div class="error" *ngIf="patientAccessProfileForm.controls['idPatientProfile'].errors && patientAccessProfileForm.controls['idPatientProfile'].touched">
+                <div class="error" *ngIf="patientAccessProfileForm.controls['idPatientProfile']?.errors && patientAccessProfileForm.controls['idPatientProfile']?.touched">
                     {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
                 </div>
 

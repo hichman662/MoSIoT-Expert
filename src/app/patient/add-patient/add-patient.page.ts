@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Storage } from '@ionic/storage';
+import { UserData } from 'src/app/models/userData.model';
 @Component({
     selector: 'app-add-patient',
     templateUrl: './add-patient.page.html',
@@ -50,19 +51,19 @@ export class AddPatientPage implements OnInit {
   ) {
 
     this.patientForm = new FormGroup({
-    Email: new FormControl('', [
+    email: new FormControl('', [
       Validators.required, Validators.email
     ]),
-    Pass: new FormControl('', [
+    pass: new FormControl('', [
       Validators.required
     ]),
-    UserPatient_oid: new FormControl(Number, [
+    userPatient_oid: new FormControl(Number, [
       Validators.required
     ])
   });
 
   this.patientProfileForm = new FormGroup({
-    p_patientprofile_oid: new FormControl(Number, [
+    p_patientprofile_oid: new FormControl(null, [
       Validators.required
     ])
   });
@@ -84,9 +85,9 @@ export class AddPatientPage implements OnInit {
     }); */
 
     this.userService.getAllUsers()
-    .subscribe( (res: any) => {
+    .subscribe( (res: UserData[]) => {
       console.log(res);
-      this.findNotAlreadyPatient = res.filter( (obj:any) =>  obj.Patient === null);
+      this.findNotAlreadyPatient = res.filter( (obj:any) =>  obj.patient === null);
       console.log(this.findNotAlreadyPatient);
         }, ( err ) => {
     });
@@ -98,9 +99,9 @@ export class AddPatientPage implements OnInit {
   onSubmit(){
     this.patientService.createPatient(this.patientForm.value)
     .subscribe( (res: any) => {
-      this.email = res.Email;
-      this.patientId = res.Id;
-      this.storage.set('idPatient',res.Id);
+      this.email = res.email;
+      this.patientId = res.id;
+      this.storage.set('idPatient',res.id);
       this.patientProfileNull = true;
       /* this.userService.removeUserId();
       this.userService.removeUserName(); */

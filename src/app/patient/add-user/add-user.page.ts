@@ -32,29 +32,17 @@ export class AddUserPage implements OnInit {
     private translateService: TranslateService
   ) {
 
-    this.userForm = new FormGroup({
-    Name: new FormControl('', [
-      Validators.required
-    ]),
-    Surnames: new FormControl('', [
-      Validators.required
-    ]),
-    Description: new FormControl('', [
-      Validators.required
-    ]),
-    Type: new FormControl(Number, [
-      Validators.required
-    ]),
-    IsDiseased: new FormControl(Boolean, [
-      Validators.required
-    ]),
-    IsActive: new FormControl(Boolean, [
-      Validators.required
-    ]),
-    Scenario_oid: new FormControl(Number, [
-      Validators.required
-    ])
-  });
+  this.userForm = new FormGroup({
+  name: new FormControl('', [Validators.required]),
+  surnames: new FormControl('', [Validators.required]),
+  description: new FormControl('', [Validators.required]),
+  type: new FormControl(1, [Validators.required]),  
+  isDiseased: new FormControl(false, [Validators.required]),  
+  isActive: new FormControl(false, [Validators.required]),  
+  scenario_oid: new FormControl(null, [Validators.required]) 
+});
+
+
 
   translateService.get('TOASTALERT.addSuccessfully').subscribe(value => {
      this.textAlertSuccess = value;
@@ -63,24 +51,33 @@ export class AddUserPage implements OnInit {
 
   ngOnInit() {
   this.storage.get('idScenario').then((val) => {
-      this.userForm.get('Scenario_oid')?.setValue(val);
-    });
-  }
-
-  onSubmit(){
-    this.userService.createUser(this.userForm.value)
-    .subscribe( (res: any) => {
-      console.log(res);
-      this.surenames = res.Surnames;
-
-     // this.presentAlert();
-     this.presentToast('success');
-
-    }, ( err ) => {
-
-    });
+    if (val) {
+        this.userForm.get('scenario_oid')?.setValue(val);
+    } else {
+        // Handle the case where no valid scenario_oid is available
+        console.log('Scenario ID is missing');
+    }
+});
 
   }
+
+ onSubmit() {
+ 
+  const formData = this.userForm.value;
+  formData.type = Number(formData.type);  
+  this.userService.createUser(formData).subscribe(
+    (res: any) => {
+      console.log('Response:', res);
+      this.surenames = res.surnames;
+      this.presentToast('success');
+    },
+    (err) => {
+  
+      console.error('Error creating user:', err);
+      this.presentToast('danger'); 
+    }
+  );
+}
 
 
   async presentToast(color: string) {
