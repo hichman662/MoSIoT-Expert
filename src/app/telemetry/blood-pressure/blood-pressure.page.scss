@@ -1,106 +1,84 @@
-/* DOES NOT WORK - not specific enough */
-
-
-/* Works - pass "my-custom-class" in cssClass to increase specificity */
-
-.my-custom-class {
-    color: green;
+/* Gradient background for ion-content */
+ion-content {
+  --background: linear-gradient(to bottom right, rgba(207, 218, 182, 0.658), #ffffff) !important;
+  padding-bottom: 16px; /* Adding padding at the bottom */
 }
 
+/* Remove box shadow from all cards */
 ion-card {
-    box-shadow: none !important
+  box-shadow: none !important;
+}
+
+/* Toolbar and header background colors */
+ion-toolbar {
+  --background: rgba(207, 218, 182, 0.658) !important;
 }
 
 ion-header {
-    text-align: center;
-    align-content: center;
-    background-color: rgb(235, 154, 107) !important;
+  background-color: rgba(180, 199, 136, 0.658);
 }
 
-ion-toolbar {
-    --background: rgb(235, 154, 107) !important;
-}
-
+/* Centered title text styling */
 .text-top {
-    text-align: center;
-    margin-top: -18px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: -18px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Centered content for image, label, and title sections */
 .ion-align-self-center {
-    margin-top: -15px;
+  margin-top: -15px;
 }
 
-:root {
-    ion-tab-button:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
-    }
-    ion-tab-button.tab-selected:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
-    }
+/* Icon alignment */
+.deviceTemplate-card > ion-img {
+  margin-left: 14px;
 }
 
-ion-loading {
-    color: green;
+/* Styling for the back button and the general toolbar */
+ion-toolbar {
+  --background: rgba(207, 218, 182, 0.658) !important;
 }
 
-.iconText>ion-col>ion-icon {
-    margin-left: 25px;
+/* Header and toolbar icons */
+.ionadd {
+  margin-right: 10px;
+  font-size: 24px;
 }
 
-.iconText>ion-col>ion-label {
-    position: flex;
-    font-size: 12px;
-    margin-left: 10px;
+/* Icon styling inside list items */
+ion-item-options ion-icon {
+  font-size: 20px;
 }
 
-app-component-telemetry {
-    width: 100%;
+/* Styling for the chart container */
+ion-card {
+  margin-top: 16px;
 }
 
-.deviceTemplate-card>ion-img {
-    margin-left: 14px;
-}
-
-ion-segment-button {
-    width: 40px;
-    margin-top: 2px;
-    margin-left: 4px;
-    margin-right: 4px;
-    font-size: 10px;
-    border: none;
-    background-color: rgb(248, 248, 248);
-    border-radius: 50%;
-}
-
-ion-avatar {
-    width: 70% !important;
-    height: 70% !important;
-    max-width: 70px !important; //any size
-    max-height: 70px !important; //any size
-}
-
-h5 {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-h4 {
-    font-weight: bold;
-    font-size: 18px;
-}
-
+/* Card for displaying blood pressure data */
 ion-card-header {
-    margin-top: -14px;
+  background-color: rgba(180, 199, 136, 0.658);
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
 }
 
-ion-card-content {
-    margin-top: -8px;
+/* Margin and spacing for each section */
+ion-row {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* Style for the systolic and diastolic blood pressure readings */
+ion-label h4 {
+  font-size: 16px;
+  color: #444;
+}
+
+/* Swipe action on the list items (if needed) */
+ion-item-options ion-icon {
+  font-size: 20px;
 }

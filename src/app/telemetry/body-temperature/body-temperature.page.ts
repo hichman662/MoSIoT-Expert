@@ -20,7 +20,7 @@ export class BodyTemperaturePage implements OnInit {
   barChart: any;
   textCelsius: string = '';
   label: any [] =[' 2025/5/22', '2025/5/23', '2025/5/26', '2025/5/27', '2025/6/01','2025/6/2'];
-  data: any[]=[37, 37.5, 36, 37.5, 36.5, 37,5 ];
+  data: any[]=[37, 37.5, 36, 37.5, 36.5, 37.5 ];
   date= new Date();
   constructor(  public router: Router,
     private route: ActivatedRoute,
