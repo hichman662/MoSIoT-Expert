@@ -45,13 +45,13 @@ export class AddPatientAccessPage implements OnInit {
   ) {
 
     this.patientAccessForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ]),
-    Scenario_oid: new FormControl(Number, [
+    scenario_oid: new FormControl(Number, [
       Validators.required
     ])
   });
@@ -72,7 +72,7 @@ export class AddPatientAccessPage implements OnInit {
     this.idPassedByURL = this.route.snapshot.params['Id'];
     console.log(this.idPassedByURL);
     this.storage.get('idScenario').then((val) => {
-      this.patientAccessForm.get('Scenario_oid')?.setValue(val);
+      this.patientAccessForm.get('scenario_oid')?.setValue(val);
     });
 
   }
@@ -84,8 +84,8 @@ export class AddPatientAccessPage implements OnInit {
 
     this.patientService.createPatientAccess(this.patientAccessForm.value)
     .subscribe( (res: any) => {
-      this.name = res.Name;
-      this.idPatientAcess = res.Id;
+      this.name = res.name;
+      this.idPatientAcess = res.id;
       this.storage.get('idPatientProfile').then((val) => {
         if(val != null){
           this.patientProfileId= val;

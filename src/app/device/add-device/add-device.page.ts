@@ -55,31 +55,31 @@ export class AddDevicePage implements OnInit {
   ) {
 
     this.deviceForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ]),
-    Tag: new FormControl('', [
+    tag: new FormControl('', [
       Validators.required
     ]),
-    SerialNumber: new FormControl('', [
+    serialNumber: new FormControl('', [
       Validators.required
     ]),
-    FirmVersion: new FormControl('', [
+    firmVersion: new FormControl('', [
       Validators.required
     ]),
-    Trademark: new FormControl('', [
+    trademark: new FormControl('', [
       Validators.required
     ]),
-    IsSimulated: new FormControl(Boolean, [
+    isSimulated: new FormControl(Boolean, [
       Validators.required
     ]),
-    DeviceSwitch: new FormControl(Boolean, [
+    deviceSwitch: new FormControl(Boolean, [
       Validators.required
     ]),
-    Scenario_oid: new FormControl(Number, [
+    scenario_oid: new FormControl(Number, [
       Validators.required
     ])
   });
@@ -106,7 +106,7 @@ ngOnInit() {
 
 ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.deviceForm.get('Scenario_oid')?.setValue(val);
+      this.deviceForm.get('scenario_oid')?.setValue(val);
     });
 
     this.storage.get('idPatientProfile').then((val) => {
@@ -129,8 +129,8 @@ ionViewWillEnter(){
 
     this.deviceService.createDevice(this.deviceForm.value)
     .subscribe( (res: any) => {
-      this.name = res.Name;
-      this.idDevice = res.Id;
+      this.name = res.name;
+      this.idDevice = res.id;
       this.deviceAddDone = true;
       //this.presentAlert();
       this.presentToast('success',this.name);

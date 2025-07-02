@@ -34,8 +34,8 @@ constructor(private http: HttpClient,
 
 }
 
-public getAllUsers(): Observable<object>{
-  return this.http.get(`${environment.base_url}/User/ReadAll`);
+public getAllUsers(): Observable<UserData[]>{
+  return this.http.get<UserData[]>(`${environment.base_url}/User/ReadAll`);
 }
 
 public getPatientByIdScenario( uid: number): Observable<UserData[]>{

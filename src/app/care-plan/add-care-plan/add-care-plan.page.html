@@ -70,16 +70,16 @@
     <form [formGroup]="carePlanForm" (ngSubmit)="onSubmit()">
         <ion-item>
             <ion-label position="stacked">{{ 'ADDCAREPLAN.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="carePlanForm.controls['Name'].errors && carePlanForm.controls['Name'].touched">
+            <ion-input type="text" formControlName="name" class="form-control"></ion-input>
+            <div class="error" *ngIf="carePlanForm.controls['name']?.errors && carePlanForm.controls['name']?.touched">
                 {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
 
         <ion-item>
             <ion-label position="stacked">{{ 'ADDCAREPLAN.description' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="carePlanForm.controls['Description'].errors && carePlanForm.controls['Description'].touched">
+            <ion-input type="text" formControlName="description" class="form-control"></ion-input>
+            <div class="error" *ngIf="carePlanForm.controls['description']?.errors && carePlanForm.controls['description']?.touched">
                 {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
@@ -97,7 +97,7 @@
 
             <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idCarePlanTemplate">
 
-                <div class="error" *ngIf="carePlantemplateForm.controls['idCarePlanTemplate'].errors && carePlantemplateForm.controls['idCarePlanTemplate'].touched">
+                <div class="error" *ngIf="carePlantemplateForm.controls['idCarePlanTemplate']?.errors && carePlantemplateForm.controls['idCarePlanTemplate']?.touched">
                     {{ 'ADDCAREPLAN.pleaseFillOutThisField' | translate }}
                 </div>
 

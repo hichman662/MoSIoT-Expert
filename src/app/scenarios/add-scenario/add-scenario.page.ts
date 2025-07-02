@@ -42,10 +42,10 @@ export class AddScenarioPage implements OnInit {
     });
 
     this.scanearioForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ])
   });
@@ -63,8 +63,8 @@ export class AddScenarioPage implements OnInit {
     this.scenario = this.scanearioForm.value;
     this.scenarioService.createScenario(this.scenario, this.token)
     .subscribe( (res: any) => {
-      this.name = res.Name;
-      this.storage.set('idScenario',res.Id);
+      this.name = res.name;
+      this.storage.set('idScenario',res.id);
       this.scenarioAddDone = true;
       //this.presentAlert();
       this.presentToast('success');

@@ -47,13 +47,13 @@ export class AddCarePlanPage implements OnInit {
   ) {
 
     this.carePlanForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ]),
-    Scenario_oid: new FormControl(Number, [
+    scenario_oid: new FormControl(Number, [
       Validators.required
     ])
   });
@@ -73,7 +73,7 @@ export class AddCarePlanPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.carePlanForm.get('Scenario_oid')?.setValue(val);
+      this.carePlanForm.get('scenario_oid')?.setValue(val);
     });
 
     this.storage.get('idPatientProfile').then((val) => {
@@ -89,8 +89,8 @@ export class AddCarePlanPage implements OnInit {
 
     this.carePlanService.createCarePlan(this.carePlanForm.value)
     .subscribe( (res: any) => {
-      this.name = res.Name;
-      this.idCarePlan = res.Id;
+      this.name = res.name;
+      this.idCarePlan = res.id;
       this.carePlanAddDone = true;
       //this.presentAlert();
       this.presentToast('success',this.name);
