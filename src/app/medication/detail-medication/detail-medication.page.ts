@@ -36,7 +36,9 @@ export class DetailMedicationPage implements OnInit {
   callAppointmentDetail(){
     this.entityService.getEntitynById(this.idPassedByURL)
     .subscribe((res: Entity ) => {
+    
       this.attriubute = res.attributes ?? [];
+        console.log(this.attriubute);
     }, (err) => {
       console.log(err);
     });
@@ -96,4 +98,48 @@ export class DetailMedicationPage implements OnInit {
     });
     await alert.present();
 }
+
+getIcon(name: string): string {
+  switch (name) {
+    // Medication fields
+    case 'Med_Name':
+      return 'medkit-outline';
+    case 'Med_Description':
+      return 'document-outline';
+    case 'Med_Manufacturer':
+      return 'cog-outline';
+    case 'Med_Dosage':
+      return 'eyedrop-outline';
+    case 'Med_Form':
+      return 'flask-outline';
+    case 'Med_MedicationCode':
+      return 'barcode-outline';
+
+    // Activity fields (capitalized)
+    case 'Name':
+      return 'person-outline';
+    case 'Description':
+      return 'document-text-outline';
+    case 'Periodicity':
+      return 'calendar-outline';
+    case 'Duration':
+      return 'time-outline';
+    case 'Location':
+      return 'map-outline';
+    case 'OutcomeCode':
+      return 'barcode-outline';
+    case 'TypeActivity':
+      return 'bicycle-outline';
+    case 'ActivityCode':
+      return 'qr-code-outline';
+
+    default:
+      return 'information-circle-outline';
+  }
+}
+
+
+
+
+
 }

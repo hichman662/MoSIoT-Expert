@@ -97,4 +97,38 @@ export class DetailNutritionPage implements OnInit {
     });
     await alert.present();
 }
+getIcon(name: string): string {
+  switch (name) {
+    // Nutrition-specific fields
+    case 'Nut_Name':
+      return 'logo-apple';
+    case 'Nut_Description':
+      return 'document-outline';
+    case 'Nut_DietCode':
+      return 'barcode-outline';
+
+    // Generic activity fields
+    case 'Name':
+      return 'medkit-outline';
+    case 'Description':
+      return 'document-outline';
+    case 'Periodicity':
+      return 'people-circle-outline';
+    case 'Duration':
+      return 'timer-outline';
+    case 'Location':
+      return 'map-outline';
+    case 'OutcomeCode':
+      return 'barcode-outline';
+    case 'TypeActivity':
+      return 'bicycle-outline';
+    case 'ActivityCode':
+      return 'qr-code-outline';
+
+    // Default
+    default:
+      return 'information-circle-outline';
+  }
+}
+
 }

@@ -1,147 +1,86 @@
 <ion-header>
-
-    <ion-toolbar>
-
-        <ion-buttons slot="start">
-            <ion-back-button text="{{'COMMUNICATION.return' | translate}}" defaultHref="tabs/tab2/communication" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-button>
-            </ion-button>
-        </ion-buttons>
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/communicationW.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <!--   <ion-label class="text-top">{{ activityName}}</ion-label> -->
-
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-
-                <ion-label class="text-top">
-                    <h2>{{'COMMUNICATION.communication' | translate}}</h2>
-                </ion-label>
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-segment value="all" color="tertiary" class="animate__animated animate__slideInUp animate__fast" scrollable="true" mode="md" [(ngModel)]="segmentModel" lines="none">
-        <ion-segment-button value="communication">
-            <ion-icon name="calendar"></ion-icon>
-            <ion-label>{{'COMMUNICATION.communicationDetail' | translate}} </ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="details">
-            <ion-icon name="medkit-outline"></ion-icon>
-            <ion-label>{{'COMMUNICATION.activityDetail' | translate}} </ion-label>
-        </ion-segment-button>
-
-
-    </ion-segment>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="{{ 'COMMUNICATION.return' | translate }}"
+        defaultHref="tabs/tab2/communication"
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
+
 <ion-content>
-    <div class="segment" *ngIf="segmentModel === 'communication'">
-        <div *ngFor="let attr of attriubute">
-            <div *ngIf="attr.name?.indexOf('Com_') !== 0">
-
-                <ion-list>
-
-                    <ion-list-header>
-                        <ion-icon *ngIf="attr.name === 'name'" class="segmentIcon" name="medkit-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'description'" class="segmentIcon" name="document-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'periodicity'" class="segmentIcon" name="people-circle-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'duration'" class="segmentIcon" name="timer-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'location'" class="segmentIcon" name="map-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'outcomeCode'" class="segmentIcon" name="barcode-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'typeActivity'" class="segmentIcon" name="bicycle-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'activityCode'" class="segmentIcon" name="qr-code-outline"></ion-icon>
-                        {{attr.name}}</ion-list-header>
-                    <ion-item-sliding #slidingItem>
-                        <ion-item>
-
-                            <ion-label> {{attr.valueAttr}}</ion-label>
-                        </ion-item>
-                        <ion-item-options side="start">
-
-                            <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable (click)="editAttr(slidingItem, attr.name!, attr.id!, attr.valueAttr!)">
-
-                                <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-
-                            </ion-item-option>
-                        </ion-item-options>
-                    </ion-item-sliding>
-                </ion-list>
-            </div>
-
-
-        </div>
+  <!-- Header Icon and Title -->
+  <div class="patient-header">
+    <ion-img src="assets/icon/communicationW.png" class="patient-icon"></ion-img>
+    <div class="patient-info">
+      <h2>{{ 'COMMUNICATION.communication' | translate }}</h2>
     </div>
-    <div class="segment" *ngIf="segmentModel === 'details'">
-        <div *ngFor="let attr of attriubute">
-            <div *ngIf="attr.name?.indexOf('Com_') === 0">
-                <ion-list>
+  </div>
 
-                    <ion-list-header>
-                        <ion-icon *ngIf="attr.name === 'com_Severity'" class="segmentIcon" name="information-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'com_Message'" class="segmentIcon" name="chatbox-outline"></ion-icon>
-                        <ion-icon *ngIf="attr.name === 'com_SendData'" class="segmentIcon" name="calendar-outline"></ion-icon>
-                        {{attr.name}}</ion-list-header>
-                    <ion-item-sliding #slidingItem>
-                        <ion-item>
+  <!-- Segment Tabs -->
+  <ion-segment
+    [(ngModel)]="segmentModel"
+    scrollable="true"
+    class="segment-tabs"
+    color="tertiary"
+    mode="md"
+    lines="none">
+    <ion-segment-button value="communication">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+      <ion-label class="text-wrap">{{ 'COMMUNICATION.communicationDetail' | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="details">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <ion-label class="text-wrap">{{ 'COMMUNICATION.activityDetail' | translate }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-                            <ion-label> {{attr.valueAttr}}</ion-label>
-                        </ion-item>
-                        <ion-item-options side="start">
+  <!-- Segment: Communication Detail (non-Com_) -->
+  <div class="segment" *ngIf="segmentModel === 'communication'">
+    <ion-card class="animate__animated animate__slideInUp animate__slow">
+      <ion-list>
+        <ion-item-sliding *ngFor="let attr of attriubute" #slidingItem>
+          <ion-item lines="full" *ngIf="!attr.name?.startsWith('Com_')">
+            <ion-icon slot="start" class="segmentIcon" [name]="getIcon(attr.name || '')"></ion-icon>
+            <ion-label>
+              <h3>{{ attr.name }}</h3>
+              <p>{{ attr.valueAttr }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option color="success" expandable (click)="editAttr(slidingItem, attr.name!, attr.id!, attr.valueAttr!)">
+              <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card>
+  </div>
 
-                            <ion-item-option color="success" (click)="closeSliding(slidingItem)" expandable (click)="editAttr(slidingItem, attr.name!, attr.id!, attr.valueAttr!)">
-
-                                <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-
-                            </ion-item-option>
-                        </ion-item-options>
-                    </ion-item-sliding>
-                </ion-list>
-            </div>
-
-
-        </div>
-    </div>
-
-
-
+  <!-- Segment: Communication Metadata (Com_*) -->
+  <div class="segment" *ngIf="segmentModel === 'details'">
+    <ion-card class="animate__animated animate__slideInUp animate__slow">
+      <ion-list>
+        <ion-item-sliding *ngFor="let attr of attriubute" #slidingItem>
+          <ion-item lines="full" *ngIf="attr.name?.startsWith('Com_')">
+            <ion-icon slot="start" class="segmentIcon" [name]="getIcon(attr.name || '')"></ion-icon>
+            <ion-label>
+              <h3>{{ attr.name }}</h3>
+              <p>{{ attr.valueAttr }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option color="success" expandable (click)="editAttr(slidingItem, attr.name!, attr.id!, attr.valueAttr!)">
+              <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card>
+  </div>
 </ion-content>

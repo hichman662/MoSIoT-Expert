@@ -210,4 +210,19 @@ export class DetailCarePlanPage implements OnInit {
     await alert.present();
 }
 
+getIcon(name: string): string {
+  switch (name.toLowerCase()) {
+    case 'name': return 'person-outline';
+    case 'description': return 'receipt-outline';
+    case 'durationdays': return 'hourglass-outline';
+    case 'intent': return 'body-outline';
+    case 'status': return 'power-outline';
+    case 'modified': return 'calendar-outline';
+    case 'title': return 'document-text-outline';
+    case 'mejoracognitiva': return 'accessibility-outline';
+    case 'reducirpulsaciones': return 'pulse-outline';
+    default: return 'information-circle-outline';
+  }
+}
+
 }

@@ -45,14 +45,16 @@ public deviceData: Device | null = null;
     .subscribe((res: Device ) => {
       console.log(res);
     if(res != null){
-      this.load = false;
+      
        this.deviceName = res.name ?? '';
        this.deviceDescrip = res.description ?? '';
        this.deviceData = res;
 
     }
+    this.load = true;
     }, (err) => {
       console.log(err);
+      this.load = true;
     });
   }
 
