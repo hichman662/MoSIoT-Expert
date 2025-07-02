@@ -1,33 +1,32 @@
-import { CommandTemplate } from './../../models/commandTemplate.model';
-import { PropertyTemplate } from './../../models/propertyTemplate.model';
-import { DeviceService } from './../../services/device.service';
-
-import { Command } from './../../models/command.model';
-import { EntityService } from './../../services/entity.service';
-/* eslint-disable quote-props */
-/* eslint-disable @typescript-eslint/naming-convention */
-import { Attribute } from './../../models/attribute.model';
-/* eslint-disable @typescript-eslint/quotes */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Entity } from './../../models/entity.model';
-import { IonItemSliding, AlertController, ToastController} from '@ionic/angular';
-import { Property } from 'src/app/models/property.model';
+import { IonItemSliding, AlertController, ToastController } from '@ionic/angular';
+
+import { DeviceService } from './../../services/device.service';
+import { EntityService } from './../../services/entity.service';
+
 import { Device } from 'src/app/models/device.model';
+import { Entity } from './../../models/entity.model';
+import { Attribute } from './../../models/attribute.model';
+import { CommandTemplate } from './../../models/commandTemplate.model';
+import { PropertyTemplate } from './../../models/propertyTemplate.model';
 
 @Component({
-    selector: 'app-device-template',
-    templateUrl: './device-template.component.html',
-    styleUrls: ['./device-template.component.scss'],
-    standalone: false
+  selector: 'app-device-template',
+  templateUrl: './device-template.component.html',
+  styleUrls: ['./device-template.component.scss'],
+  standalone: false
 })
 export class DeviceTemplateComponent implements OnInit {
 
-  deviceTemplateNull= false;
-  segmentModel = 'detail';
-  public attriubute: Attribute[] = [];
+  public segmentModel: string = 'detail';
+  public load: boolean = false;
+
+  public deviceTemplateNull: boolean = false;
+  public attributes: Attribute[] = [];
   public allCommands: CommandTemplate[] = [];
   public allProperties: PropertyTemplate[] = [];
+
   private idPassedByURL: number = 0;
 
   constructor(
@@ -36,99 +35,102 @@ export class DeviceTemplateComponent implements OnInit {
     public alertController: AlertController,
     public toastController: ToastController,
     public deviceService: DeviceService
-
   ) { }
 
-
-  ngOnInit() {
-
-
-
+  ngOnInit(): void {
+    this.load = false;
     this.idPassedByURL = this.route.snapshot.params['Id'];
+
     this.callDeviceByIdTemporal();
-    this.entityService.getEntitynById(this.idPassedByURL)
-    .subscribe((res: Entity ) => {
-      this.attriubute = res.attributes ?? [];
-      //this.allCommands = res.Operations;
-      console.log(this.allCommands);
-    }, (err) => {
-      console.log(err);
+
+    this.entityService.getEntitynById(this.idPassedByURL).subscribe({
+      next: (res: Entity) => {
+        this.attributes = res.attributes ?? [];
+        this.deviceTemplateNull = !res.attributes?.length;
+        this.load = true;
+      },
+      error: (err) => {
+        console.error(err);
+        this.deviceTemplateNull = true;
+        this.load = true;
+      }
     });
   }
 
-
-  callDeviceByIdTemporal() {
-  this.deviceService.getDeviceById(this.idPassedByURL)
-    .subscribe((res: Device) => {
-      console.log(res);
-      if (res != null && res.deviceTemplate != null) {
-        this.allProperties = res.deviceTemplate.Properties ?? [];
-        this.allCommands = res.deviceTemplate.Commands ?? [];
-        console.log(this.allProperties);
-      } else {
-        this.allProperties = [];
-        this.allCommands = [];
+  callDeviceByIdTemporal(): void {
+    this.deviceService.getDeviceById(this.idPassedByURL).subscribe({
+      next: (res: Device) => {
+        if (res?.deviceTemplate) {
+          this.allProperties = res.deviceTemplate.properties ?? [];
+          this.allCommands = res.deviceTemplate.commands ?? [];
+        } else {
+          this.allProperties = [];
+          this.allCommands = [];
+          this.deviceTemplateNull = true;
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.deviceTemplateNull = true;
       }
-    }, (err) => {
-      console.log(err);
     });
-}
+  }
 
-
-  closeSliding(slidingItem: IonItemSliding){
+  closeSliding(slidingItem: IonItemSliding): void {
     slidingItem.close();
   }
 
-  async presentToast(color: string , message: string) {
+  async presentToast(color: string, message: string): Promise<void> {
     const toast = await this.toastController.create({
-      color: `${color}`,
-      message: `${message}`,
+      color: color,
+      message: message,
       duration: 2500,
       position: 'bottom'
     });
     await toast.present();
   }
 
-  async editAttr(slidingItem: IonItemSliding ,attrName: string ,id: number, attr: string){
+  async editAttr(slidingItem: IonItemSliding, attrName: string, id: number, attr: string): Promise<void> {
     slidingItem.close();
     const alert = await this.alertController.create({
-      header:`${attrName}`,
+      header: attrName,
       inputs: [
         {
           name: 'ValueAttr',
-          placeholder: `${attr}`,
-          value: `${attr}`
+          placeholder: attr,
+          value: attr
         }
       ],
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
-          handler: data => {
-            console.log('You Clicked on Cancel');
+          handler: () => {
+            console.log('Edit cancelled');
           }
         },
         {
           text: 'Modify',
-          handler: data => {
+          handler: (data) => {
             if (data.ValueAttr !== '') {
-               this.entityService.modifyEntityAttribute(id, {"ValueAttr" : data.ValueAttr})
-              .subscribe((res: Attribute ) => {
-                this.presentToast('success','Your settings have been saved.');
-                this.ngOnInit();
-                 }, (err) => {
-              console.log(err);
-              this.presentToast('danger','Your settings have not been saved.');
+              this.entityService.modifyEntityAttribute(id, { ValueAttr: data.ValueAttr }).subscribe({
+                next: (res: Attribute) => {
+                  this.presentToast('success', 'Your settings have been saved.');
+                  this.ngOnInit();
+                },
+                error: (err) => {
+                  console.error(err);
+                  this.presentToast('danger', 'Your settings have not been saved.');
+                }
               });
               return true;
-            } else {
-              return false;
             }
+            return false;
           }
         }
       ]
     });
     await alert.present();
-}
+  }
 
 }

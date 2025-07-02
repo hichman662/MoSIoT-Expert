@@ -47,7 +47,11 @@ export class DetailVitalSignPage implements OnInit {
     this.idPassedByURL = this.route.snapshot.params['Id'];
     this.entityService.getEntitynById(this.idPassedByURL)
     .subscribe((res: Entity ) => {
+      console.log(res);
       this.attriubute = res.attributes ?? [];
+      this.vitalSignName = this.attriubute.find(a => a.name?.toLowerCase().includes('name'))?.valueAttr || '';
+    this.vitalSignDescrip = this.attriubute.find(a => a.name?.toLowerCase().includes('description'))?.valueAttr || '';
+
     }, (err) => {
       console.log(err);
     });
@@ -106,6 +110,18 @@ export class DetailVitalSignPage implements OnInit {
       ]
     });
     await alert.present();
+}
+getIcon(name: string): string {
+  switch (name) {
+    case 'name':
+      return 'person-outline';
+    case 'description':
+      return 'document-text-outline';
+    case 'lOINCode':
+      return 'barcode-outline';
+    default:
+      return 'information-circle-outline';
+  }
 }
 
 }

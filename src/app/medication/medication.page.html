@@ -1,86 +1,82 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="{{ 'MEDICATIONLIST.return' | translate }}"
+        defaultHref="/tabs/tab2"
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon
+        size="large"
+        class="ionadd"
+        name="add-outline"
+        slot="end"
+        [routerLink]="['add-medication', '1']">
+      </ion-icon>
+      <ion-button></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <!-- Centered Icon -->
+  <ion-row>
+    <ion-col size="4"></ion-col>
+    <ion-col size="4">
+      <ion-card color="transparent" class="deviceTemplate-card">
+        <ion-img src="assets/icon/medication.png"></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4"></ion-col>
+  </ion-row>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{'MEDICATIONLIST.return'| translate}}" defaultHref="/tabs/tab2" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-icon size="large" class="ionadd" name="add-outline" slot="end" [routerLink]="['add-medication','1']"></ion-icon>
-            <ion-button>
-            </ion-button>
-        </ion-buttons>
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/medication.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{'MEDICATIONLIST.title'| translate}}</ion-label>
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
+  <!-- Page Title -->
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="text-top">{{ 'MEDICATIONLIST.title' | translate }}</ion-label>
+      </ion-list-header>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
 </ion-header>
+
 <ion-content>
-    <ion-card-header [hidden]="!medicationNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">{{'MEDICATIONLIST.alertNoMedication'| translate}}</ion-card-header>
+  <!-- Warning if no Medication -->
+  <ion-card *ngIf="medicationNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
+    <ion-card-content>
+      {{ 'MEDICATIONLIST.alertNoMedication' | translate }}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Main Card with Medication List -->
+  <ion-card *ngIf="!medicationNull">
     <ion-list>
-        <div class="carePlan" *ngFor="let medication of medications">
+      <div class="carePlan" *ngFor="let medication of medications">
+        <ion-item-sliding #slidingItem>
+          <ion-item class="item" detail [routerLink]="['detail-medication', medication['id']]">
+            <ion-avatar slot="start">
+              <img src="assets/icon/medication.png" />
+            </ion-avatar>
+            <ion-label>{{ medication['name'] }}</ion-label>
+          </ion-item>
 
-            <ion-item-sliding #slidingItem>
+          <!-- Delete Option -->
+          <ion-item-options side="end" (ionSwipe)="deleteMedication(slidingItem, medication['id']!, medication['name']!)">
+            <ion-item-option color="danger" expandable (click)="deleteMedication(slidingItem, medication['id']!, medication['name']!)">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
 
-                <ion-item class="item" detail [routerLink]="['detail-medication',medication['id']]">
-                    <ion-avatar slot="start">
-                        <img src="assets/icon/medication.png">
-
-                    </ion-avatar>
-
-                    <ion-label> {{medication['name']}}</ion-label>
-
-
-                </ion-item>
-
-
-                <ion-item-options side="end" (ionSwipe)="deleteMedication(slidingItem,medication['id']!, medication['name']!)">
-                    <ion-item-option color="danger" expandable (click)="deleteMedication(slidingItem,medication['id']!, medication['name']!)">
-
-                        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-
-                    </ion-item-option>
-
-                </ion-item-options>
-
-                <ion-item-options side="start">
-
-                    <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-carePlan',medication['id']]">
-
-                        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-
-                    </ion-item-option>
-                </ion-item-options>
-            </ion-item-sliding>
-        </div>
+          <!-- Edit Option -->
+          <ion-item-options side="start">
+            <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-carePlan', medication['id']]">
+              <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </div>
     </ion-list>
-
+  </ion-card>
 </ion-content>
