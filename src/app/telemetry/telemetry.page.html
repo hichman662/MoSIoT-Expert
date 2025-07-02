@@ -1,124 +1,87 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'TELEMETRYLIST.return' | translate }}" defaultHref="/tabs/tab3" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <!-- Centered Icon -->
+  <ion-row>
+    <ion-col size="4"></ion-col>
+    <ion-col size="4">
+      <ion-card color="transparent" class="deviceTemplate-card">
+        <ion-img src="assets/icon/telemetries.png"></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4"></ion-col>
+  </ion-row>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'TELEMETRYLIST.return' | translate}}" defaultHref="/tabs/tab3" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-button>
-            </ion-button>
-        </ion-buttons>
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/telemetries.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{ 'TELEMETRYLIST.telemetries' | translate}}</ion-label>
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-            <ion-label class="text-top"></ion-label>
-        </ion-col>
-
-    </ion-row>
+  <!-- Page Title -->
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="text-top">{{ 'TELEMETRYLIST.telemetries' | translate }}</ion-label>
+      </ion-list-header>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
 </ion-header>
+
 <ion-content [fullscreen]="true">
-    <!--  <ion-card-header [hidden]="!careActivityNull" color="warning" class="animate__animated animate__fadeInLeft animate__slow">
-      <ion-icon size="large" name="warning-outline"></ion-icon> No Care Activity has been added to this scenario. To add Care Actiity, press the Add button.
-  </ion-card-header> -->
+  <!-- Telemetry List -->
+  <ion-card>
     <ion-list>
-        <div class="carePlan" *ngFor="let telemetry of imTelemetry">
+      <div class="carePlan" *ngFor="let telemetry of imTelemetry">
+        <ion-item-sliding #slidingItem>
+          <div *ngIf="telemetry['name'] === 'HeartRate'">
+            <ion-item class="item" detail [routerLink]="['heart-rate', heartRate]">
+              <ion-avatar slot="start">
+                <img src="assets/icon/heartRate.png" />
+              </ion-avatar>
+              <ion-label>
+                <h5>{{ 'TELEMETRYLIST.heartRate' | translate }}</h5>
+              </ion-label>
+            </ion-item>
+          </div>
 
-            <ion-item-sliding #slidingItem>
-                <div *ngIf="telemetry['Name'] === 'HeartRate'">
-                    <ion-item class="item" detail [routerLink]="['heart-rate',heartRate]">
-                        <ion-avatar slot="start">
-                            <img src="assets/icon/heartRate.png">
-                        </ion-avatar>
-                        <ion-label text-wrap>
-                            <h5>{{ 'TELEMETRYLIST.heartRate' | translate}} </h5>
-                            <!--
-                            <h4> {{heartRate}}</h4> -->
-                        </ion-label>
-                    </ion-item>
-                </div>
-                <div *ngIf="telemetry['Name'] === 'BloodPressure'">
-                    <ion-item class="item" detail [routerLink]="['blood-pressure',systolic,diastolic]">
-                        <ion-avatar slot="start">
-                            <img src="assets/icon/bloodPressure.png">
-                        </ion-avatar>
-                        <ion-label text-wrap>
-                            <h5>{{ 'TELEMETRYLIST.bloodPressure' | translate}} </h5>
+          <div *ngIf="telemetry['name'] === 'BloodPressure'">
+            <ion-item class="item" detail [routerLink]="['blood-pressure', systolic, diastolic]">
+              <ion-avatar slot="start">
+                <img src="assets/icon/bloodPressure.png" />
+              </ion-avatar>
+              <ion-label>
+                <h5>{{ 'TELEMETRYLIST.bloodPressure' | translate }}</h5>
+              </ion-label>
+            </ion-item>
+          </div>
 
-                            <!--  <h4> Systolic: {{systolic}}</h4>
-                            <h4> Diastolic: {{diastolic}}</h4> -->
-                        </ion-label>
-                    </ion-item>
-                </div>
-                <div *ngIf="telemetry['Name'] === 'BodyTemperature'">
-                    <ion-item class="item" detail [routerLink]="['body-temperature',bodyTemperature]">
-                        <ion-avatar slot="start">
-                            <img src="assets/icon/BodyTemperature.png">
-                        </ion-avatar>
-                        <ion-label text-wrap>
-                            <h5>{{ 'TELEMETRYLIST.bodyTemperature' | translate}} </h5>
-                            <!--  <h4> {{bodyTemperature}}º C</h4> -->
-                        </ion-label>
-                    </ion-item>
-                </div>
-                <div *ngIf="telemetry['Name'] === 'RespiratoryRate'">
-                    <ion-item class="item" detail [routerLink]="['respiratory-rate',respiratoryRate]">
-                        <ion-avatar slot="start">
-                            <img src="assets/icon/RespiratoryRate.png">
-                        </ion-avatar>
-                        <ion-label text-wrap>
-                            <h5>{{ 'TELEMETRYLIST.respiratoryRate' | translate}} </h5>
-                            <!--
-                            <h4> {{respiratoryRate}}%</h4> -->
-                        </ion-label>
-                    </ion-item>
-                </div>
+          <div *ngIf="telemetry['name'] === 'BodyTemperature'">
+            <ion-item class="item" detail [routerLink]="['body-temperature', bodyTemperature]">
+              <ion-avatar slot="start">
+                <img src="assets/icon/BodyTemperature.png" />
+              </ion-avatar>
+              <ion-label>
+                <h5>{{ 'TELEMETRYLIST.bodyTemperature' | translate }}</h5>
+              </ion-label>
+            </ion-item>
+          </div>
 
-                <!--  <ion-item-options side="end" (ionSwipe)="deletePatientProfile(slidingItem,patientProfile['Id'], patientProfile['Name'])">
-            <ion-item-option color="danger" expandable (click)="deletePatientProfile(slidingItem,patientProfile['Id'], patientProfile['Name'])">
-
-                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-
-            </ion-item-option>
-
-        </ion-item-options>
-
-        <ion-item-options side="start">
-
-            <ion-item-option color="success" expandable (click)="closeSliding(slidingItem)" [routerLink]="['edit-patient-profile',patientProfile['Id']]">
-
-                <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-
-            </ion-item-option>
-        </ion-item-options> -->
-            </ion-item-sliding>
-        </div>
+          <div *ngIf="telemetry['name'] === 'RespiratoryRate'">
+            <ion-item class="item" detail [routerLink]="['respiratory-rate', respiratoryRate]">
+              <ion-avatar slot="start">
+                <img src="assets/icon/RespiratoryRate.png" />
+              </ion-avatar>
+              <ion-label>
+                <h5>{{ 'TELEMETRYLIST.respiratoryRate' | translate }}</h5>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-item-sliding>
+      </div>
     </ion-list>
-
-
+  </ion-card>
 </ion-content>

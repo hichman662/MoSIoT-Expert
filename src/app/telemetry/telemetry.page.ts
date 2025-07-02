@@ -45,17 +45,12 @@ export class TelemetryPage implements OnInit {
       if(this.idScenario != null){
         this.callImTelemetry();
       }
-    }); this.storage.get('idScenario').then((val) => {
-      this.idScenario = val;
-      if(this.idScenario != null){
-        this.callImTelemetry();
-      }
-    });
+    }); 
   }
 
   ngOnInit() {}
 
-  callImTelemetry(){
+  /*callImTelemetry(){
     this.deviceService.getImTelemetryByIdScenario(this.idScenario)
     .subscribe( (res: any) => {
         this.imTelemetry = res;
@@ -90,7 +85,121 @@ export class TelemetryPage implements OnInit {
     }, ( err) => {
         console.log(err);
     });
+  }*/
+
+    callImTelemetry() {
+  const simulatedResponse = [
+    {
+      "id": 0,
+      "name": "HeartRate",
+      "description": "Heart rate measurement",
+      "telemetry": {
+        "id": 0,
+        "frecuency": 1,
+        "schema": 1,
+        "unit": 1,
+        "name": "HeartRate",
+        "type": 1
+      },
+      "teleValues": [
+        {
+          "id": 0,
+          "timeStamp": "2025-07-02T11:50:27.931Z",
+          "valu": "75"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "BodyTemperature",
+      "description": "Body temperature measurement",
+      "telemetry": {
+        "id": 1,
+        "frecuency": 1,
+        "schema": 1,
+        "unit": 1,
+        "name": "BodyTemperature",
+        "type": 1
+      },
+      "teleValues": [
+        {
+          "id": 1,
+          "timeStamp": "2025-07-02T11:50:27.931Z",
+          "valu": "36.5"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "RespiratoryRate",
+      "description": "Respiratory rate measurement",
+      "telemetry": {
+        "id": 2,
+        "frecuency": 1,
+        "schema": 1,
+        "unit": 1,
+        "name": "RespiratoryRate",
+        "type": 1
+      },
+      "teleValues": [
+        {
+          "id": 2,
+          "timeStamp": "2025-07-02T11:50:27.931Z",
+          "valu": "16"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "BloodPressure",
+      "description": "Blood pressure measurement",
+      "telemetry": {
+        "id": 3,
+        "frecuency": 1,
+        "schema": 1,
+        "unit": 1,
+        "name": "BloodPressure",
+        "type": 1
+      },
+      "teleValues": [
+        {
+          "id": 3,
+          "timeStamp": "2025-07-02T11:50:27.931Z",
+          "valu": "120/80"
+        }
+      ]
+    }
+  ];
+
+  this.imTelemetry = simulatedResponse;
+
+  // Process telemetry data
+  for (let i = 0; i < this.imTelemetry.length; i++) {
+    const telemetry = this.imTelemetry[i];
+
+    // Assign values based on the name
+    if (telemetry['name'] === 'HeartRate') {
+      this.heartRate = Number(telemetry.teleValues[0].valu);
+      console.log('HeartRate:', this.heartRate);
+    } else if (telemetry['name'] === 'BodyTemperature') {
+      this.bodyTemperature = parseFloat(telemetry.teleValues[0].valu);
+      console.log('BodyTemperature:', this.bodyTemperature);
+    } else if (telemetry['name'] === 'RespiratoryRate') {
+      this.respiratoryRate = parseFloat(telemetry.teleValues[0].valu);
+      console.log('RespiratoryRate:', this.respiratoryRate);
+    } else if (telemetry['name'] === 'BloodPressure') {
+      this.bloodPressure = telemetry.teleValues[0].valu;
+      const [systolic, diastolic] = this.bloodPressure.split('/');
+      this.systolic = Number(systolic);
+      this.diastolic = Number(diastolic);
+      console.log('Systolic:', this.systolic);
+      console.log('Diastolic:', this.diastolic);
+    }
   }
+
+  console.log('Telemetry Data:', this.imTelemetry);
+}
+
 
 
   //chart test

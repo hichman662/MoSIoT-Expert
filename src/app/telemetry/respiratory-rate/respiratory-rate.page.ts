@@ -20,7 +20,7 @@ export class RespiratoryRatePage implements OnInit {
   public respiratoryRate: any;
   barChart: any;
   label: any [] =['2025/5/22', '2025/5/23', '2025/5/26', '2025/5/27', '2025/6/1','2025/6/2'];
-  data: any[]=[15, 24, 18, 22, 17, 27];
+  data: any[]=[22, 24, 18, 22, 17, 27];
   date= new Date();
   textPerMinute: string = '';
   constructor(  public router: Router,
