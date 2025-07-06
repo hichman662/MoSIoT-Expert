@@ -101,7 +101,7 @@ public getPatientAccessByIdScenario( uid: number): Observable<object>{
   if (!uid) { uid = 0; }
   return this.http.get <PatientAccess>(`${environment.base_url}/PatientAccess/PatientAccessScenario?idIoTScenario=${uid}` );
 }
-public createPatientAccess( data: RelatedPerson ): Observable<object> {
+public createPatientAccess( data: any ): Observable<object> {
   return this.http.post(`${environment.base_url}/PatientAccess/New_`, data);
 }
 

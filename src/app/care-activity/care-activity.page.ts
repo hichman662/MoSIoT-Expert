@@ -64,7 +64,7 @@ export class CareActivityPage implements OnInit {
       if(res != null){
         this.careActivities = res;
         res.filter( (obj:any )=>  obj.Patient === null);
-        this.nameCareActivity = res.Name;
+        this.nameCareActivity = res.name;
         this.careActivityNull= false;
       }else{
         this.careActivityNull= true;
@@ -84,7 +84,7 @@ export class CareActivityPage implements OnInit {
     .subscribe( (res: any) => {
       if(res != null){
         this.careActivities = res;
-        this.nameCareActivity = res.Name;
+        this.nameCareActivity = res.name;
         this.careActivityNull= false;
       }else{
         this.careActivityNull= true;
@@ -104,20 +104,24 @@ export class CareActivityPage implements OnInit {
   addMedication(careActivityId: number, medicationId: number){
     this.storage.set('careActivityIdForAdd', careActivityId);
     this.storage.set('medicationIdForAdd', medicationId);
+    this.router.navigate(['addMedication'], { relativeTo: this.route });
   }
 
   addNutrition(careActivityId: number, nutritionId: number){
     this.storage.set('careActivityIdForAdd', careActivityId);
     this.storage.set('nutritionIdForAdd', nutritionId);
+    this.router.navigate(['addNutrition'], { relativeTo: this.route });
   }
 
   addAppointment(careActivityId: number, appointmentId: number){
     this.storage.set('careActivityIdForAdd', careActivityId);
     this.storage.set('appointmentIdForAdd', appointmentId);
+    this.router.navigate(['addAppointment'], { relativeTo: this.route });
   }
 
   addCommunication(careActivityId: number, communicationId: number){
     this.storage.set('careActivityIdForAdd', careActivityId);
     this.storage.set('communicationIdForAdd', communicationId);
+    this.router.navigate(['addCommunication'], { relativeTo: this.route });
   }
 }

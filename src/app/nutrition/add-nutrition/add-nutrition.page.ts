@@ -37,16 +37,16 @@ export class AddNutritionPage implements OnInit {
   ) {
 
     this.addNutritionForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ]),
-    Scenario_oid: new FormControl(Number, [
+    scenario_oid: new FormControl(Number, [
       Validators.required
     ]),
-    TimeAct: new FormControl(Date, [
+    timeAct: new FormControl(Date, [
       Validators.required
     ])
   });
@@ -62,7 +62,7 @@ export class AddNutritionPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addNutritionForm.get('Scenario_oid')?.setValue(val);
+      this.addNutritionForm.get('scenario_oid')?.setValue(val);
     });
     this.storage.get('careActivityIdForAdd').then((val) => {
       this.idCareactivityForAdd = val;

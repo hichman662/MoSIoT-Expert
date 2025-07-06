@@ -37,16 +37,16 @@ export class AddCommunicationPage implements OnInit {
   ) {
 
     this.addCommunicationForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ]),
-    Scenario_oid: new FormControl(Number, [
+    scenario_oid: new FormControl(Number, [
       Validators.required
     ]),
-    TimeAct: new FormControl(Date, [
+    timeAct: new FormControl('', [
       Validators.required
     ])
   });
@@ -62,13 +62,13 @@ export class AddCommunicationPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addCommunicationForm.get('Scenario_oid')?.setValue(val);
+      this.addCommunicationForm.get('scenario_oid')?.setValue(val);
     });
     this.storage.get('careActivityIdForAdd').then((val) => {
       this.idCareactivityForAdd = val;
     });
     this.storage.get('communicationIdForAdd').then((val) => {
-      this.addCommunicationForm = val;
+      this.idCummunicationForAdd = val;
     });
   }
 
@@ -124,5 +124,9 @@ export class AddCommunicationPage implements OnInit {
     });
     await toast.present();
   }
+  onDateChange(event: any) {
+  this.addCommunicationForm.get('timeAct')?.setValue(event.detail.value);
+
+}
 
 }

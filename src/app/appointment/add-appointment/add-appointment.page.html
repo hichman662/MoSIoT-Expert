@@ -51,29 +51,39 @@
     <form [formGroup]="addAppointmentForm" (ngSubmit)="onSubmit()">
         <ion-item>
             <ion-label position="stacked">{{ 'ADDAPPOINTMENT.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="addAppointmentForm.controls['Name'].errors && addAppointmentForm.controls['Name'].touched">
+            <ion-input type="text" formControlName="name" class="form-control"></ion-input>
+            <div class="error" *ngIf="addAppointmentForm.controls['name']?.errors && addAppointmentForm.controls['name']?.touched">
                 {{ 'ADDAPPOINTMENT.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
 
         <ion-item>
             <ion-label position="stacked">{{ 'ADDAPPOINTMENT.description' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="addAppointmentForm.controls['Description'].errors && addAppointmentForm.controls['Description'].touched">
+            <ion-input type="text" formControlName="description" class="form-control"></ion-input>
+            <div class="error" *ngIf="addAppointmentForm.controls['description']?.errors && addAppointmentForm.controls['description']?.touched">
                 {{ 'ADDAPPOINTMENT.pleaseFillOutThisField' | translate }}
             </div>
         </ion-item>
-        <ion-item>
-            <ion-label>{{ 'ADDAPPOINTMENT.activityTime' | translate }}</ion-label>
-            <ion-datetime locale="es-ES" value="2022-04-21T00:00:00" min="2022-09-01T00:00:00" max="2050-05-31T23:59:59" formControlName="TimeAct">
-                <span slot="title">{{ 'ADDAPPOINTMENT.selectActivityTime' | translate }}</span>
-            </ion-datetime>
-        </ion-item>
 
-        <br>
-        <br>
+<ion-item lines="none">
+  <ion-label position="stacked">{{ 'ADDAPPOINTMENT.activityTime' | translate }}</ion-label>
+</ion-item>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!addAppointmentForm.valid">{{ 'ADDAPPOINTMENT.done' | translate }}</ion-button>
+
+<div style="margin: 0px 0px 0px 4px;">
+  <ion-datetime
+    class="custom-datetime"
+    formControlName="timeAct"
+    presentation="date"
+    locale="en-CA"
+    value-format="yyyy/MM/dd"
+    prefer-wheel="true"
+    show-default-buttons="false"
+    show-default-title="false"
+    min="2024-01-01T00:00:00"
+    max="2030-12-31T23:59:59">
+  </ion-datetime>
+</div>
+        <ion-button expand="block" class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!addAppointmentForm.valid">{{ 'ADDAPPOINTMENT.done' | translate }}</ion-button>
     </form>
 </ion-content>

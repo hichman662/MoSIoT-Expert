@@ -27,6 +27,7 @@ export class AddAppointmentPage implements OnInit {
   idCareactivityForAdd: number = 0;
   idAppointmentForAdd: number = 0;
   textAlertSuccess: string = '';
+  selectedDate: string = '';
   constructor(
     public navCtrl: NavController,
     private carePlanService: CarePlanService,
@@ -38,16 +39,16 @@ export class AddAppointmentPage implements OnInit {
   ) {
 
     this.addAppointmentForm = new FormGroup({
-    Name: new FormControl('', [
+    name: new FormControl('', [
       Validators.required
     ]),
-    Description: new FormControl('', [
+    description: new FormControl('', [
       Validators.required
     ]),
-    Scenario_oid: new FormControl(Number, [
+    scenario_oid: new FormControl(Number, [
       Validators.required
     ]),
-    TimeAct: new FormControl(Date, [
+    timeAct: new FormControl('', [
       Validators.required
     ])
   });
@@ -62,14 +63,14 @@ export class AddAppointmentPage implements OnInit {
 
   ionViewWillEnter(){
     this.storage.get('idScenario').then((val) => {
-      this.addAppointmentForm.get('Scenario_oid')?.setValue(val);
+      this.addAppointmentForm.get('scenario_oid')?.setValue(Number(val));
     });
 
     this.storage.get('careActivityIdForAdd').then((val) => {
-      this.idCareactivityForAdd = val;
+      this.idCareactivityForAdd = Number(val) || 0;
     });
     this.storage.get('appointmentIdForAdd').then((val) => {
-      this.idAppointmentForAdd = val;
+      this.idAppointmentForAdd = Number(val) || 0;
     });
   }
 
@@ -129,5 +130,13 @@ export class AddAppointmentPage implements OnInit {
     await toast.present();
   }
 
+  
+ onDateChange(event: any) {
+  this.addAppointmentForm.get('timeAct')?.setValue(event.detail.value);
+
 }
+
+}
+
+
 

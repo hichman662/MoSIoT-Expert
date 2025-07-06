@@ -1,140 +1,101 @@
 <ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/tab1"
+        icon="chevron-back-outline"
+        text="{{ 'ADDPATIENT.return' | translate }}">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goToInicio()">
+        {{ 'ADDPATIENT.skip' | translate }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <div class="header-content">
+    <ion-img src="assets/icon/patiW.png" class="header-icon"></ion-img>
+    <div class="header-title">{{ 'ADDPATIENT.title' | translate }}</div>
+  </div>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'ADDPATIENT.return' | translate }}" defaultHref="/tabs/tab1" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-
-
-        <ion-button slot="end" fill="clear" (click)="goToInicio()">
-            {{ 'ADDPATIENT.skip' | translate }}
-        </ion-button>
-
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/patiW.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{ 'ADDPATIENT.title' | translate }}</ion-label>
-
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-
-        <ion-col size="12">
-
-            <app-progress-bar></app-progress-bar>
-
-
-        </ion-col>
-
-
-    </ion-row>
-
-
+  
+    <app-progress-bar></app-progress-bar>
+  
 </ion-header>
-<ion-content>
 
-    <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+<ion-content class="custom-background">
+  <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" class="form-wrapper">
 
-        <ion-item>
+    <ion-card class="form-card">
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDPATIENT.email' | translate }}</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="patientForm.controls['email']?.errors && patientForm.controls['email']?.touched">
+        {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
+      </div>
 
-            <ion-label position="stacked">{{ 'ADDPATIENT.email' | translate }}</ion-label>
-            <ion-input type="email" formControlName="email" class="form-control" required></ion-input>
-            <div class="error" *ngIf="patientForm.controls['email']?.errors && patientForm.controls['email']?.touched">
-                {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
-            </div>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDPATIENT.password' | translate }}</ion-label>
-            <ion-input type="password" formControlName="pass" class="form-control" required></ion-input>
-            <div class="error" *ngIf="patientForm.controls['pass']?.errors && patientForm.controls['pass']?.touched">
-                {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
-            </div>
-        </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDPATIENT.password' | translate }}</ion-label>
+        <ion-input type="password" formControlName="pass"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="patientForm.controls['pass']?.errors && patientForm.controls['pass']?.touched">
+        {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
+      </div>
 
-        <ion-item lines="full">
-            <ion-label position="stacked">{{ 'ADDPATIENT.existingUserWhoHasBeenAPatient' | translate }}</ion-label>
-
-            <ion-select multiple="false" [value]="invitedUserId" [placeholder]="invitedUserName" okText="Okay" cancelText="Dismiss" formControlName="userPatient_oid">
-
-                <div class="error" *ngIf="patientForm.controls['userPatient_oid']?.errors && patientForm.controls['userPatient_oid']?.touched">
-                    {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
-                </div>
-
-                <div>
-                    <ion-select-option *ngFor="let user of findNotAlreadyPatient" [value]="user['id']">{{user['name']}} {{user['surnames']}}</ion-select-option>
-
-                </div>
-
-            </ion-select>
-            <ion-item [routerLink]="['add-user']">
-                <ion-button shape="round" fill="outline">
-                    <ion-icon name="add"></ion-icon>
-                    {{ 'ADDPATIENT.newUserData' | translate }}
-                </ion-button>
-            </ion-item>
+   <ion-item class="select-item" lines="none">
+  <ion-label position="stacked">{{ 'ADDPATIENT.existingUserWhoHasBeenAPatient' | translate }}</ion-label>
+  <ion-select
+  formControlName="userPatient_oid"
+  placeholder="{{ 'ADDPATIENT.selectExistingUser' | translate }}">
+  <ion-select-option *ngFor="let user of findNotAlreadyPatient" [value]="user['id']">
+    {{ user['name'] }} {{ user['surnames'] }}
+  </ion-select-option>
+</ion-select>
+</ion-item>
 
 
-        </ion-item>
-        <br>
-        <br>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!patientForm.valid || patientAddDone">{{ 'ADDPATIENT.done' | translate }}</ion-button>
-    </form>
-    <br>
-    <br>
+      <div class="error" *ngIf="patientForm.controls['userPatient_oid']?.errors && patientForm.controls['userPatient_oid']?.touched">
+        {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
+      </div>
 
-    <form [formGroup]="patientProfileForm" (ngSubmit)="AssignPatientProfile()" [hidden]="!patientAddDone" class="animate__animated animate__slideInDown animate__fast">
+      <ion-item lines="none" [routerLink]="['add-user']">
+        <ion-button shape="round" fill="outline">
+          <ion-icon name="add"></ion-icon>
+          {{ 'ADDPATIENT.newUserData' | translate }}
+        </ion-button>
+      </ion-item>
+    </ion-card>
 
-        <ion-item lines="full">
-            <ion-label position="stacked">{{ 'ADDPATIENT.patientProfile' | translate }}</ion-label>
+    <ion-button expand="block" class="save" type="submit" [disabled]="!patientForm.valid || patientAddDone">
+      {{ 'ADDPATIENT.done' | translate }}
+    </ion-button>
+  </form>
 
-            <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="p_patientprofile_oid">
+  <form [formGroup]="patientProfileForm" (ngSubmit)="AssignPatientProfile()" [hidden]="!patientAddDone"
+        class="form-wrapper animate__animated animate__slideInDown animate__fast">
+    <ion-card class="form-card">
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDPATIENT.patientProfile' | translate }}</ion-label>
+        <ion-select formControlName="p_patientprofile_oid">
+          <ion-select-option *ngFor="let profile of allPatientProfile" [value]="profile['id']">
+            {{ profile['name'] }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="error" *ngIf="patientProfileForm.controls['p_patientprofile_oid']?.errors && patientProfileForm.controls['p_patientprofile_oid']?.touched">
+        {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
+      </div>
+    </ion-card>
 
-                <div class="error" *ngIf="patientProfileForm.controls['p_patientprofile_oid'].errors && patientProfileForm.controls['p_patientprofile_oid'].touched">
-                    {{ 'ADDPATIENT.pleaseFillOutThisField' | translate }}
-                </div>
+    <ion-button expand="block" class="save" type="submit" [disabled]="!patientProfileForm.valid || patientProfileAddDone">
+      {{ 'ADDPATIENT.done' | translate }}
+    </ion-button>
+  </form>
 
-                <div>
-                    <ion-select-option *ngFor="let patientProfile of allPatientProfile" [value]="patientProfile['id']">{{patientProfile['name']}}</ion-select-option>
-
-                </div>
-
-            </ion-select>
-
-        </ion-item>
-        <br>
-        <br>
-
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!patientProfileForm.valid || patientProfileAddDone">{{ 'ADDPATIENT.done' | translate }}</ion-button>
-    </form>
-    <br>
-    <br>
-    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="success" [disabled]="!patientProfileAddDone" [routerLink]="['add-patient-access']">2/6 {{ 'ADDPATIENT.accessModeButton' | translate }}</ion-button>
+  <ion-button expand="block" class="continue" type="submit" [disabled]="!patientProfileAddDone" [routerLink]="['add-patient-access']">
+    2/6 {{ 'ADDPATIENT.accessModeButton' | translate }}
+  </ion-button>
 </ion-content>

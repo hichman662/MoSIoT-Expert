@@ -29,7 +29,7 @@ export class DetailAppointmentPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params['Id'];
+    this.idPassedByURL = this.route.snapshot.params['id'];
     this.callAppointmentDetail();
   }
 

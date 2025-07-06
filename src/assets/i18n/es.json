@@ -17,6 +17,7 @@
         "return": "ESCENARIO"
     },
     "ADDPATIENT": {
+        "selectExistingUser": "Seleccionar paciente existente",
         "title": "Añadir Paciente",
         "email": "Correo electrónico",
         "password": "Contraseña",
@@ -30,6 +31,7 @@
         "pleaseFillOutThisField": "Por favor complete el campo"
     },
     "ADDUSER": {
+        "selectGender": "Seleccionar género",
         "title": "Añadir nuevo usuario",
         "name": "Nombre",
         "surnames": "Apellidos",
@@ -126,14 +128,14 @@
         "selectActivityTime": "Selecciona una fecha de actividad",
         "pleaseFillOutThisField": "Por favor complete el campo"
     },
-    "WIZARD": {
-        "scenario": "ESCENARIO",
-        "patient": "PACIENTE",
-        "accessMode": "MODO DE ACCESO",
-        "device": "DISPOSITIVO",
-        "carePlan": "PLAN DE CUIDADO",
-        "activities": "ACTIVIDADES"
-    },
+     "WIZARD": {
+  "scenario": "Escenario",
+  "patient": "Paciente",
+  "accessMode": "Acceso",
+  "device": "Dispositivo",
+  "carePlan": "Cuidado",
+  "activities": "Actividad"
+},
     "HOME": {
         "title": "Resumen",
         "scenario": "Escenario",

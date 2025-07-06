@@ -1,115 +1,71 @@
 <ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ADDACCESSMODE.return' | translate }}" defaultHref="/tabs/tab1/patientAccess" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goToInicio()">
+        {{ 'ADDACCESSMODE.skip' | translate }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <div class="header-content">
+    <ion-img src="assets/icon/accessW.png" class="header-icon"></ion-img>
+    <div class="header-title">{{ 'ADDACCESSMODE.title' | translate }}</div>
+  </div>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'ADDACCESSMODE.return' | translate }}" defaultHref="/tabs/tab1/patientAccess" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-
-
-        <ion-button slot="end" fill="clear" (click)="goToInicio()">
-            {{ 'ADDACCESSMODE.skip' | translate }}
-        </ion-button>
-
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/accessW.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{ 'ADDACCESSMODE.title' | translate }}</ion-label>
-
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-row [hidden]="idPassedByURL ==='noWizard'">
-        <ion-col size="12">
-            <app-progress-bar></app-progress-bar>
-            <!--  <ul class="progressbar">
-                <li class="active">Scenario</li>
-                <li class="active">Patient</li>
-                <li class="actual">Access mode</li>
-                <li>Device</li>
-                <li>Care plan</li>
-                <li>Activities</li>
-
-            </ul> -->
-
-        </ion-col>
-    </ion-row>
+  <div class="progress-bar-container">
+    <app-progress-bar></app-progress-bar>
+  </div>
 </ion-header>
-<ion-content>
 
-    <form [formGroup]="patientAccessForm" (ngSubmit)="onSubmit()">
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDACCESSMODE.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="name" class="form-control"></ion-input>
-            <div class="error" *ngIf="patientAccessForm.controls['name']?.errors && patientAccessForm.controls['name']?.touched">
-                {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
-            </div>
-        </ion-item>
+<ion-content class="custom-background">
+  <form [formGroup]="patientAccessForm" (ngSubmit)="onSubmit()" class="form-wrapper">
+    <ion-card class="form-card">
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDACCESSMODE.name' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name" class="form-control"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="patientAccessForm.controls['name']?.errors && patientAccessForm.controls['name']?.touched">
+        {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
+      </div>
 
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDACCESSMODE.description' | translate }}</ion-label>
-            <ion-input type="text" formControlName="description" class="form-control"></ion-input>
-            <div class="error" *ngIf="patientAccessForm.controls['description']?.errors && patientAccessForm.controls['description']?.touched">
-                {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
-            </div>
-        </ion-item>
-        <br>
-        <br>
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDACCESSMODE.description' | translate }}</ion-label>
+        <ion-input type="text" formControlName="description" class="form-control"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="patientAccessForm.controls['description']?.errors && patientAccessForm.controls['description']?.touched">
+        {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
+      </div>
+    </ion-card>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!patientAccessForm.valid || accessModeAddDone">{{ 'ADDACCESSMODE.done' | translate }}</ion-button>
-    </form>
-    <br>
-    <br>
-    <form [formGroup]="patientAccessProfileForm" (ngSubmit)="assignAccessMode()" [hidden]="!accessModeAddDone" class="animate__animated animate__slideInDown animate__fast">
+    <ion-button expand="block" class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!patientAccessForm.valid || accessModeAddDone">
+      {{ 'ADDACCESSMODE.done' | translate }}
+    </ion-button>
+  </form>
 
-        <ion-item lines="full">
-            <ion-label position="stacked">{{ 'ADDACCESSMODE.profileAccess' | translate }}</ion-label>
+  <form [formGroup]="patientAccessProfileForm" (ngSubmit)="assignAccessMode()" [hidden]="!accessModeAddDone" class="form-wrapper animate__animated animate__slideInDown animate__fast">
+    <ion-card class="form-card">
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDACCESSMODE.profileAccess' | translate }}</ion-label>
+        <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idPatientProfile">
+          <ion-select-option *ngFor="let accessMode of allAccessMode" [value]="accessMode['id']">
+            {{ accessMode['name'] }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="error" *ngIf="patientAccessProfileForm.controls['idPatientProfile']?.errors && patientAccessProfileForm.controls['idPatientProfile']?.touched">
+        {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
+      </div>
+    </ion-card>
 
-            <ion-select multiple="false" okText="Okay" cancelText="Dismiss" formControlName="idPatientProfile">
+    <ion-button expand="block" class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!patientAccessProfileForm.valid || accessModeProfileAddDone">
+      {{ 'ADDACCESSMODE.done' | translate }}
+    </ion-button>
+  </form>
 
-                <div class="error" *ngIf="patientAccessProfileForm.controls['idPatientProfile']?.errors && patientAccessProfileForm.controls['idPatientProfile']?.touched">
-                    {{ 'ADDACCESSMODE.pleaseFillOutThisField' | translate }}
-                </div>
-
-                <div>
-                    <ion-select-option *ngFor="let accessMode of allAccessMode" [value]="accessMode['id']">{{accessMode['name']}}</ion-select-option>
-
-                </div>
-
-            </ion-select>
-
-        </ion-item>
-        <br>
-        <br>
-
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!patientAccessProfileForm.valid || accessModeProfileAddDone">{{ 'ADDACCESSMODE.done' | translate }}</ion-button>
-    </form>
-    <br>
-    <br>
-    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="success" [hidden]="idPassedByURL ==='noWizard'" [disabled]="!accessModeProfileAddDone" [routerLink]="['add-device']">3/6 {{ 'ADDACCESSMODE.deviceButton' | translate }}</ion-button>
+  <ion-button expand="block" class="continue" size="small" fill="solid" type="submit" color="success" [hidden]="idPassedByURL === 'noWizard'" [disabled]="!accessModeProfileAddDone" [routerLink]="['add-device']">
+    3/6 {{ 'ADDACCESSMODE.deviceButton' | translate }}
+  </ion-button>
 </ion-content>
