@@ -95,6 +95,10 @@ export class AddPatientPage implements OnInit {
     this.invitedUserName = this.userService.nameNewUser;
     this.invitedUserId = this.userService.idNewUser;
 
+    if (this.invitedUserId) {
+    this.patientForm.get('userPatient_oid')?.setValue(this.invitedUserId);
+  }
+
   }
   onSubmit(){
     this.patientService.createPatient(this.patientForm.value)

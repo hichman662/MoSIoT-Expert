@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: CareActivityPage
   },
-  {
+    {
     path: 'detail-care-activity',
     loadChildren: () => import('./detail-care-activity/detail-care-activity.module').then( m => m.DetailCareActivityPageModule)
   },
@@ -31,7 +31,11 @@ const routes: Routes = [
   {
     path: 'add-care-activity',
     loadChildren: () => import('./add-care-activity/add-care-activity.module').then( m => m.AddCareActivityPageModule)
-  }
+  },
+  {
+    path: ':Id',
+    component: CareActivityPage
+  },
 
 ];
 

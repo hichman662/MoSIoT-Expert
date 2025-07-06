@@ -1,153 +1,113 @@
-/* DOES NOT WORK - not specific enough */
-
-
-/* Works - pass "my-custom-class" in cssClass to increase specificity */
-
-.my-custom-class {
-    color: green;
+.custom-background {
+  --background: linear-gradient(to bottom right, rgba(207, 218, 182, 0.658), rgba(245, 245, 245, 0.9));
+  padding: 16px;
+  --padding-bottom: 32px;
 }
 
-ion-card {
-    box-shadow: none !important
+.custom-toolbar {
+  --background: rgba(255, 255, 255, 0.95);
+  box-shadow: none;
+  border-bottom: 1px solid #d3d3d3;
 }
 
-ion-toolbar {
-    //--background: rgb(235, 154, 107) !important;
-    --background: rgb(226, 225, 225) !important;
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 20px 12px;
 }
 
-ion-header {
-    //background-color: rgb(235, 154, 107);
-    background-color: rgb(226, 225, 225);
+.header-icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 8px;
 }
 
-.text-top {
-    text-align: center;
-    margin-top: -18px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+.header-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2e4e1f;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
-.ion-align-self-center {
-    margin-top: -15px;
+.progress-bar-container {
+  padding: 0 20px 10px;
 }
 
-:root {
-    ion-tab-button:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
-    }
-    ion-tab-button.tab-selected:nth-child(1) {
-        ion-icon {
-            color: var(--ion-color-secondary) !important;
-            /* --ion-color-base: var(--ion-color-secondary) !important; */
-        }
-    }
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
 }
 
-ion-loading {
-    color: green;
+.form-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.iconText>ion-col>ion-icon {
-    margin-left: 25px;
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --highlight-color-focused: #648c3c;
+  margin-top: 12px;
 }
 
-.iconText>ion-col>ion-label {
-    position: flex;
-    font-size: 12px;
-    margin-left: 10px;
-}
-
-app-component-telemetry {
-    width: 100%;
-}
-
-.deviceTemplate-card>ion-img {
-    margin-left: 14px;
-}
-
-ion-segment-button {
-    width: 40px;
-    margin-top: 2px;
-    margin-left: 4px;
-    margin-right: 4px;
-    font-size: 10px;
-    border: none;
-    background-color: rgb(248, 248, 248);
-    border-radius: 50%;
+ion-label {
+  color: #2e4e1f;
+  font-weight: 500;
 }
 
 ion-input {
-    border: none; // for black border
-    background-color: transparent;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  color: #1a1a1a;
 }
 
-.progressbar {
-    counter-reset: step;
-    margin-left: -25px;
-    margin-right: -60px;
-    display: flex;
-    flex-wrap: wrap;
+ion-select {
+  width: 100%;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --min-height: 44px;
+  --placeholder-color: #555;
+  font-size: 15px;
 }
 
-.progressbar li {
-    list-style-type: none;
-    width: 14%;
-    float: left;
-    font-size: 11px;
-    position: relative;
-    text-align: center;
-    text-transform: uppercase;
-    color: #7d7d7d;
+ion-select::part(icon) {
+  font-size: 24px;
+  color: #2e4e1f;
 }
 
-.progressbar li:before {
-    width: 30px;
-    height: 30px;
-    content: counter(step);
-    counter-increment: step;
-    line-height: 30px;
-    border: 2px solid #7d7d7d;
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
-    border-radius: 50%;
-    background-color: white;
+ion-select-option {
+  font-size: 15px;
+  color: #1a1a1a;
 }
 
-.progressbar li:after {
-    width: 100%;
-    height: 3px;
-    content: '';
-    position: absolute;
-    background-color: #7d7d7d;
-    top: 15px;
-    left: -50%;
-    z-index: -1;
+.error {
+  color: #d9534f;
+  font-size: 0.8rem;
+  margin: 4px 0 12px 8px;
 }
 
-.progressbar li:first-child:after {
-    content: none;
+ion-button.save, ion-button.continue {
+  --border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.progressbar li.active {
-    //color: white;
-    color: black;
+ion-button.save {
+  margin-top: 16px;
+  --background: linear-gradient(to right, #4a90e2, #70b5ff);
+  color: white;
 }
 
-.progressbar li.active:before {
-    border-color: #55b776;
-    background-color: #55b776;
-}
-
-.progressbar li.active+li:after {
-    background-color: #55b776;
-}
-
-.progressbar li.actual:before {
-    border-color: #f3ea71;
-    background-color: #f3ea71;
+ion-button.continue {
+  --background: linear-gradient(to right, #68b86e, #a8e063);
+  color: white;
+  margin-top: 12px;
 }

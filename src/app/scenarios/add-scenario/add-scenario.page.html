@@ -1,87 +1,54 @@
 <ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/scenarios"
+        icon="chevron-back-outline"
+        text="{{ 'ADDSCENARIO.return' | translate }}"
+        (click)="restartIdScenario()">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'ADDSCENARIO.return' | translate }}" (click)="restartIdScenario()" defaultHref="/scenarios" icon="chevron-back-outline"></ion-back-button>
-            <ion-buttons slot="start">
-                <ion-menu-button menu="main-menu"></ion-menu-button>
-            </ion-buttons>
-        </ion-buttons>
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/scenario.svg'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{ 'ADDSCENARIO.title' | translate }}</ion-label>
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-
-        <ion-col size="12" class="bar">
-            <app-progress-bar></app-progress-bar>
-            <!--  <ul class="progressbar">
-                <li class="actual">Scenario</li>
-                <li>Patient</li>
-                <li>Access mode</li>
-                <li>Device</li>
-                <li>Care plan</li>
-                <li>Activities</li>
-
-            </ul> -->
-
-        </ion-col>
-
-
-    </ion-row>
+  <div class="header-content">
+    <ion-img src="assets/icon/scenario.svg" class="header-icon"></ion-img>
+    <div class="header-title">{{ 'ADDSCENARIO.title' | translate }}</div>
+  </div>
+<div class="progress-bar-container">
+    <app-progress-bar></app-progress-bar>
+  </div>
 </ion-header>
-<ion-content>
 
-    <form [formGroup]="scanearioForm" (ngSubmit)="onSubmit()">
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDSCENARIO.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="name" class="form-control"></ion-input>
-            <div class="error" *ngIf="scanearioForm.controls['name']?.errors && scanearioForm.controls['name']?.touched">
-                To add Scenario please fill out this field
-            </div>
-        </ion-item>
+<ion-content class="custom-background">
+  <form [formGroup]="scanearioForm" (ngSubmit)="onSubmit()" class="form-wrapper">
 
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDSCENARIO.description' | translate }}</ion-label>
-            <ion-input type="text" formControlName="description" class="form-control"></ion-input>
-            <div class="error" *ngIf="scanearioForm.controls['description']?.errors && scanearioForm.controls['description']?.touched">
-                To add Scenario please fill out this field
-            </div>
-        </ion-item>
-        <br>
-        <br>
+    <ion-card class="form-card">
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDSCENARIO.name' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="scanearioForm.controls['name']?.errors && scanearioForm.controls['name']?.touched">
+        To add Scenario please fill out this field
+      </div>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!scanearioForm.valid || scenarioAddDone">{{ 'ADDSCENARIO.done' | translate }}</ion-button>
-    </form>
-    <br>
-    <br>
-    <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="success" [disabled]="!scenarioAddDone" [routerLink]="['add-patient']">1/6 {{ 'ADDSCENARIO.patientButton' | translate }}</ion-button>
+      <ion-item lines="none">
+        <ion-label position="stacked">{{ 'ADDSCENARIO.description' | translate }}</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+      </ion-item>
+      <div class="error" *ngIf="scanearioForm.controls['description']?.errors && scanearioForm.controls['description']?.touched">
+        To add Scenario please fill out this field
+      </div>
+    </ion-card>
+
+    <ion-button expand="block" class="save" type="submit" [disabled]="!scanearioForm.valid || scenarioAddDone">
+      {{ 'ADDSCENARIO.done' | translate }}
+    </ion-button>
+
+    <ion-button expand="block" class="continue" [disabled]="!scenarioAddDone" [routerLink]="['add-patient']">
+      1/6 {{ 'ADDSCENARIO.patientButton' | translate }}
+    </ion-button>
+  </form>
 </ion-content>

@@ -69,8 +69,9 @@ export class AddPatientAccessPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params['Id'];
-    console.log(this.idPassedByURL);
+    this.idPassedByURL = this.route.snapshot.params['id'];
+
+    console.log("here Id pass By Id of user " + this.idPassedByURL);
     this.storage.get('idScenario').then((val) => {
       this.patientAccessForm.get('scenario_oid')?.setValue(val);
     });
@@ -86,6 +87,7 @@ export class AddPatientAccessPage implements OnInit {
     .subscribe( (res: any) => {
       this.name = res.name;
       this.idPatientAcess = res.id;
+      console.log ("inja Id patient access: " + this.idPatientAcess)
       this.storage.get('idPatientProfile').then((val) => {
         if(val != null){
           this.patientProfileId= val;
@@ -137,6 +139,7 @@ accessModeId() {
 this.patientService.getAccessModeByIdPatientprofile(this.patientProfileId)
   .subscribe((res: any ) => {
     this.allAccessMode = res;
+    console.log("Here we have all access mode's Id by Patient profile Id " + res[0].id)
   }, (err) => {
     console.log(err);
   });
@@ -145,6 +148,8 @@ this.patientService.getAccessModeByIdPatientprofile(this.patientProfileId)
 assignAccessMode(){
 
   this.idAccessMode = this.patientAccessProfileForm.get('idPatientProfile')?.value;
+  console.log ("here we have the Id access mode which has chosen by user " + this.idAccessMode);
+  console.log ("here we have id Patient access from the previous control form " + this.idPatientAcess);
   this.patientService.assignAccessModeTemplateToPatientAccess(this.idPatientAcess, this.idAccessMode)
   .subscribe( (res: any) => {
 //    this.presentAlert('access mode');

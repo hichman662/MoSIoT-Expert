@@ -14,6 +14,7 @@
         "return": "SCENARIO"
     },
     "ADDPATIENT": {
+        "selectExistingUser": "Select an existing user",
         "title": "Add patient",
         "email": "Email",
         "password": "Password",
@@ -27,6 +28,7 @@
         "pleaseFillOutThisField": "Please fill out this field"
     },
     "ADDUSER": {
+        "selectGender": "Select gender",
         "title": "Add new user",
         "name": "Name",
         "surnames": "Surenames",
@@ -124,13 +126,13 @@
         "pleaseFillOutThisField": "Please fill out this field"
     },
     "WIZARD": {
-        "scenario": "SCENARIO",
-        "patient": "PATIENT",
-        "accessMode": "ACCESS MODE",
-        "device": "DEVICE",
-        "carePlan": "CARE PLAN",
-        "activities": "ACTIVITIES"
-    },
+  "scenario": "Scenario",
+  "patient": "Patient",
+  "accessMode": "Access",
+  "device": "Device",
+  "carePlan": "Care",
+  "activities": "Activity"
+},
     "HOME": {
         "title": "Summary",
         "scenario": "Scenario",

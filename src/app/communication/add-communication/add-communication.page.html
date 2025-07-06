@@ -1,79 +1,73 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ADDCOMMUNICATION.return' | translate }}" defaultHref="/tabs/tab2/careActivity" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
-    <ion-toolbar>
+  <ion-row>
+    <ion-col size="4"></ion-col>
+    <ion-col size="4" class="ion-align-self-center">
+      <ion-card color="transparent" class="deviceTemplate-card">
+        <ion-img src="assets/icon/communicationW.png"></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4"></ion-col>
+  </ion-row>
 
-        <ion-buttons slot="start">
-            <ion-back-button text="{{ 'ADDCOMMUNICATION.return' | translate }}" defaultHref="/tabs/tab2/careActivity" icon="chevron-back-outline"></ion-back-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-
-            <ion-button>
-            </ion-button>
-        </ion-buttons>
-
-    </ion-toolbar>
-    <ion-row>
-        <ion-col size="4" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-center">
-            <ion-card color="transparent" class="deviceTemplate-card">
-                <ion-img src='assets/icon/communicationW.png'></ion-img>
-
-            </ion-card>
-        </ion-col>
-        <ion-col size="4" class="ion-align-self-end">
-        </ion-col>
-
-    </ion-row>
-    <ion-row>
-        <ion-col size="1" class="ion-align-self-start">
-
-        </ion-col>
-        <ion-col size="10" class="ion-align-self-center">
-
-            <ion-list-header>
-                <ion-label class="text-top">{{ 'ADDCOMMUNICATION.title' | translate }}</ion-label>
-
-            </ion-list-header>
-
-        </ion-col>
-        <ion-col size="1" class="ion-align-self-end">
-
-        </ion-col>
-
-    </ion-row>
-
-
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="text-top">{{ 'ADDCOMMUNICATION.title' | translate }}</ion-label>
+      </ion-list-header>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
 </ion-header>
+
 <ion-content>
+  <form [formGroup]="addCommunicationForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">{{ 'ADDCOMMUNICATION.name' | translate }}</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+      <div class="error" *ngIf="addCommunicationForm.controls['name'].errors && addCommunicationForm.controls['name'].touched">
+        {{ 'ADDCOMMUNICATION.pleaseFillOutThisField' | translate }}
+      </div>
+    </ion-item>
 
-    <form [formGroup]="addCommunicationForm" (ngSubmit)="onSubmit()">
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDCOMMUNICATION.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Name" class="form-control"></ion-input>
-            <div class="error" *ngIf="addCommunicationForm.controls['Name'].errors && addCommunicationForm.controls['Name'].touched">
-                {{ 'ADDCOMMUNICATION.pleaseFillOutThisField' | translate }}
-            </div>
-        </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'ADDCOMMUNICATION.description' | translate }}</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+      <div class="error" *ngIf="addCommunicationForm.controls['description'].errors && addCommunicationForm.controls['description'].touched">
+        {{ 'ADDCOMMUNICATION.pleaseFillOutThisField' | translate }}
+      </div>
+    </ion-item>
 
-        <ion-item>
-            <ion-label position="stacked">{{ 'ADDCOMMUNICATION.description' | translate }}</ion-label>
-            <ion-input type="text" formControlName="Description" class="form-control"></ion-input>
-            <div class="error" *ngIf="addCommunicationForm.controls['Description'].errors && addCommunicationForm.controls['Description'].touched">
-                {{ 'ADDCOMMUNICATION.pleaseFillOutThisField' | translate }}
-            </div>
-        </ion-item>
-        <ion-item>
-            <ion-label>{{ 'ADDCOMMUNICATION.activityTime' | translate }}</ion-label>
-            <ion-datetime locale="es-ES" value="2022-04-21T00:00:00" min="2022-09-01T00:00:00" max="2050-05-31T23:59:59" formControlName="TimeAct">
-                <span slot="title">{{ 'ADDCOMMUNICATION.selectActivityTime' | translate }}</span>
-            </ion-datetime>
-        </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked">{{ 'ADDCOMMUNICATION.activityTime' | translate }}</ion-label>
+    </ion-item>
 
-        <br>
-        <br>
+    <div class="datetime-container">
+      <ion-datetime
+        class="custom-datetime"
+        formControlName="timeAct"
+        presentation="date"
+        locale="en-CA"
+        value-format="yyyy/MM/dd"
+        prefer-wheel="true"
+        show-default-buttons="false"
+        show-default-title="false"
+        min="2024-01-01T00:00:00"
+        max="2030-12-31T23:59:59">
+      </ion-datetime>
+    </div>
 
-        <ion-button expand="block " class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!addCommunicationForm.valid">{{ 'ADDCOMMUNICATION.done' | translate }}</ion-button>
-    </form>
+    <ion-button expand="block" class="save" size="small" fill="solid" type="submit" color="primary" [disabled]="!addCommunicationForm.valid">
+      {{ 'ADDCOMMUNICATION.done' | translate }}
+    </ion-button>
+  </form>
 </ion-content>
