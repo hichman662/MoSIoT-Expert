@@ -2,7 +2,18 @@
     "SCENARIO": {
         "title": "Scenario",
         "profile": "Profile",
-        "logout": "Logout"
+        "logout": "Logout",
+        "settings": "Settings"
+
+    },
+    "SETTINGS": {
+        "title": "Settings",
+        "language": "Language",
+        "return": "Return",
+        "settings": "Settings",
+        "selectOne": "Select",
+        "english" : "English",
+        "spanish" : "Español" 
 
     },
     "ADDSCENARIO": {

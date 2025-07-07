@@ -8,6 +8,16 @@
         "profile": "Perfil",
         "logout": "Cerrar sesión"
     },
+      "SETTINGS": {
+        "title": "Configuración",
+        "language": "Idioma",
+        "return": "Volver",
+        "settings": "Configuración",
+        "selectOne": "Elegir",
+        "english" : "English",
+        "spanish" : "Español" 
+
+    },
     "ADDSCENARIO": {
         "title": "Añadir Escenario",
         "name": "Nombre",

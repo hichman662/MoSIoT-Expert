@@ -9,11 +9,11 @@ const routes: Routes = [
     component: PatientAccessPage
   },
   {
-    path: 'detail-patient-access/:id',
+    path: 'detail-patient-access/:Id',
     loadChildren: () => import('./detail-patient-access/detail-patient-access.module').then( m => m.DetailPatientAccessPageModule)
   },
   {
-    path: 'add-patient-access/:id',
+    path: 'add-patient-access/:Id',
     loadChildren: () => import('./add-patient-access/add-patient-access.module').then( m => m.AddPatientAccessPageModule)
   },
   {

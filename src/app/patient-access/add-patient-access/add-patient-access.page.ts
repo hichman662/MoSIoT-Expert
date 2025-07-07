@@ -69,7 +69,7 @@ export class AddPatientAccessPage implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params['id'];
+    this.idPassedByURL = this.route.snapshot.params['Id'];
 
     console.log("here Id pass By Id of user " + this.idPassedByURL);
     this.storage.get('idScenario').then((val) => {
