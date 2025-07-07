@@ -8,11 +8,11 @@
           <h3 class="custom-title">MoSIoT</h3> <!-- Elegant Title -->
         </ion-col>
       </ion-row>
-      
+
       <!-- Login Form -->
       <ion-row>
         <ion-col>
-          <form [formGroup]="loginForm" id="loginform"> <!-- Apply formGroup here -->
+          <form [formGroup]="loginForm" id="loginform" (ngSubmit)="login()"> <!-- Apply formGroup here and handle submit -->
             <ion-list>
               <ion-item>
                 <ion-icon name="person" class="icon-login"></ion-icon>
@@ -36,29 +36,29 @@
                 ></ion-input>
               </ion-item>
             </ion-list>
+
+            <!-- Validation Messages -->
+            <ion-row class="text-justify">
+              <ion-col>
+                <p class="text-danger" *ngIf="formSubmit && !campoValido('email')">
+                  The email field is required
+                </p>
+                <p class="text-danger" *ngIf="formSubmit && !campoValido('pass')">
+                  The password field is required
+                </p>
+              </ion-col>
+            </ion-row>
+
+            <!-- Submit Button -->
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-button expand="block" type="submit" [disabled]="waiting">
+                  <ion-spinner *ngIf="waiting" name="dots" color="light"></ion-spinner>
+                  <span *ngIf="!waiting">Login</span>
+                </ion-button>
+              </ion-col>
+            </ion-row>
           </form>
-        </ion-col>
-      </ion-row>
-
-      <!-- Validation Messages -->
-      <ion-row class="text-justify">
-        <ion-col>
-          <p class="text-danger" *ngIf="formSubmit && !campoValido('email')">
-            The user field is required
-          </p>
-          <p class="text-danger" *ngIf="formSubmit && !campoValido('pass')">
-            The password field is required
-          </p>
-        </ion-col>
-      </ion-row>
-
-      <!-- Submit Button -->
-      <ion-row>
-        <ion-col class="ion-text-center">
-          <ion-button (click)="login()" type="submit" [disabled]="waiting">
-            <ion-spinner *ngIf="waiting" name="dots" color="light"></ion-spinner>
-            <span *ngIf="!waiting">Login</span>
-          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

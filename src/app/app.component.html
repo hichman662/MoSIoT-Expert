@@ -1,34 +1,38 @@
 <ion-menu contentId="main-content" side="start">
   <ion-header>
-      <ion-toolbar>
-          <ion-title>MoSIoT</ion-title>
-      </ion-toolbar>
+    <ion-toolbar>
+      <ion-title>MoSIoT</ion-title>
+    </ion-toolbar>
   </ion-header>
 
   <ion-content>
-
-      <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let nav of NAV">
-              <ion-item routerDirection="root" [routerLink]="nav.link" [class.active-menu]="active === nav.link">
-                  <div *ngIf="nav.name ===  'Profile'"> {{'SCENARIO.profile' | translate}}</div>
-                  <div *ngIf="nav.name ===  'Settings'"> {{'SCENARIO.settings' | translate}}</div>
-                  <div *ngIf="nav.name ===  'Logout'"> {{'SCENARIO.logout' | translate}}</div>
-                  <ion-icon slot="start" [ios]="nav.icon + '-outline'" [md]="nav.icon + '-sharp'"></ion-icon>
-              </ion-item>
-          </ion-menu-toggle>
-      </ion-list>
-
-
+    <ion-list>
+      <ion-menu-toggle auto-hide="false" *ngFor="let nav of NAV">
+        <ion-item routerDirection="root" [routerLink]="nav.link" [class.active-menu]="active === nav.link">
+          <div *ngIf="nav.name === 'Profile'">{{ 'SCENARIO.profile' | translate }}</div>
+          <div *ngIf="nav.name === 'Settings'">{{ 'SCENARIO.settings' | translate }}</div>
+          <div *ngIf="nav.name === 'Logout'">{{ 'SCENARIO.logout' | translate }}</div>
+          <ion-icon slot="start" [ios]="nav.icon + '-outline'" [md]="nav.icon + '-sharp'"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
   </ion-content>
 </ion-menu>
 
-<!-- <ion-item *ngIf="showModal">
-<p><strong>{{idleState}}</strong></p>
-<button (click)="reset()" *ngIf="timedOut">Restart</button>
-</ion-item> -->
+<!-- Show Idle Timer Modal -->
 <ion-item *ngIf="showModal" class="timerIdle">
-  <div class="idle"> {{idleState}}</div>
+  <!-- Idle warning message -->
+  <div *ngIf="idleState.includes('seconds!')" class="warning-message">
+    Your session is about to expire in {{ idleState }}.
+  </div>
 
+ 
+
+  <!-- Button container with Cancel and Logout buttons -->
+  <div class="button-container">
+    <button class="cancel" (click)="reset()">Cancel</button>
+    <button class="logout" (click)="logout()">Logout</button>
+  </div>
 </ion-item>
-<ion-router-outlet id="main-content" main></ion-router-outlet>
 
+<ion-router-outlet id="main-content" main></ion-router-outlet>
