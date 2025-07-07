@@ -190,7 +190,8 @@
         "messanger": "Messanger",
         "return": "Escenarios",
         "title": "Plan de cuidado",
-        "careActivities": "Actividades de cuidado"
+        "careActivities": "Actividades de cuidado",
+        "qualityLife" : "Calidad de Vida"
     },
     "CAREACTIVITIES": {
         "title": "Actividades de cuidado",

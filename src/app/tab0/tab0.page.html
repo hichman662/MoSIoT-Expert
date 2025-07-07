@@ -210,20 +210,11 @@
             </div>
         </ion-list>
     </ion-card>
-
-    <ion-card class="animate__animated animate__fadeInUp animate__slower">
-  <ion-card-header>
-    <ion-card-subtitle>Quality of Life</ion-card-subtitle>
-    <ion-card-title>Radar Analysis</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    <canvas baseChart
-      [data]="radarChartData"
-      [options]="radarChartOptions"
-      [type]="'radar'">
-    </canvas>
-  </ion-card-content>
-</ion-card>
+  
+  <ion-card>
+    <ion-card-content>
+    <app-radar [initialValues]="radarValues"></app-radar>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

@@ -1,0 +1,102 @@
+/* Global Background & Header Design */
+ion-header {
+  --background: rgba(180, 199, 136, 0.658); /* Header background color */
+}
+
+ion-toolbar {
+  --background: rgba(180, 199, 136, 0.658); /* Matching the header */
+}
+
+.header-icon {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+  object-fit: contain;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 10px;
+}
+
+ion-card {
+  border-radius: 18px;
+  box-shadow: none !important;
+  margin: 12px;
+}
+
+ion-card-header {
+  --background: #e9f0da;
+  padding-bottom: 8px;
+}
+
+ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a4f39;
+}
+
+ion-card-subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Styling the ion-range slider */
+ion-range {
+  --bar-height: 6px !important; /* Height of the slider bar */
+  --bar-background: #d1d1d1 !important; /* Light gray for inactive part */
+  --bar-active-background: #4a90e2 !important; /* Blue for active part */
+  --knob-color: #4a90e2 !important; /* Blue color for the knob */
+  --pin-color: #4a90e2 !important; /* Blue color for the pin */
+  --bar-border-radius: 6px !important; /* Rounded corners */
+}
+
+ion-range::part(bar) {
+  background-color: #d1d1d1 !important; /* Inactive portion of the bar */
+}
+
+ion-range::part(knob) {
+  background-color: #4a90e2 !important; /* Active portion - the knob color */
+}
+
+ion-range::part(pin) {
+  background-color: #4a90e2 !important; /* Pin color when the user adjusts */
+}
+
+ion-range::part(bar-active) {
+  background-color: #4a90e2 !important; /* Active bar portion when the slider is adjusted */
+}
+
+.compact-range-item {
+  margin-bottom: 10px;
+}
+
+.range-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+.range-title {
+  font-weight: 500;
+}
+
+.range-number {
+  font-weight: 600;
+  text-align: right;
+}
+
+.radar-section {
+  margin: 16px;
+  padding-bottom: 20px;
+}
+
+app-radar {
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+}

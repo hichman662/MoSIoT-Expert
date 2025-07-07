@@ -75,6 +75,10 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
+    path: 'quality-life',
+    loadChildren: () => import('./quality-life/quality-life.module').then( m => m.QualityLifePageModule)
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
