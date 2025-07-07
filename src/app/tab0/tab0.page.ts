@@ -19,6 +19,8 @@ import { Device } from '../models/device.model';
 import { Nutrition } from '../models/nutrition.model';
 import { Communication } from '../models/communication.model';
 import { ChartConfiguration } from 'chart.js';
+import { QualityLifeService } from '../services/quality-life.services'; 
+
 
 @Component({
     selector: 'app-tab0',
@@ -55,18 +57,20 @@ export class Tab0Page implements OnInit {
   public appointmentNull = false;
   public communications: Communication[] = [];
   public communicationNull = false;
+  radarValues: number[] = [];
 
   constructor(private storage: Storage,
     private scenarioService: ScenarioService,
     private userService: UserService,
     private carePlanService: CarePlanService,
     private patientService: PatientService,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private qualityLifeService: QualityLifeService
 )
    { }
 
  ngOnInit() {
-
+ this.radarValues = this.qualityLifeService.getInitialValues();
   }
 
   async ionViewWillEnter(){

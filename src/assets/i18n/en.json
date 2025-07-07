@@ -188,7 +188,8 @@
         "messanger": "Messanger",
         "return": "Scenarios",
         "title": "Care Plan Section",
-        "careActivities": "Care Activities"
+        "careActivities": "Care Activities",
+        "qualityLife" : "Quality of Life"
     },
     "CAREACTIVITIES": {
         "title": "Care activities",

@@ -1,0 +1,17 @@
+<ion-card class="radar-card animate__animated animate__fadeInUp animate__slower">
+  <ion-card-header>
+    <ion-card-subtitle>Quality of Life</ion-card-subtitle>
+    <ion-card-title>Radar Analysis</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="radar-wrapper">
+      <canvas
+        baseChart
+        [data]="radarChartData"
+        [options]="radarChartOptions"
+        [type]="'radar'">
+      </canvas>
+    </div>
+  </ion-card-content>
+</ion-card>

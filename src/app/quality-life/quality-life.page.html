@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="VOLVER" defaultHref="/tabs/tab2" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-row>
+    <ion-col size="4"></ion-col>
+    <ion-col size="4" class="ion-align-self-center">
+      <ion-card color="transparent" class="deviceTemplate-card">
+        <ion-img src="assets/icon/radar.png" class="header-icon"></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4"></ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="1"></ion-col>
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-list-header>
+        <ion-label class="section-title">Quality of Life</ion-label>
+      </ion-list-header>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <section class="form-section animate__animated animate__fadeInUp animate__slow">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Adjust Initial Values</ion-card-title>
+        <ion-card-subtitle>Doctor's input</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="formGroup">
+          <div *ngFor="let dim of qualityLabels; let i = index" class="compact-range-item">
+            <div class="range-header">
+              <div class="range-title">{{ dim }}</div>
+              <div class="range-number">{{ formGroup.get(i.toString())?.value | number: '1.2-2' }}</div>
+            </div>
+            <ion-range
+              min="0"
+              max="1"
+              step="0.01"
+              [formControlName]="i"
+              color="success"
+              pin="false"
+              snaps="true"
+              ticks="true"
+              class="tight-range">
+              <ion-label slot="start">0</ion-label>
+              <ion-label slot="end">1</ion-label>
+            </ion-range>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </section>
+
+  <section class="radar-section animate__animated animate__fadeInUp animate__slower">
+    <app-radar [initialValues]="initialValues"></app-radar>
+  </section>
+</ion-content>

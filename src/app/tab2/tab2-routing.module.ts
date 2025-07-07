@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('../care-plan/care-plan.module').then( m => m.CarePlanPageModule)
   },
   {
+    path: 'qualityLife',
+    loadChildren: () => import('../quality-life/quality-life.module').then( m => m.QualityLifePageModule)
+  },
+  {
     path: 'vitalSign',
     loadChildren: () => import('../vital-sign/vital-sign.module').then( m => m.VitalSignPageModule)
   },

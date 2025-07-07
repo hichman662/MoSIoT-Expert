@@ -9,6 +9,7 @@ import { Tab0PageRoutingModule } from './tab0-routing.module';
 import { Tab0Page } from './tab0.page';
 import { ExploreContainerComponentModule } from './../explore-container/explore-container.module';
 import { NgChartsModule } from 'ng2-charts';
+import { RadarComponent } from '../quality-life/radar/radar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { NgChartsModule } from 'ng2-charts';
     MatExpansionModule,
     ProgressBarModule,
     NgChartsModule,
-    TranslateModule
+    TranslateModule,
+    RadarComponent  
   ],
   declarations: [Tab0Page]
 })
