@@ -27,7 +27,7 @@ export class DetailAccessModeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.idPassedByURL = this.route.snapshot.params['id'];
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.patientService.getPatientAccessById(this.idPassedByURL)
     .subscribe((res: any ) => {
     if(res != null){

@@ -50,7 +50,7 @@ export class DetailPatientAccessPage implements OnInit {
         this.idScenario= val;
       }
     });
-    this.idPassedByURL = this.route.snapshot.params['id'];
+    this.idPassedByURL = this.route.snapshot.params['Id'];
     this.callingAccessdatil();
   }
 
