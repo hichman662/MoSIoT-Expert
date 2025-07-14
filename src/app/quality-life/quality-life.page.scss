@@ -1,84 +1,93 @@
-/* Global Background & Header Design */
+/* ===== Global Page Background ===== */
+ion-content {
+  --background: linear-gradient(to bottom right, #f4f6ec, #e8ecd9);
+  padding-bottom: 20px;
+}
+
+/* ===== Header and Toolbar Styling ===== */
 ion-header {
-  --background: rgba(180, 199, 136, 0.658); /* Header background color */
+  background-color: #ffffff;
+  border-bottom: 1px solid #cddbb4;
 }
 
 ion-toolbar {
-  --background: rgba(180, 199, 136, 0.658); /* Matching the header */
+  --background: rgba(207, 218, 182, 0.85);
+  --color: #2d3a1d;
+  border-bottom: 1px solid #cddbb4;
+}
+
+ion-back-button {
+  color: #2d3a1d;
+  font-weight: 500;
+}
+
+/* ===== Header Icon ===== */
+.deviceTemplate-card {
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  box-shadow: none;
+  margin: 10px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-icon {
-  width: 60px;
-  height: 60px;
-  margin-top: 10px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
+/* ===== Section Title ===== */
 .section-title {
-  text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  color: #333;
-  margin-top: 10px;
+  text-align: center;
+  color: #2d3a1d;
+  margin-top: 6px;
+}
+
+/* ===== Form Section Styling ===== */
+.form-section {
+  padding: 0 16px;
 }
 
 ion-card {
-  border-radius: 18px;
-  box-shadow: none !important;
-  margin: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(140, 160, 120, 0.2);
+  background-color: #ffffff;
 }
 
 ion-card-header {
-  --background: #e9f0da;
-  padding-bottom: 8px;
+  background-color: #eef2e3;
+  border-bottom: 1px solid #ccd4bb;
+  padding: 16px;
 }
 
 ion-card-title {
   font-size: 18px;
   font-weight: 600;
-  color: #4a4f39;
+  color: #3f5135;
 }
 
 ion-card-subtitle {
   font-size: 14px;
-  color: #666;
+  color: #7c8c66;
+  margin-top: 4px;
 }
 
-/* Styling the ion-range slider */
-ion-range {
-  --bar-height: 6px !important; /* Height of the slider bar */
-  --bar-background: #d1d1d1 !important; /* Light gray for inactive part */
-  --bar-active-background: #4a90e2 !important; /* Blue for active part */
-  --knob-color: #4a90e2 !important; /* Blue color for the knob */
-  --pin-color: #4a90e2 !important; /* Blue color for the pin */
-  --bar-border-radius: 6px !important; /* Rounded corners */
-}
-
-ion-range::part(bar) {
-  background-color: #d1d1d1 !important; /* Inactive portion of the bar */
-}
-
-ion-range::part(knob) {
-  background-color: #4a90e2 !important; /* Active portion - the knob color */
-}
-
-ion-range::part(pin) {
-  background-color: #4a90e2 !important; /* Pin color when the user adjusts */
-}
-
-ion-range::part(bar-active) {
-  background-color: #4a90e2 !important; /* Active bar portion when the slider is adjusted */
-}
-
+/* ===== Range Controls ===== */
 .compact-range-item {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .range-header {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
-  padding: 4px 0;
+  margin-bottom: 6px;
+  color: #3b4f29;
 }
 
 .range-title {
@@ -87,16 +96,48 @@ ion-range::part(bar-active) {
 
 .range-number {
   font-weight: 600;
-  text-align: right;
 }
 
+/* Slider Design */
+ion-range.tight-range {
+  --bar-height: 6px;
+  --bar-background: #cfdab6;
+  --bar-background-active: #6a9155;
+  --knob-size: 18px;
+  --knob-background: #6a9155;
+  --pin-background: #6a9155;
+  --pin-color: #ffffff;
+  margin-top: 0;
+}
+
+/* ===== Radar Section ===== */
 .radar-section {
-  margin: 16px;
-  padding-bottom: 20px;
+  padding: 8px 16px;
+  margin-top: 12px;
 }
 
 app-radar {
   width: 100%;
   display: block;
-  margin-top: 20px;
+  margin: 0 auto;
+}
+
+/* Header Icon + Title on Right Side */
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.header-icon-right {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.title-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3a1d;
 }
